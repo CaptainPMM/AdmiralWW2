@@ -3,24 +3,34 @@ using UnityEngine;
 using Crest;
 
 namespace Ocean.OceanPhysics {
-    [RequireComponent(typeof(Rigidbody))]
     public class FloatPhysics : MonoBehaviour {
         private const float WATER_DENSITY = 1000f;
         private readonly float WATER_BUOYANCY = WATER_DENSITY * Mathf.Abs(Physics.gravity.y);
 
-        [Range(0f, 2f)]
-        public float gizmoSize = 1f;
+        [Header("Setup")]
+        [SerializeField] private Rigidbody rb = null;
+        [SerializeField, Range(0f, 2f)] private float gizmoSize = 1f;
 
-        public Vector3 centerOfMass;
-        public List<FloatPoint> floatPoints = new List<FloatPoint>();
-        public float forceFactor = 1f;
+        [SerializeField] private Vector3 centerOfMass = Vector3.zero;
+        [SerializeField] private List<FloatPoint> floatPoints = new List<FloatPoint>();
+        [SerializeField] private float forceFactor = 5000f;
+
         /// <summary>
         /// Ignore wave lengths below this value, usually the boat width
         /// </summary>
-        [Tooltip("Ingore wave lengths below this value, usually the boat width")]
-        public float minWaveLength = 0f;
+        [SerializeField, Tooltip("Ingore wave lengths below this value, usually the boat width")]
+        private float minWaveLength = 8f;
 
-        private Rigidbody rb;
+        [SerializeField] private float dragWaterUp = 1f;
+        [SerializeField] private float dragWaterForward = 0.1f;
+
+        [Header("Current state")]
+        [SerializeField] private bool inWater = false;
+        [SerializeField] private float additionalDragWaterForward = 0f;
+
+        public bool InWater => inWater;
+        public float AdditionalDragWaterForward { get => additionalDragWaterForward; set => additionalDragWaterForward = value; }
+
         private float totalFloatPointsWeight;
 
         private Vector3[] samplePoints;
@@ -28,7 +38,7 @@ namespace Ocean.OceanPhysics {
         private Vector3[] sampleResVelocities;
 
         private void Awake() {
-            rb = GetComponent<Rigidbody>();
+            if (rb == null) Debug.LogWarning("FloatPhysics script needs an assigned rigidbody to apply forces on");
         }
 
         private void Start() {
@@ -47,8 +57,9 @@ namespace Ocean.OceanPhysics {
 
             UpdateWaterSamples();
 
+            inWater = false;
             ApplyBuoyancy();
-            ApplyDrag();
+            if (inWater) ApplyDrag();
         }
 
         private void CalcTotalFloatPointsWeigth() {
@@ -72,6 +83,7 @@ namespace Ocean.OceanPhysics {
                 if (heightDiff > 0) {
                     // Below water surface -> apply water buoyancy force
                     rb.AddForceAtPosition(WATER_BUOYANCY * heightDiff * Vector3.up * floatPoints[i].weight * forceFactor / totalFloatPointsWeight, samplePoints[i]);
+                    if (!inWater) inWater = true;
                 }
             }
         }
@@ -85,9 +97,9 @@ namespace Ocean.OceanPhysics {
             Vector3 velocityRelativeToWater = rb.velocity - waterSurfaceVelocity;
 
             Vector3 forcePosition = rb.position;
-            rb.AddForceAtPosition(Vector3.up * Vector3.Dot(Vector3.up, -velocityRelativeToWater), forcePosition);
-            rb.AddForceAtPosition(transform.right * Vector3.Dot(transform.right, -velocityRelativeToWater), forcePosition);
-            rb.AddForceAtPosition(transform.forward * Vector3.Dot(transform.forward, -velocityRelativeToWater), forcePosition);
+            rb.AddForceAtPosition(Vector3.up * Vector3.Dot(Vector3.up, -velocityRelativeToWater) * dragWaterUp, forcePosition, ForceMode.Acceleration);
+            rb.AddForceAtPosition(transform.right * Vector3.Dot(transform.right, -velocityRelativeToWater), forcePosition, ForceMode.Acceleration);
+            rb.AddForceAtPosition(transform.forward * Vector3.Dot(transform.forward, -velocityRelativeToWater) * (dragWaterForward + additionalDragWaterForward), forcePosition, ForceMode.Acceleration);
         }
 
         private void OnDrawGizmosSelected() {

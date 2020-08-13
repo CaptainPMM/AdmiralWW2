@@ -213,7 +213,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &363677959
 GameObject:
@@ -273,7 +273,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &580610597
 GameObject:
@@ -305,7 +305,7 @@ Transform:
   - {fileID: 1043689219}
   - {fileID: 2054185055}
   m_Father: {fileID: 1489197365}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &923508181
 GameObject:
@@ -384,13 +384,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 923508181}
-  m_LocalRotation: {x: 0.16676731, y: -0, z: -0, w: 0.9859963}
-  m_LocalPosition: {x: 0, y: 14.6, z: -10}
+  m_LocalRotation: {x: 0.043619405, y: 0, z: 0, w: 0.9990483}
+  m_LocalPosition: {x: 0, y: 20, z: -90}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 19.2, y: 0, z: 0}
+  m_Father: {fileID: 1489197365}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 5, y: 0, z: 0}
 --- !u!114 &923508185
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -451,7 +451,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &925556260
 MonoBehaviour:
@@ -590,7 +590,7 @@ Transform:
   m_Children:
   - {fileID: 1761016672}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1364331711
 MonoBehaviour:
@@ -649,6 +649,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1489197365}
   - component: {fileID: 1489197367}
+  - component: {fileID: 1489197369}
   - component: {fileID: 1489197366}
   - component: {fileID: 1489197368}
   m_Layer: 0
@@ -669,9 +670,10 @@ Transform:
   m_LocalPosition: {x: 0, y: 8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 923508184}
   - {fileID: 580610598}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1489197366
 MonoBehaviour:
@@ -685,6 +687,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a9a482d50246477cbb23940446d8bb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rb: {fileID: 1489197367}
   gizmoSize: 1
   centerOfMass: {x: 0, y: -1.5, z: 0}
   floatPoints:
@@ -704,8 +707,21 @@ MonoBehaviour:
     weight: 2
   - offsetPos: {x: -7, y: 2, z: -50}
     weight: 2
-  forceFactor: 3000
+  - offsetPos: {x: 7, y: -1, z: 25}
+    weight: 1.5
+  - offsetPos: {x: -7, y: -1, z: 25}
+    weight: 1.5
+  - offsetPos: {x: 7, y: -1, z: -25}
+    weight: 1.5
+  - offsetPos: {x: -7, y: -1, z: -25}
+    weight: 1.5
+  forceFactor: 5000
   minWaveLength: 10
+  dragWaterUp: 1
+  dragWaterForward: 0.1
+  dragWaterSideways: 2
+  inWater: 0
+  additionalDragWaterForward: 0
 --- !u!54 &1489197367
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -715,8 +731,8 @@ Rigidbody:
   m_GameObject: {fileID: 1489197364}
   serializedVersion: 2
   m_Mass: 10000000
-  m_Drag: 2
-  m_AngularDrag: 1
+  m_Drag: 0.1
+  m_AngularDrag: 0.9
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -734,20 +750,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d038d47ea84fa46a0b1b78591f45187e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 1489197367}
-  enginePower: 100000000
-  throttleSpeed: 0.001
-  rudderSize: 1000
-  maxRudderAngle: 45
-  rudderSpeed: 0.1
-  propellerOffset: {x: 0, y: -2.5, z: -51}
+  ship: {fileID: 1489197369}
   gizmoSize: 1
+  enginePower: 10
+  throttleSpeed: 0.002
+  rudderForce: 10000000
+  maxRudderAngle: 45
+  rudderSpeed: 0.22
+  propellerOffset: {x: 0, y: -2.5, z: -51}
   engineOn: 1
   throttle: 0
   rudderAngle: 0
   forceWorldPos: {x: 0, y: 0, z: 0}
   targetThrottle: 0
   targetRudderAngle: 0
+--- !u!114 &1489197369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1489197364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dceef2d8eb9954df89b872fb34d92bcd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 1489197367}
+  floatPhysics: {fileID: 1489197366}
+  propulsion: {fileID: 1489197368}
 --- !u!1 &1606519191
 GameObject:
   m_ObjectHideFlags: 0
@@ -776,7 +807,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1761016671
 GameObject:
@@ -1311,7 +1342,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2054185054
 GameObject:
