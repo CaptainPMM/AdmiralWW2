@@ -85,9 +85,9 @@ namespace Ocean.OceanPhysics {
             Vector3 velocityRelativeToWater = rb.velocity - waterSurfaceVelocity;
 
             Vector3 forcePosition = rb.position;
-            rb.AddForceAtPosition(Vector3.up * Vector3.Dot(Vector3.up, -velocityRelativeToWater), forcePosition, ForceMode.Acceleration);
-            rb.AddForceAtPosition(transform.right * Vector3.Dot(transform.right, -velocityRelativeToWater), forcePosition, ForceMode.Acceleration);
-            rb.AddForceAtPosition(transform.forward * Vector3.Dot(transform.forward, -velocityRelativeToWater), forcePosition, ForceMode.Acceleration);
+            rb.AddForceAtPosition(Vector3.up * Vector3.Dot(Vector3.up, -velocityRelativeToWater), forcePosition);
+            rb.AddForceAtPosition(transform.right * Vector3.Dot(transform.right, -velocityRelativeToWater), forcePosition);
+            rb.AddForceAtPosition(transform.forward * Vector3.Dot(transform.forward, -velocityRelativeToWater), forcePosition);
         }
 
         private void OnDrawGizmosSelected() {

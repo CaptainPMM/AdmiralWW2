@@ -493,7 +493,7 @@ Transform:
   m_GameObject: {fileID: 1043689218}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 100, y: 10, z: 16}
+  m_LocalScale: {x: 16, y: 10, z: 100}
   m_Children: []
   m_Father: {fileID: 580610598}
   m_RootOrder: 0
@@ -650,6 +650,7 @@ GameObject:
   - component: {fileID: 1489197365}
   - component: {fileID: 1489197367}
   - component: {fileID: 1489197366}
+  - component: {fileID: 1489197368}
   m_Layer: 0
   m_Name: TestShip
   m_TagString: Untagged
@@ -687,21 +688,21 @@ MonoBehaviour:
   gizmoSize: 1
   centerOfMass: {x: 0, y: -1.5, z: 0}
   floatPoints:
-  - offsetPos: {x: 50, y: -2, z: 6}
+  - offsetPos: {x: 6, y: -2, z: 50}
     weight: 1
-  - offsetPos: {x: 50, y: -2, z: -6}
+  - offsetPos: {x: -6, y: -2, z: 50}
     weight: 1
-  - offsetPos: {x: -50, y: -2, z: 6}
+  - offsetPos: {x: 6, y: -2, z: -50}
     weight: 1
-  - offsetPos: {x: -50, y: -2, z: -6}
+  - offsetPos: {x: -6, y: -2, z: -50}
     weight: 1
-  - offsetPos: {x: -50, y: 2, z: 7}
+  - offsetPos: {x: 7, y: 2, z: 50}
     weight: 2
-  - offsetPos: {x: -50, y: 2, z: -7}
+  - offsetPos: {x: -7, y: 2, z: 50}
     weight: 2
-  - offsetPos: {x: 50, y: 2, z: 7}
+  - offsetPos: {x: 7, y: 2, z: -50}
     weight: 2
-  - offsetPos: {x: 50, y: 2, z: -7}
+  - offsetPos: {x: -7, y: 2, z: -50}
     weight: 2
   forceFactor: 3000
   minWaveLength: 10
@@ -721,6 +722,32 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1489197368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1489197364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d038d47ea84fa46a0b1b78591f45187e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 1489197367}
+  enginePower: 100000000
+  throttleSpeed: 0.001
+  rudderSize: 1000
+  maxRudderAngle: 45
+  rudderSpeed: 0.1
+  propellerOffset: {x: 0, y: -2.5, z: -51}
+  gizmoSize: 1
+  engineOn: 1
+  throttle: 0
+  rudderAngle: 0
+  forceWorldPos: {x: 0, y: 0, z: 0}
+  targetThrottle: 0
+  targetRudderAngle: 0
 --- !u!1 &1606519191
 GameObject:
   m_ObjectHideFlags: 0
@@ -1313,7 +1340,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2054185054}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 5.83, z: 6.35}
+  m_LocalPosition: {x: 6.5, y: 5.8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 580610598}
