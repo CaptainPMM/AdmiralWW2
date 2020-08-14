@@ -652,6 +652,7 @@ GameObject:
   - component: {fileID: 1489197369}
   - component: {fileID: 1489197366}
   - component: {fileID: 1489197368}
+  - component: {fileID: 1489197370}
   m_Layer: 0
   m_Name: TestShip
   m_TagString: Untagged
@@ -719,7 +720,6 @@ MonoBehaviour:
   minWaveLength: 10
   dragWaterUp: 1
   dragWaterForward: 0.1
-  dragWaterSideways: 2
   inWater: 0
   additionalDragWaterForward: 0
 --- !u!54 &1489197367
@@ -779,6 +779,24 @@ MonoBehaviour:
   rb: {fileID: 1489197367}
   floatPhysics: {fileID: 1489197366}
   propulsion: {fileID: 1489197368}
+  autopilot: {fileID: 1489197370}
+  course: 0
+--- !u!114 &1489197370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1489197364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9dada4755b9d7460084d3402ab93ae00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ship: {fileID: 1489197369}
+  engaged: 1
+  course: 0
+  chadburn: 0
 --- !u!1 &1606519191
 GameObject:
   m_ObjectHideFlags: 0
