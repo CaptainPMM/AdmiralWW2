@@ -100,6 +100,7 @@ MonoBehaviour:
   propulsion: {fileID: 2000458003251877194}
   autopilot: {fileID: 2000458003251877192}
   type: 0
+  shipDesignation: 0
   shipName: Default
   shipClass: Default Class
   course: 0
@@ -146,7 +147,9 @@ MonoBehaviour:
   forceFactor: 5000
   minWaveLength: 10
   dragWaterUp: 1
+  dragWaterSide: 0.5
   dragWaterForward: 0.1
+  gravityForce: 0.5
   inWater: 0
   additionalDragWaterForward: 0
 --- !u!114 &2000458003251877194

@@ -2385,71 +2385,71 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2000458003251877188, guid: d18fbdeb915834f109452bfe7e3fab54, type: 3}
       propertyPath: floatPoints.Array.size
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 2000458003251877188, guid: d18fbdeb915834f109452bfe7e3fab54, type: 3}
       propertyPath: centerOfMass.z
-      value: 6
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 2000458003251877188, guid: d18fbdeb915834f109452bfe7e3fab54, type: 3}
       propertyPath: centerOfMass.y
-      value: 0
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 2000458003251877188, guid: d18fbdeb915834f109452bfe7e3fab54, type: 3}
       propertyPath: floatPoints.Array.data[0].offsetPos.x
-      value: 2.5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2000458003251877188, guid: d18fbdeb915834f109452bfe7e3fab54, type: 3}
       propertyPath: floatPoints.Array.data[0].offsetPos.y
-      value: 0.5
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 2000458003251877188, guid: d18fbdeb915834f109452bfe7e3fab54, type: 3}
       propertyPath: floatPoints.Array.data[0].offsetPos.z
-      value: -98
+      value: -80
       objectReference: {fileID: 0}
     - target: {fileID: 2000458003251877188, guid: d18fbdeb915834f109452bfe7e3fab54, type: 3}
       propertyPath: floatPoints.Array.data[0].weight
-      value: 1
+      value: 1.8
       objectReference: {fileID: 0}
     - target: {fileID: 2000458003251877188, guid: d18fbdeb915834f109452bfe7e3fab54, type: 3}
       propertyPath: floatPoints.Array.data[1].offsetPos.x
-      value: -2.5
+      value: -4
       objectReference: {fileID: 0}
     - target: {fileID: 2000458003251877188, guid: d18fbdeb915834f109452bfe7e3fab54, type: 3}
       propertyPath: floatPoints.Array.data[1].offsetPos.y
-      value: 0.5
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 2000458003251877188, guid: d18fbdeb915834f109452bfe7e3fab54, type: 3}
       propertyPath: floatPoints.Array.data[1].offsetPos.z
-      value: -98
+      value: -80
       objectReference: {fileID: 0}
     - target: {fileID: 2000458003251877188, guid: d18fbdeb915834f109452bfe7e3fab54, type: 3}
       propertyPath: floatPoints.Array.data[1].weight
-      value: 1
+      value: 1.8
       objectReference: {fileID: 0}
     - target: {fileID: 2000458003251877188, guid: d18fbdeb915834f109452bfe7e3fab54, type: 3}
       propertyPath: floatPoints.Array.data[2].offsetPos.x
-      value: 1.5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2000458003251877188, guid: d18fbdeb915834f109452bfe7e3fab54, type: 3}
       propertyPath: floatPoints.Array.data[2].offsetPos.y
-      value: -0.5
+      value: -4
       objectReference: {fileID: 0}
     - target: {fileID: 2000458003251877188, guid: d18fbdeb915834f109452bfe7e3fab54, type: 3}
       propertyPath: floatPoints.Array.data[2].offsetPos.z
-      value: 99
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 2000458003251877188, guid: d18fbdeb915834f109452bfe7e3fab54, type: 3}
       propertyPath: floatPoints.Array.data[3].offsetPos.x
-      value: -1.5
+      value: -3
       objectReference: {fileID: 0}
     - target: {fileID: 2000458003251877188, guid: d18fbdeb915834f109452bfe7e3fab54, type: 3}
       propertyPath: floatPoints.Array.data[3].offsetPos.y
-      value: -0.5
+      value: -4
       objectReference: {fileID: 0}
     - target: {fileID: 2000458003251877188, guid: d18fbdeb915834f109452bfe7e3fab54, type: 3}
       propertyPath: floatPoints.Array.data[3].offsetPos.z
-      value: 99
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 2000458003251877188, guid: d18fbdeb915834f109452bfe7e3fab54, type: 3}
       propertyPath: floatPoints.Array.data[4].offsetPos.x
@@ -2457,15 +2457,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2000458003251877188, guid: d18fbdeb915834f109452bfe7e3fab54, type: 3}
       propertyPath: floatPoints.Array.data[4].offsetPos.y
-      value: -6
+      value: -4
       objectReference: {fileID: 0}
     - target: {fileID: 2000458003251877188, guid: d18fbdeb915834f109452bfe7e3fab54, type: 3}
       propertyPath: floatPoints.Array.data[4].offsetPos.z
-      value: -35
+      value: -25
       objectReference: {fileID: 0}
     - target: {fileID: 2000458003251877188, guid: d18fbdeb915834f109452bfe7e3fab54, type: 3}
       propertyPath: floatPoints.Array.data[4].weight
-      value: 1.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2000458003251877188, guid: d18fbdeb915834f109452bfe7e3fab54, type: 3}
       propertyPath: floatPoints.Array.data[5].offsetPos.x
@@ -2473,43 +2473,43 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2000458003251877188, guid: d18fbdeb915834f109452bfe7e3fab54, type: 3}
       propertyPath: floatPoints.Array.data[5].offsetPos.y
-      value: -6
+      value: -4
       objectReference: {fileID: 0}
     - target: {fileID: 2000458003251877188, guid: d18fbdeb915834f109452bfe7e3fab54, type: 3}
       propertyPath: floatPoints.Array.data[5].offsetPos.z
-      value: -35
+      value: -25
       objectReference: {fileID: 0}
     - target: {fileID: 2000458003251877188, guid: d18fbdeb915834f109452bfe7e3fab54, type: 3}
       propertyPath: floatPoints.Array.data[5].weight
-      value: 1.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2000458003251877188, guid: d18fbdeb915834f109452bfe7e3fab54, type: 3}
       propertyPath: floatPoints.Array.data[6].offsetPos.x
-      value: -8
-      objectReference: {fileID: 0}
-    - target: {fileID: 2000458003251877188, guid: d18fbdeb915834f109452bfe7e3fab54, type: 3}
-      propertyPath: floatPoints.Array.data[6].offsetPos.y
-      value: -6
-      objectReference: {fileID: 0}
-    - target: {fileID: 2000458003251877188, guid: d18fbdeb915834f109452bfe7e3fab54, type: 3}
-      propertyPath: floatPoints.Array.data[6].offsetPos.z
-      value: 35
-      objectReference: {fileID: 0}
-    - target: {fileID: 2000458003251877188, guid: d18fbdeb915834f109452bfe7e3fab54, type: 3}
-      propertyPath: floatPoints.Array.data[7].offsetPos.x
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2000458003251877188, guid: d18fbdeb915834f109452bfe7e3fab54, type: 3}
+      propertyPath: floatPoints.Array.data[6].offsetPos.y
+      value: -4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2000458003251877188, guid: d18fbdeb915834f109452bfe7e3fab54, type: 3}
+      propertyPath: floatPoints.Array.data[6].offsetPos.z
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2000458003251877188, guid: d18fbdeb915834f109452bfe7e3fab54, type: 3}
+      propertyPath: floatPoints.Array.data[7].offsetPos.x
+      value: -8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2000458003251877188, guid: d18fbdeb915834f109452bfe7e3fab54, type: 3}
       propertyPath: floatPoints.Array.data[7].offsetPos.y
-      value: -6
+      value: -4
       objectReference: {fileID: 0}
     - target: {fileID: 2000458003251877188, guid: d18fbdeb915834f109452bfe7e3fab54, type: 3}
       propertyPath: floatPoints.Array.data[7].offsetPos.z
-      value: 35
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 2000458003251877188, guid: d18fbdeb915834f109452bfe7e3fab54, type: 3}
       propertyPath: forceFactor
-      value: 5500
+      value: 4500
       objectReference: {fileID: 0}
     - target: {fileID: 2000458003251877188, guid: d18fbdeb915834f109452bfe7e3fab54, type: 3}
       propertyPath: minWaveLength
@@ -2518,6 +2518,34 @@ PrefabInstance:
     - target: {fileID: 2000458003251877188, guid: d18fbdeb915834f109452bfe7e3fab54, type: 3}
       propertyPath: dragWaterForward
       value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2000458003251877188, guid: d18fbdeb915834f109452bfe7e3fab54, type: 3}
+      propertyPath: dragWaterSide
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2000458003251877188, guid: d18fbdeb915834f109452bfe7e3fab54, type: 3}
+      propertyPath: floatPoints.Array.data[6].weight
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2000458003251877188, guid: d18fbdeb915834f109452bfe7e3fab54, type: 3}
+      propertyPath: floatPoints.Array.data[7].weight
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2000458003251877188, guid: d18fbdeb915834f109452bfe7e3fab54, type: 3}
+      propertyPath: floatPoints.Array.data[8].offsetPos.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2000458003251877188, guid: d18fbdeb915834f109452bfe7e3fab54, type: 3}
+      propertyPath: floatPoints.Array.data[8].offsetPos.y
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2000458003251877188, guid: d18fbdeb915834f109452bfe7e3fab54, type: 3}
+      propertyPath: floatPoints.Array.data[8].weight
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2000458003251877188, guid: d18fbdeb915834f109452bfe7e3fab54, type: 3}
+      propertyPath: floatPoints.Array.data[8].offsetPos.z
+      value: 97
       objectReference: {fileID: 0}
     - target: {fileID: 2000458003251877189, guid: d18fbdeb915834f109452bfe7e3fab54, type: 3}
       propertyPath: m_Mass
@@ -2605,7 +2633,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2000458003251877194, guid: d18fbdeb915834f109452bfe7e3fab54, type: 3}
       propertyPath: propellerOffset.y
-      value: -6
+      value: -6.5
       objectReference: {fileID: 0}
     - target: {fileID: 2000458003251877195, guid: d18fbdeb915834f109452bfe7e3fab54, type: 3}
       propertyPath: type

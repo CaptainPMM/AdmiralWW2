@@ -59,7 +59,7 @@ namespace Ocean.OceanPhysics {
         }
 
         private void ApplyThrottleForce() {
-            ship.Rigidbody.AddForceAtPosition(ThrottleForceFunc(), forceWorldPos, ForceMode.Acceleration);
+            ship.Rigidbody.AddForce(ThrottleForceFunc(), ForceMode.Acceleration);
         }
 
         private void ApplyRudderForce() {

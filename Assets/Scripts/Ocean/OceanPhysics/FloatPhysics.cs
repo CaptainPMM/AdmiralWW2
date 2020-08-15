@@ -22,7 +22,10 @@ namespace Ocean.OceanPhysics {
         private float minWaveLength = 8f;
 
         [SerializeField] private float dragWaterUp = 1f;
+        [SerializeField] private float dragWaterSide = 0.5f;
         [SerializeField] private float dragWaterForward = 0.1f;
+
+        [SerializeField] private float gravityForce = 0.5f;
 
         [Header("Current state")]
         [SerializeField] private bool inWater = false;
@@ -84,6 +87,9 @@ namespace Ocean.OceanPhysics {
                     // Below water surface -> apply water buoyancy force
                     rb.AddForceAtPosition(WATER_BUOYANCY * heightDiff * Vector3.up * floatPoints[i].weight * forceFactor / totalFloatPointsWeight, samplePoints[i]);
                     if (!inWater) inWater = true;
+                } else {
+                    // Above water surface, apply some additional gravity (default gravity to soft)
+                    rb.AddForceAtPosition(gravityForce * WATER_BUOYANCY * Physics.gravity * floatPoints[i].weight * forceFactor / totalFloatPointsWeight, samplePoints[i]);
                 }
             }
         }
@@ -98,7 +104,7 @@ namespace Ocean.OceanPhysics {
 
             Vector3 forcePosition = rb.position;
             rb.AddForceAtPosition(Vector3.up * Vector3.Dot(Vector3.up, -velocityRelativeToWater) * dragWaterUp, forcePosition, ForceMode.Acceleration);
-            rb.AddForceAtPosition(transform.right * Vector3.Dot(transform.right, -velocityRelativeToWater), forcePosition, ForceMode.Acceleration);
+            rb.AddForceAtPosition(transform.right * Vector3.Dot(transform.right, -velocityRelativeToWater) * dragWaterSide, forcePosition, ForceMode.Acceleration);
             rb.AddForceAtPosition(transform.forward * Vector3.Dot(transform.forward, -velocityRelativeToWater) * (dragWaterForward + additionalDragWaterForward), forcePosition, ForceMode.Acceleration);
         }
 
