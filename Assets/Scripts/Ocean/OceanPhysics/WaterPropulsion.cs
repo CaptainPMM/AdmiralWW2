@@ -26,7 +26,7 @@ namespace Ocean.OceanPhysics {
         public float RudderAngle { get => rudderAngle; set => targetRudderAngle = Mathf.Clamp(value, -maxRudderAngle, maxRudderAngle); }
 
         [Header("Internal vars")]
-        [SerializeField] private Vector3 forceWorldPos = Vector3.zero;
+        [SerializeField] private Vector3 forceWorldPos = Vector3.zero; // Currently not very much used
         [SerializeField, Range(0f, 1f)] private float targetThrottle = 0f;
         [SerializeField, Range(-90f, 90f)] private float targetRudderAngle = 0f;
 
@@ -43,7 +43,7 @@ namespace Ocean.OceanPhysics {
             if (throttle != targetThrottle) UpdateThrottle();
             if (rudderAngle != targetRudderAngle) UpdateRudder();
 
-            if (OceanManager.SampleWaterHeight(forceWorldPos) > forceWorldPos.y) {
+            if (ship.FloatPhysics.InWater) {
                 // Propeller is in water
                 if (engineOn && throttle > 0f) ApplyThrottleForce();
                 if (rudderAngle != 0f) ApplyRudderForce();
@@ -71,7 +71,7 @@ namespace Ocean.OceanPhysics {
             return ship.Rigidbody.transform.forward * enginePower * throttle;
         }
 
-        public void CalcForceWorldPos() {
+        private void CalcForceWorldPos() {
             forceWorldPos = ship.Rigidbody.transform.TransformPoint(propellerOffset);
         }
 
@@ -84,7 +84,7 @@ namespace Ocean.OceanPhysics {
                 Gizmos.color = Color.red;
                 Gizmos.DrawLine(forceWorldPos, forceWorldPos - ThrottleForceFunc());
                 Gizmos.color = Color.yellow;
-                Gizmos.DrawLine(forceWorldPos, forceWorldPos + ship.Rigidbody.transform.right * rudderAngle * 0.08f * (ship.Rigidbody.velocity.magnitude * RUDDER_FORCE_VELOCITY_IMPACT));
+                Gizmos.DrawLine(forceWorldPos, forceWorldPos + ship.Rigidbody.transform.right * rudderAngle * 0.1f * (ship.Rigidbody.velocity.magnitude * RUDDER_FORCE_VELOCITY_IMPACT));
             }
         }
     }

@@ -21,6 +21,7 @@ namespace Ocean.OceanPhysics {
         [SerializeField, Tooltip("Ingore wave lengths below this value, usually the boat width")]
         private float minWaveLength = 8f;
 
+        [SerializeField] private float rbDragInWater = 1.5f;
         [SerializeField] private float dragWaterUp = 1f;
         [SerializeField] private float dragWaterSide = 0.5f;
         [SerializeField] private float dragWaterForward = 0.1f;
@@ -40,6 +41,9 @@ namespace Ocean.OceanPhysics {
         private Vector3[] sampleResDisplacements;
         private Vector3[] sampleResVelocities;
 
+        private bool newInWater;
+        private float initRbDrag; // Air drag (not suitable for water)
+
         private void Awake() {
             if (rb == null) Debug.LogWarning("FloatPhysics script needs an assigned rigidbody to apply forces on");
         }
@@ -51,6 +55,8 @@ namespace Ocean.OceanPhysics {
             samplePoints = new Vector3[floatPoints.Count + 1];
             sampleResDisplacements = new Vector3[floatPoints.Count + 1];
             sampleResVelocities = new Vector3[floatPoints.Count + 1];
+
+            initRbDrag = rb.drag;
         }
 
         private void FixedUpdate() {
@@ -60,7 +66,6 @@ namespace Ocean.OceanPhysics {
 
             UpdateWaterSamples();
 
-            inWater = false;
             ApplyBuoyancy();
             if (inWater) ApplyDrag();
         }
@@ -80,17 +85,24 @@ namespace Ocean.OceanPhysics {
         }
 
         private void ApplyBuoyancy() {
+            newInWater = false;
+
             for (int i = 0; i < floatPoints.Count; i++) {
                 float waterHeight = OceanRenderer.Instance.SeaLevel + sampleResDisplacements[i].y;
                 float heightDiff = waterHeight - samplePoints[i].y;
                 if (heightDiff > 0) {
                     // Below water surface -> apply water buoyancy force
                     rb.AddForceAtPosition(WATER_BUOYANCY * heightDiff * Vector3.up * floatPoints[i].weight * forceFactor / totalFloatPointsWeight, samplePoints[i]);
-                    if (!inWater) inWater = true;
+                    if (!newInWater) newInWater = true;
                 } else {
                     // Above water surface, apply some additional gravity (default gravity to soft)
                     rb.AddForceAtPosition(gravityForce * WATER_BUOYANCY * Physics.gravity * floatPoints[i].weight * forceFactor / totalFloatPointsWeight, samplePoints[i]);
                 }
+            }
+
+            if (newInWater != inWater) {
+                rb.drag = newInWater ? rbDragInWater : initRbDrag;
+                inWater = newInWater;
             }
         }
 

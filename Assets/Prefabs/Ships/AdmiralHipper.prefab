@@ -2547,6 +2547,10 @@ PrefabInstance:
       propertyPath: floatPoints.Array.data[8].offsetPos.z
       value: 97
       objectReference: {fileID: 0}
+    - target: {fileID: 2000458003251877188, guid: d18fbdeb915834f109452bfe7e3fab54, type: 3}
+      propertyPath: rbDragInWater
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2000458003251877189, guid: d18fbdeb915834f109452bfe7e3fab54, type: 3}
       propertyPath: m_Mass
       value: 14050000
@@ -2609,7 +2613,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2000458003251877194, guid: d18fbdeb915834f109452bfe7e3fab54, type: 3}
       propertyPath: enginePower
-      value: 9
+      value: 70
       objectReference: {fileID: 0}
     - target: {fileID: 2000458003251877194, guid: d18fbdeb915834f109452bfe7e3fab54, type: 3}
       propertyPath: throttleSpeed
