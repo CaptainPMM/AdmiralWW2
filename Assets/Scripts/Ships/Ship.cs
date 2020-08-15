@@ -16,6 +16,17 @@ namespace Ships {
         public float RudderAngle { get => propulsion.RudderAngle; set => propulsion.RudderAngle = value; }
         public Autopilot Autopilot => autopilot;
 
+        [Header("Settings")]
+        [SerializeField] private ShipType type = ShipType.Default;
+        [SerializeField] private ShipDesignation shipDesignation = ShipDesignation.None;
+        [SerializeField] private string shipName = "";
+        [SerializeField] private string shipClass = "";
+
+        public ShipType Type => type;
+        public ShipDesignation ShipDesignation => shipDesignation;
+        public string ShipName => shipName;
+        public string ShipClass => shipClass;
+
         [Header("Current state")]
         [SerializeField] private ushort course;
 

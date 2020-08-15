@@ -1,0 +1,214 @@
+fileFormatVersion: 2
+guid: 468a5aaa05234b34abca7c2537e5ba8a
+timeCreated: 1450060751
+licenseType: Store
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: alp01
+    100002: alp02
+    100004: back_A_cannon_L
+    100006: back_A_cannon_L_effect
+    100008: back_A_cannon_R
+    100010: back_A_cannon_R_effect
+    100012: back_A_turret
+    100014: back_B_cannon_L
+    100016: back_B_cannon_L_effect
+    100018: back_B_cannon_R
+    100020: back_B_cannon_R_effect
+    100022: back_B_turret
+    100024: body
+    100026: front_A_cannon_L
+    100028: front_A_cannon_L_effect
+    100030: front_A_cannon_R
+    100032: front_A_cannon_R_effect
+    100034: front_A_turret
+    100036: front_B_cannon_L
+    100038: front_B_cannon_L_effect
+    100040: front_B_cannon_R
+    100042: front_B_cannon_R_effect
+    100044: front_B_turret
+    100046: //RootNode
+    100048: part01
+    100050: part02
+    100052: rudder
+    100054: screw_C
+    100056: screw_C01
+    100058: screw_C02
+    100060: screw_L
+    100062: screw_L01
+    100064: screw_L02
+    100066: screw_R
+    100068: screw_R01
+    100070: screw_R02
+    400000: alp01
+    400002: alp02
+    400004: back_A_cannon_L
+    400006: back_A_cannon_L_effect
+    400008: back_A_cannon_R
+    400010: back_A_cannon_R_effect
+    400012: back_A_turret
+    400014: back_B_cannon_L
+    400016: back_B_cannon_L_effect
+    400018: back_B_cannon_R
+    400020: back_B_cannon_R_effect
+    400022: back_B_turret
+    400024: body
+    400026: front_A_cannon_L
+    400028: front_A_cannon_L_effect
+    400030: front_A_cannon_R
+    400032: front_A_cannon_R_effect
+    400034: front_A_turret
+    400036: front_B_cannon_L
+    400038: front_B_cannon_L_effect
+    400040: front_B_cannon_R
+    400042: front_B_cannon_R_effect
+    400044: front_B_turret
+    400046: //RootNode
+    400048: part01
+    400050: part02
+    400052: rudder
+    400054: screw_C
+    400056: screw_C01
+    400058: screw_C02
+    400060: screw_L
+    400062: screw_L01
+    400064: screw_L02
+    400066: screw_R
+    400068: screw_R01
+    400070: screw_R02
+    2300000: alp01
+    2300002: alp02
+    2300004: back_A_cannon_L
+    2300006: back_A_cannon_R
+    2300008: back_A_turret
+    2300010: back_B_cannon_L
+    2300012: back_B_cannon_R
+    2300014: back_B_turret
+    2300016: body
+    2300018: front_A_cannon_L
+    2300020: front_A_cannon_R
+    2300022: front_A_turret
+    2300024: front_B_cannon_L
+    2300026: front_B_cannon_R
+    2300028: front_B_turret
+    2300030: part01
+    2300032: part02
+    2300034: rudder
+    2300036: screw_C01
+    2300038: screw_C02
+    2300040: screw_L01
+    2300042: screw_L02
+    2300044: screw_R01
+    2300046: screw_R02
+    3300000: alp01
+    3300002: alp02
+    3300004: back_A_cannon_L
+    3300006: back_A_cannon_R
+    3300008: back_A_turret
+    3300010: back_B_cannon_L
+    3300012: back_B_cannon_R
+    3300014: back_B_turret
+    3300016: body
+    3300018: front_A_cannon_L
+    3300020: front_A_cannon_R
+    3300022: front_A_turret
+    3300024: front_B_cannon_L
+    3300026: front_B_cannon_R
+    3300028: front_B_turret
+    3300030: part01
+    3300032: part02
+    3300034: rudder
+    3300036: screw_C01
+    3300038: screw_C02
+    3300040: screw_L01
+    3300042: screw_L02
+    3300044: screw_R01
+    3300046: screw_R02
+    4300000: body
+    4300002: rudder
+    4300004: back_B_turret
+    4300006: back_B_cannon_R
+    4300008: back_B_cannon_L
+    4300010: back_A_turret
+    4300012: back_A_cannon_L
+    4300014: back_A_cannon_R
+    4300016: front_A_turret
+    4300018: front_A_cannon_R
+    4300020: front_A_cannon_L
+    4300022: front_B_turret
+    4300024: front_B_cannon_R
+    4300026: front_B_cannon_L
+    4300028: screw_L01
+    4300030: screw_L02
+    4300032: screw_C01
+    4300034: screw_C02
+    4300036: screw_R01
+    4300038: screw_R02
+    4300040: alp01
+    4300042: part01
+    4300044: part02
+    4300046: alp02
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
