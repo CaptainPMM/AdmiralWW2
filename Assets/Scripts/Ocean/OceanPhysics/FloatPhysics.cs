@@ -35,6 +35,9 @@ namespace Ocean.OceanPhysics {
         public bool InWater => inWater;
         public float AdditionalDragWaterForward { get => additionalDragWaterForward; set => additionalDragWaterForward = value; }
 
+        public delegate void InWaterChange(bool inWater);
+        public event InWaterChange OnInWaterChange;
+
         private float totalFloatPointsWeight;
 
         private Vector3[] samplePoints;
@@ -103,6 +106,7 @@ namespace Ocean.OceanPhysics {
             if (newInWater != inWater) {
                 rb.drag = newInWater ? rbDragInWater : initRbDrag;
                 inWater = newInWater;
+                OnInWaterChange.Invoke(newInWater);
             }
         }
 
