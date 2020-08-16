@@ -3,9 +3,6 @@ using Ships;
 
 namespace Ocean.OceanPhysics {
     public class WaterPropulsion : MonoBehaviour {
-        private const float RUDDER_FORCE_VELOCITY_IMPACT = 0.1f;
-        private const float RUDDER_DRAG_IMPACT = 0.001f;
-
         [Header("Setup")]
         [SerializeField] private Ship ship = null;
         [SerializeField, Range(0f, 2f)] private float gizmoSize = 1f;
@@ -14,7 +11,12 @@ namespace Ocean.OceanPhysics {
         [SerializeField] private uint rudderForce = 10_000_000;
         [SerializeField, Range(0, 90)] private byte maxRudderAngle = 45;
         [SerializeField, Range(0f, 180f)] private float rudderSpeed = 0.2f;
+        [SerializeField] private float rudderForceVelocityImpact = 0.1f;
+        [SerializeField] private float rudderDragImpact = 0.001f;
         [SerializeField] private Vector3 propellerOffset = Vector3.zero;
+        [SerializeField] private Transform[] propellerTransforms = new Transform[] { };
+        [SerializeField] private float propellerRotationSpeed = 20f;
+        [SerializeField] private Transform[] rudderTransforms = new Transform[] { };
 
         [Header("Current state")]
         [SerializeField] private bool engineOn = true;
@@ -48,6 +50,10 @@ namespace Ocean.OceanPhysics {
                 if (engineOn && throttle > 0f) ApplyThrottleForce();
                 if (rudderAngle != 0f) ApplyRudderForce();
             }
+
+            if (throttle > 0) {
+                foreach (Transform t in propellerTransforms) t.Rotate(0, 0, throttle * propellerRotationSpeed, Space.Self);
+            }
         }
 
         private void UpdateThrottle() {
@@ -56,6 +62,7 @@ namespace Ocean.OceanPhysics {
 
         private void UpdateRudder() {
             rudderAngle = Mathf.MoveTowards(rudderAngle, targetRudderAngle, rudderSpeed);
+            foreach (Transform t in rudderTransforms) t.localRotation = Quaternion.Euler(0, rudderAngle, 0);
         }
 
         private void ApplyThrottleForce() {
@@ -63,8 +70,8 @@ namespace Ocean.OceanPhysics {
         }
 
         private void ApplyRudderForce() {
-            ship.Rigidbody.AddTorque(Vector3.up * rudderForce * rudderAngle * (ship.Rigidbody.velocity.magnitude * RUDDER_FORCE_VELOCITY_IMPACT), ForceMode.Force);
-            ship.FloatPhysics.AdditionalDragWaterForward = Mathf.Abs(rudderAngle) * RUDDER_DRAG_IMPACT;
+            ship.Rigidbody.AddTorque(Vector3.up * rudderForce * rudderAngle * (ship.Rigidbody.velocity.magnitude * rudderForceVelocityImpact), ForceMode.Force);
+            ship.FloatPhysics.AdditionalDragWaterForward = Mathf.Abs(rudderAngle) * rudderDragImpact;
         }
 
         private Vector3 ThrottleForceFunc() {
@@ -84,7 +91,7 @@ namespace Ocean.OceanPhysics {
                 Gizmos.color = Color.red;
                 Gizmos.DrawLine(forceWorldPos, forceWorldPos - ThrottleForceFunc());
                 Gizmos.color = Color.yellow;
-                Gizmos.DrawLine(forceWorldPos, forceWorldPos + ship.Rigidbody.transform.right * rudderAngle * 0.1f * (ship.Rigidbody.velocity.magnitude * RUDDER_FORCE_VELOCITY_IMPACT));
+                Gizmos.DrawLine(forceWorldPos, forceWorldPos + ship.Rigidbody.transform.right * rudderAngle * 0.1f * (ship.Rigidbody.velocity.magnitude * rudderForceVelocityImpact));
             }
         }
     }
