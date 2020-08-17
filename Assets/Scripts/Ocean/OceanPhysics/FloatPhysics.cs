@@ -3,7 +3,7 @@ using UnityEngine;
 using Crest;
 
 namespace Ocean.OceanPhysics {
-    public class FloatPhysics : MonoBehaviour {
+    public class FloatPhysics : FloatingObjectBase {
         private const float WATER_DENSITY = 1000f;
         private readonly float WATER_BUOYANCY = WATER_DENSITY * Mathf.Abs(Physics.gravity.y);
 
@@ -32,7 +32,6 @@ namespace Ocean.OceanPhysics {
         [SerializeField] private bool inWater = false;
         [SerializeField] private float additionalDragWaterForward = 0f;
 
-        public bool InWater => inWater;
         public float AdditionalDragWaterForward { get => additionalDragWaterForward; set => additionalDragWaterForward = value; }
 
         public delegate void InWaterChange(bool inWater);
@@ -46,6 +45,16 @@ namespace Ocean.OceanPhysics {
 
         private bool newInWater;
         private float initRbDrag; // Air drag (not suitable for water)
+
+
+        /* FloatingObjectBase overrides */
+        public override float ObjectWidth => minWaveLength;
+        public override bool InWater => inWater;
+        public override Vector3 Velocity => rb.velocity;
+
+        private Vector3 displacementToObject = Vector3.zero;
+        public override Vector3 CalculateDisplacementToObject() => displacementToObject;
+        /* ----- */
 
         private void Awake() {
             if (rb == null) Debug.LogWarning("FloatPhysics script needs an assigned rigidbody to apply forces on");
@@ -68,6 +77,8 @@ namespace Ocean.OceanPhysics {
 #endif
 
             UpdateWaterSamples();
+
+            displacementToObject = sampleResDisplacements[floatPoints.Count];
 
             ApplyBuoyancy();
             if (inWater) ApplyDrag();
