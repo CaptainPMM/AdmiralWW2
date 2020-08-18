@@ -540,6 +540,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turretType: 0
+  ship: {fileID: 9121195042845819025}
   turretCollider: {fileID: 2727000001902886}
   turretTransform: {fileID: 7790146315799705113}
   guns:
@@ -547,25 +548,25 @@ MonoBehaviour:
     gunEffectTransform: {fileID: 7068300208488163122}
   - gunTransform: {fileID: 8964615536172955357}
     gunEffectTransform: {fileID: 4174599746926818940}
-  turretRotationSpeed: 8
   turretMaxRotationAngle: 125
-  gunsElevationSpeed: 8
+  turretRotationSpeed: 8
   gunsMaxElevationAngle: 37
   gunsMinElevationAngle: -10
+  gunsElevationSpeed: 8
   gunsCaliber: 203
   muzzleVelocity: 925
   gunsRange: 32200
   gunsReload: 13.3
   gunsPrecision: 0.5
-  readyToFire: 0
+  recoil: 40
+  engaged: 0
   fire: 0
-  aimWorldPos: {x: 0, y: 0, z: 0}
-  aimReady: 0
-  turretRotation: 0
-  turretTargetRotation: 0
-  gunsElevation: 0
-  gunsTargetElevation: 0
   fireAtWill: 0
+  reloadProgress: 0
+  turretRotation: 0
+  targetTurretRotation: 0
+  gunsElevation: 0
+  targetGunsElevation: 0
 --- !u!1 &1689950774136413119
 GameObject:
   m_ObjectHideFlags: 0
@@ -2835,3 +2836,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2000458001201391188, guid: d18fbdeb915834f109452bfe7e3fab54, type: 3}
   m_PrefabInstance: {fileID: 7302572934983013850}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &9121195042845819025 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2000458003251877195, guid: d18fbdeb915834f109452bfe7e3fab54, type: 3}
+  m_PrefabInstance: {fileID: 7302572934983013850}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dceef2d8eb9954df89b872fb34d92bcd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
