@@ -222,6 +222,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 783108579195027807, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 9121195042845819036, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
       propertyPath: m_Name
       value: AdmiralHipper
@@ -420,7 +424,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 293468701}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 10, y: 0, z: 0}
 --- !u!114 &923508185
 MonoBehaviour:

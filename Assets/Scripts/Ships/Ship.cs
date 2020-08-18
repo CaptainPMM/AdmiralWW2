@@ -10,6 +10,7 @@ namespace Ships {
         [SerializeField] private WaterPropulsion propulsion = null;
         [SerializeField] private Autopilot autopilot = null;
         [SerializeField] private ShipOceanInputs oceanInputs = null;
+        [SerializeField] private Armament armament = null;
 
         public Rigidbody Rigidbody => rb;
         public FloatPhysics FloatPhysics => floatPhysics;
@@ -17,14 +18,17 @@ namespace Ships {
         public float RudderAngle { get => propulsion.RudderAngle; set => propulsion.RudderAngle = value; }
         public Autopilot Autopilot => autopilot;
         public ShipOceanInputs OceanInputs => oceanInputs;
+        public Armament Armament => armament;
 
         [Header("Settings")]
         [SerializeField] private ShipType type = ShipType.Default;
+        [SerializeField] private Nationality nationality = Nationality.German;
         [SerializeField] private ShipDesignation shipDesignation = ShipDesignation.None;
         [SerializeField] private string shipName = "";
         [SerializeField] private string shipClass = "";
 
         public ShipType Type => type;
+        public Nationality Nationality => nationality;
         public ShipDesignation ShipDesignation => shipDesignation;
         public string ShipName => shipName;
         public string ShipClass => shipClass;
@@ -41,6 +45,7 @@ namespace Ships {
             if (propulsion == null) Debug.LogWarning("Ship script needs an assigned propulsion");
             if (autopilot == null) Debug.LogWarning("Ship script needs an assigned autopilot");
             if (oceanInputs == null) Debug.LogWarning("Ship script needs an assigned ocean inputs handler");
+            if (armament == null) Debug.LogWarning("Ship script needs an armament");
         }
 
         private void Start() {
