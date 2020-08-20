@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
-using Ships;
+using Projectiles;
 
 namespace Ships.ShipSystems.Armaments {
     public class GunTurret : MonoBehaviour {
@@ -17,6 +17,7 @@ namespace Ships.ShipSystems.Armaments {
         [SerializeField] private List<GunRepresentation> guns = new List<GunRepresentation>();
 
         public TurretType Type => turretType;
+        public Ship Ship => ship;
         public int NumGuns => guns.Count;
 
         [Header("Stats")]
@@ -185,7 +186,7 @@ namespace Ships.ShipSystems.Armaments {
             reloadProgress = 0f;
 
             // Spawn projectile
-            // TODO...
+            guns.ForEach(gun => ProjectileManager.CreateProjectile(this, gun.gunEffectTransform));
 
             // Add effects
             guns.ForEach(gun => ship.Rigidbody.AddForceAtPosition(gun.gunTransform.forward * muzzleVelocity * gunsCaliber * recoil, gun.gunTransform.position, ForceMode.Impulse));

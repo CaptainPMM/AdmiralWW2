@@ -5,6 +5,8 @@ namespace Ocean {
     public class OceanManager : MonoBehaviour {
         public static OceanManager Inst { get; private set; }
 
+        public static float OceanSurfaceYPos => OceanRenderer.Instance.SeaLevel;
+
         private void Awake() {
             Inst = this;
         }
