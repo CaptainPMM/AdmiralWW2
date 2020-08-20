@@ -7,7 +7,7 @@ namespace Ships.ShipSystems.Armaments {
         /// <summary>
         /// Multiply the guns range with this constant to get the range for the game in meters/unity units
         /// </summary>
-        public const float GUNS_RANGE_INGAME_MOD = 0.1f;
+        public const float GUNS_RANGE_INGAME_MOD = 0.25f;
 
         [Header("Setup")]
         [SerializeField] private TurretType turretType = TurretType.BowA;

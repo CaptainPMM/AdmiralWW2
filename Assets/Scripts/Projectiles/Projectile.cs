@@ -4,6 +4,7 @@ using Ocean;
 
 namespace Projectiles {
     public class Projectile : MonoBehaviour {
+        private const float ADDITIONAL_GRAVITY_MULTIPLIER = 100f;
         private const float DESTROY_DELAY_AFTER_HIT_OCEAN_SURFACE = 3f;
 
         /// <summary>
@@ -44,10 +45,17 @@ namespace Projectiles {
 
             rb.mass = fromTurret.GunsCaliber;
 
-            rb.AddForce(initTransform.forward * fromTurret.MuzzleVelocity, ForceMode.VelocityChange);
+            rb.velocity = initTransform.forward * fromTurret.MuzzleVelocity;
         }
 
         private void FixedUpdate() {
+            // Fix rotation based on velocity
+            transform.rotation = Quaternion.LookRotation(rb.velocity, Vector3.up);
+
+            // Apply additional gravity down force
+            rb.AddForce(Physics.gravity * ADDITIONAL_GRAVITY_MULTIPLIER);
+
+            // Check water hit
             if (transform.position.y <= OceanManager.OceanSurfaceYPos) {
                 enabled = false;
 
