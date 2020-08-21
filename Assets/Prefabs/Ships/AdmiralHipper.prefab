@@ -546,8 +546,12 @@ MonoBehaviour:
   guns:
   - gunTransform: {fileID: 2426560175399870356}
     gunEffectTransform: {fileID: 7068300208488163122}
+    gunTransformForwardInversed: 1
+    initLocalPos: {x: 0, y: 0, z: 0}
   - gunTransform: {fileID: 8964615536172955357}
     gunEffectTransform: {fileID: 4174599746926818940}
+    gunTransformForwardInversed: 1
+    initLocalPos: {x: 0, y: 0, z: 0}
   turretMaxRotationAngle: 125
   turretRotationSpeed: 8
   gunsMaxElevationAngle: 37
@@ -558,7 +562,9 @@ MonoBehaviour:
   gunsRange: 32200
   gunsReload: 13.3
   gunsPrecision: 0.5
-  recoil: 40
+  gunRecoil: 0.01
+  gunRecoilSpeed: 0.75
+  shipRecoil: 40
   waterDisplaceEffectSettings:
     origin: {x: 0, y: 0, z: 0}
     originOffset: {x: 0, y: -60, z: 0}

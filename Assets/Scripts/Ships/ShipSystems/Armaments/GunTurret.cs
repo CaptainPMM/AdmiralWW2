@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Projectiles;
@@ -6,6 +7,8 @@ using Ocean.OceanPhysics;
 
 namespace Ships.ShipSystems.Armaments {
     public class GunTurret : MonoBehaviour {
+        private const float GUN_RECOIL_RECOVER_SPEED_MULTIPLIER = 0.1f;
+
         /// <summary>
         /// Multiply the guns range with this constant to get the range for the game in meters/unity units
         /// </summary>
@@ -55,7 +58,9 @@ namespace Ships.ShipSystems.Armaments {
         /// Accuracy of the guns, (0-1)
         /// </summary>
         [SerializeField, Range(0f, 1f)] private float gunsPrecision = 0.5f;
-        [SerializeField] private float recoil = 40f;
+        [SerializeField] private float gunRecoil = 1f;
+        [SerializeField] private float gunRecoilSpeed = 0.5f;
+        [SerializeField] private float shipRecoil = 40f;
         /// <summary>
         /// Ignore the origin position as it is overridden by the gun transforms and field waterDisplaceEffectsDist
         /// </summary>
@@ -146,12 +151,21 @@ namespace Ships.ShipSystems.Armaments {
         public float TargetGunsElevation { get => targetGunsElevation; set => targetGunsElevation = Mathf.Clamp(value, gunsMinElevationAngle, gunsMaxElevationAngle); }
 
         private bool tempAimReady = false;
+        private List<Coroutine> gunRecoilRoutines = new List<Coroutine>();
 
         private void Awake() {
             if (ship == null) Debug.LogWarning("GunTurret needs an assigned ship");
             if (turretCollider == null) Debug.LogWarning("GunTurret needs an assigned turret collider");
             if (turretTransform == null) Debug.LogWarning("GunTurret needs an assigned turret transform");
             if (guns.Count == 0) Debug.LogWarning("GunTurret needs minimum one gun");
+        }
+
+        private void Start() {
+            for (int i = 0; i < guns.Count; i++) {
+                GunRepresentation gun = guns[i];
+                gun.initLocalPos = gun.gunTransform.localPosition;
+                guns[i] = gun;
+            }
         }
 
         private void FixedUpdate() {
@@ -197,15 +211,36 @@ namespace Ships.ShipSystems.Armaments {
             guns.ForEach(gun => ProjectileManager.CreateProjectile(this, gun.gunEffectTransform));
 
             // Add effects
+            gunRecoilRoutines.ForEach(r => StopCoroutine(r));
+            gunRecoilRoutines.Clear();
             guns.ForEach(gun => {
-                // Recoil ship force
-                ship.Rigidbody.AddForceAtPosition(gun.gunTransform.forward * muzzleVelocity * gunsCaliber * recoil, gun.gunTransform.position, ForceMode.Impulse);
+                // Gun recoil animation
+                gunRecoilRoutines.Add(StartCoroutine(GunRecoilEffectRoutine(gun)));
+
+                // Ship recoil force
+                ship.Rigidbody.AddForceAtPosition(gun.gunTransform.forward * muzzleVelocity * gunsCaliber * shipRecoil, gun.gunTransform.position, ForceMode.Impulse);
+
+                // Particle effects
+                // TODO
 
                 // Water effects
                 waterDisplaceEffectSettings.origin = gun.gunEffectTransform.position + gun.gunEffectTransform.forward * waterDisplaceEffectsDist;
                 OceanManager.InitWaterDisplaceEffect(waterDisplaceEffectSettings);
             });
-            // TODO...
+        }
+
+        private IEnumerator GunRecoilEffectRoutine(GunRepresentation gun) {
+            Vector3 recoilTargetPos = gun.initLocalPos - gun.gunTransform.localRotation * Vector3.forward * gunRecoil * (gun.gunTransformForwardInversed ? -1 : 1);
+            // Backwards impulse
+            while (gun.gunTransform.localPosition != recoilTargetPos) {
+                gun.gunTransform.localPosition = Vector3.Lerp(gun.gunTransform.localPosition, recoilTargetPos, gunRecoilSpeed);
+                yield return new WaitForFixedUpdate();
+            }
+            // Recover init pos
+            while (gun.gunTransform.localPosition != gun.initLocalPos) {
+                gun.gunTransform.localPosition = Vector3.Lerp(gun.gunTransform.localPosition, gun.initLocalPos, gunRecoilSpeed * GUN_RECOIL_RECOVER_SPEED_MULTIPLIER);
+                yield return new WaitForFixedUpdate();
+            }
         }
 
         public enum TurretType : byte {
@@ -227,6 +262,10 @@ namespace Ships.ShipSystems.Armaments {
         public struct GunRepresentation {
             public Transform gunTransform;
             public Transform gunEffectTransform;
+            public bool gunTransformForwardInversed;
+
+            [HideInInspector]
+            public Vector3 initLocalPos;
         }
     }
 }
