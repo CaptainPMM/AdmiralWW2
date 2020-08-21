@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using Crest;
+using Ocean.OceanPhysics;
 
 namespace Ocean {
     public class OceanManager : MonoBehaviour {
@@ -7,8 +8,12 @@ namespace Ocean {
 
         public static float OceanSurfaceYPos => OceanRenderer.Instance.SeaLevel;
 
+        [Header("Setup")]
+        [SerializeField] private GameObject waterDisplaceEffectPrefab = null;
+
         private void Awake() {
             Inst = this;
+            if (waterDisplaceEffectPrefab == null) Debug.LogWarning("OceanManager needs waterDisplaceEffectPrefab");
         }
 
         /// <summary>
@@ -41,6 +46,13 @@ namespace Ocean {
             sampler.Sample(ref flow);
 
             return flow;
+        }
+
+        public static void InitWaterDisplaceEffect(WaterDisplaceEffect.WaterDisplaceEffectSettings effectSettings) {
+            GameObject eGO = Instantiate(Inst.waterDisplaceEffectPrefab, Inst.transform);
+            eGO.name = "WaterDisplaceEffect";
+            WaterDisplaceEffect e = eGO.GetComponent<WaterDisplaceEffect>();
+            e.Init(effectSettings);
         }
     }
 }

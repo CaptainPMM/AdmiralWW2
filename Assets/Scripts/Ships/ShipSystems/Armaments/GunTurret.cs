@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Projectiles;
+using Ocean;
+using Ocean.OceanPhysics;
 
 namespace Ships.ShipSystems.Armaments {
     public class GunTurret : MonoBehaviour {
@@ -54,6 +56,12 @@ namespace Ships.ShipSystems.Armaments {
         /// </summary>
         [SerializeField, Range(0f, 1f)] private float gunsPrecision = 0.5f;
         [SerializeField] private float recoil = 40f;
+        /// <summary>
+        /// Ignore the origin position as it is overridden by the gun transforms and field waterDisplaceEffectsDist
+        /// </summary>
+        [SerializeField, Tooltip("Ignore the origin position as it is overridden by the gun transforms and field waterDisplaceEffectsDist")]
+        private WaterDisplaceEffect.WaterDisplaceEffectSettings waterDisplaceEffectSettings;
+        [SerializeField] private float waterDisplaceEffectsDist = 1f;
 
         /// <summary>
         /// Rotation speed of the turret in degrees/sec (multiply with Time.fixedDeltaTime)
@@ -189,7 +197,14 @@ namespace Ships.ShipSystems.Armaments {
             guns.ForEach(gun => ProjectileManager.CreateProjectile(this, gun.gunEffectTransform));
 
             // Add effects
-            guns.ForEach(gun => ship.Rigidbody.AddForceAtPosition(gun.gunTransform.forward * muzzleVelocity * gunsCaliber * recoil, gun.gunTransform.position, ForceMode.Impulse));
+            guns.ForEach(gun => {
+                // Recoil ship force
+                ship.Rigidbody.AddForceAtPosition(gun.gunTransform.forward * muzzleVelocity * gunsCaliber * recoil, gun.gunTransform.position, ForceMode.Impulse);
+
+                // Water effects
+                waterDisplaceEffectSettings.origin = gun.gunEffectTransform.position + gun.gunEffectTransform.forward * waterDisplaceEffectsDist;
+                OceanManager.InitWaterDisplaceEffect(waterDisplaceEffectSettings);
+            });
             // TODO...
         }
 

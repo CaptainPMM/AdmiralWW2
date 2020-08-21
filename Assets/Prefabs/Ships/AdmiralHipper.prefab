@@ -559,6 +559,14 @@ MonoBehaviour:
   gunsReload: 13.3
   gunsPrecision: 0.5
   recoil: 40
+  waterDisplaceEffectSettings:
+    origin: {x: 0, y: 0, z: 0}
+    originOffset: {x: 0, y: -60, z: 0}
+    targetOffset: {x: 0, y: -62, z: 0}
+    size: 30
+    foamSizeMultiplier: 1.5
+    speed: 1
+  waterDisplaceEffectsDist: 10
   engaged: 0
   fire: 0
   fireAtWill: 0
