@@ -4,6 +4,7 @@ using UnityEngine;
 using Projectiles;
 using Ocean;
 using Ocean.OceanPhysics;
+using Effects;
 
 namespace Ships.ShipSystems.Armaments {
     public class GunTurret : MonoBehaviour {
@@ -67,6 +68,7 @@ namespace Ships.ShipSystems.Armaments {
         [SerializeField, Tooltip("Ignore the origin position as it is overridden by the gun transforms and field waterDisplaceEffectsDist")]
         private WaterDisplaceEffect.WaterDisplaceEffectSettings waterDisplaceEffectSettings;
         [SerializeField] private float waterDisplaceEffectsDist = 1f;
+        [SerializeField] private float gunFireEffectSize = 1f;
 
         /// <summary>
         /// Rotation speed of the turret in degrees/sec (multiply with Time.fixedDeltaTime)
@@ -221,7 +223,9 @@ namespace Ships.ShipSystems.Armaments {
                 ship.Rigidbody.AddForceAtPosition(gun.gunTransform.forward * muzzleVelocity * gunsCaliber * shipRecoil, gun.gunTransform.position, ForceMode.Impulse);
 
                 // Particle effects
-                // TODO
+                Transform gunFireTransform = gun.gunEffectTransform;
+                gunFireTransform.localScale = new Vector3(gunFireEffectSize, gunFireEffectSize, gunFireEffectSize);
+                EffectManager.InitGunFireEffect(gunFireTransform);
 
                 // Water effects
                 waterDisplaceEffectSettings.origin = gun.gunEffectTransform.position + gun.gunEffectTransform.forward * waterDisplaceEffectsDist;
