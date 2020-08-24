@@ -1,6 +1,8 @@
 using UnityEngine;
 using Ships.ShipSystems.Armaments;
 using Ocean;
+using Ocean.OceanPhysics;
+using Effects;
 
 namespace Projectiles {
     public class Projectile : MonoBehaviour {
@@ -60,7 +62,19 @@ namespace Projectiles {
                 enabled = false;
 
                 // Add splash effects
-                // TODO
+                Transform waterSplashTransform = transform;
+                waterSplashTransform.rotation = Quaternion.Euler(0, 0, 0);
+                waterSplashTransform.localScale = Vector3.one;
+                EffectManager.InitWaterSplashEffect(waterSplashTransform);
+
+                OceanManager.InitWaterDisplaceEffect(new WaterDisplaceEffect.WaterDisplaceEffectSettings() {
+                    origin = transform.position,
+                    originOffset = Vector3.zero,
+                    targetOffset = new Vector3(0, -30, 0),
+                    size = 10f,
+                    speed = 3f,
+                    foamSizeMultiplier = 4f
+                });
 
                 Destroy(gameObject, DESTROY_DELAY_AFTER_HIT_OCEAN_SURFACE);
             }
