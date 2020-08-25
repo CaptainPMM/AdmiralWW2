@@ -2132,6 +2132,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &6083915761642122981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9121195042845819036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0405aca79776b42088e7b22d984ace90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ship: {fileID: 9121195042845819025}
+  targetGO: {fileID: 0}
 --- !u!1 &7412591794976286980
 GameObject:
   m_ObjectHideFlags: 0
@@ -3111,6 +3125,10 @@ PrefabInstance:
       propertyPath: shipDesignation
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 2000458003251877195, guid: d18fbdeb915834f109452bfe7e3fab54, type: 3}
+      propertyPath: targeting
+      value: 
+      objectReference: {fileID: 6083915761642122981}
     - target: {fileID: 3152973512260159280, guid: d18fbdeb915834f109452bfe7e3fab54, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -3172,9 +3190,14 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2000458003251877195, guid: d18fbdeb915834f109452bfe7e3fab54, type: 3}
   m_PrefabInstance: {fileID: 7302572934983013850}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 9121195042845819036}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dceef2d8eb9954df89b872fb34d92bcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &9121195042845819036 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2000458003251877190, guid: d18fbdeb915834f109452bfe7e3fab54, type: 3}
+  m_PrefabInstance: {fileID: 7302572934983013850}
+  m_PrefabAsset: {fileID: 0}
