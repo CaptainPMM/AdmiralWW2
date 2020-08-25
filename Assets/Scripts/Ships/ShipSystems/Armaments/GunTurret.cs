@@ -20,6 +20,7 @@ namespace Ships.ShipSystems.Armaments {
         [SerializeField] private Ship ship = null;
         [SerializeField] private Collider turretCollider = null;
         [SerializeField] private Transform turretTransform = null;
+        [SerializeField] private bool sternTurret = false;
         [SerializeField] private List<GunRepresentation> guns = new List<GunRepresentation>();
 
         public TurretType Type => turretType;
@@ -196,8 +197,8 @@ namespace Ships.ShipSystems.Armaments {
             gunsElevation = Mathf.MoveTowards(gunsElevation, targetGunsElevation, gunsElevationSpeed * Time.fixedDeltaTime);
 
             // Update transforms
-            turretTransform.localRotation = Quaternion.Euler(0, turretRotation, 0);
-            guns.ForEach(gun => gun.gunTransform.localRotation = Quaternion.Euler(gunsElevation, 0, 0));
+            turretTransform.localRotation = Quaternion.Euler(0, turretRotation * (sternTurret ? -1 : 1), 0);
+            guns.ForEach(gun => gun.gunTransform.localRotation = Quaternion.Euler(gunsElevation * (sternTurret ? -1 : 1), 0, 0));
         }
 
         /// <summary>
@@ -220,7 +221,7 @@ namespace Ships.ShipSystems.Armaments {
                 gunRecoilRoutines.Add(StartCoroutine(GunRecoilEffectRoutine(gun)));
 
                 // Ship recoil force
-                ship.Rigidbody.AddForceAtPosition(gun.gunTransform.forward * muzzleVelocity * gunsCaliber * shipRecoil, gun.gunTransform.position, ForceMode.Impulse);
+                ship.Rigidbody.AddForceAtPosition(gun.gunTransform.forward * muzzleVelocity * gunsCaliber * shipRecoil * (sternTurret ? -1 : 1), gun.gunTransform.position, ForceMode.Impulse);
 
                 // Particle effects
                 Transform gunFireTransform = gun.gunEffectTransform;

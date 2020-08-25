@@ -400,6 +400,107 @@ Transform:
   m_Father: {fileID: 7823669381373250184}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: -0.048, y: 0, z: 65}
+--- !u!1 &1407209638396774455
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5326851368197331149}
+  - component: {fileID: 2077994718935192178}
+  - component: {fileID: 4917609758583445183}
+  m_Layer: 9
+  m_Name: TurretSternB
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5326851368197331149
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1407209638396774455}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 6.4, z: -49}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 783108579195027807}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &2077994718935192178
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1407209638396774455}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 10, y: 8, z: 10}
+  m_Center: {x: 0, y: 1.5, z: -2}
+--- !u!114 &4917609758583445183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1407209638396774455}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a94d5ca2aa76463cbedb8e310ab33d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  turretType: 0
+  ship: {fileID: 9121195042845819025}
+  turretCollider: {fileID: 2077994718935192178}
+  turretTransform: {fileID: 5706997895329374908}
+  sternTurret: 1
+  guns:
+  - gunTransform: {fileID: 5586435849556168296}
+    gunEffectTransform: {fileID: 9065321140804548554}
+    gunTransformForwardInversed: 0
+    initLocalPos: {x: 0, y: 0, z: 0}
+  - gunTransform: {fileID: 8277664112003502614}
+    gunEffectTransform: {fileID: 4836516169698654057}
+    gunTransformForwardInversed: 0
+    initLocalPos: {x: 0, y: 0, z: 0}
+  turretMaxRotationAngle: 130
+  turretRotationSpeed: 8
+  gunsMaxElevationAngle: 37
+  gunsMinElevationAngle: -10
+  gunsElevationSpeed: 8
+  gunsCaliber: 203
+  muzzleVelocity: 925
+  gunsRange: 32200
+  gunsReload: 13.3
+  gunsPrecision: 0.5
+  gunRecoil: 0.01
+  gunRecoilSpeed: 0.75
+  shipRecoil: 13
+  waterDisplaceEffectSettings:
+    origin: {x: 0, y: 0, z: 0}
+    originOffset: {x: 0, y: -60, z: 0}
+    targetOffset: {x: 0, y: -62, z: 0}
+    size: 30
+    foamSizeMultiplier: 1.5
+    speed: 1
+  waterDisplaceEffectsDist: 10
+  gunFireEffectSize: 1
+  engaged: 0
+  fire: 0
+  fireAtWill: 0
+  reloadProgress: 0
+  turretRotation: 0
+  targetTurretRotation: 0
+  gunsElevation: 0
+  targetGunsElevation: 0
 --- !u!1 &1494924609216552184
 GameObject:
   m_ObjectHideFlags: 0
@@ -508,7 +609,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1550353271243696652}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 5, z: 62}
+  m_LocalPosition: {x: 0, y: 4.6, z: 62}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 783108579195027807}
@@ -525,7 +626,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 10, y: 5, z: 12}
+  m_Size: {x: 10, y: 5, z: 10}
   m_Center: {x: 0, y: 1.5, z: -2}
 --- !u!114 &6331163022181407972
 MonoBehaviour:
@@ -543,6 +644,7 @@ MonoBehaviour:
   ship: {fileID: 9121195042845819025}
   turretCollider: {fileID: 2727000001902886}
   turretTransform: {fileID: 7790146315799705113}
+  sternTurret: 0
   guns:
   - gunTransform: {fileID: 2426560175399870356}
     gunEffectTransform: {fileID: 7068300208488163122}
@@ -552,7 +654,7 @@ MonoBehaviour:
     gunEffectTransform: {fileID: 4174599746926818940}
     gunTransformForwardInversed: 1
     initLocalPos: {x: 0, y: 0, z: 0}
-  turretMaxRotationAngle: 125
+  turretMaxRotationAngle: 145
   turretRotationSpeed: 8
   gunsMaxElevationAngle: 37
   gunsMinElevationAngle: -10
@@ -564,7 +666,7 @@ MonoBehaviour:
   gunsPrecision: 0.5
   gunRecoil: 0.01
   gunRecoilSpeed: 0.75
-  shipRecoil: 40
+  shipRecoil: 13
   waterDisplaceEffectSettings:
     origin: {x: 0, y: 0, z: 0}
     originOffset: {x: 0, y: -60, z: 0}
@@ -573,6 +675,7 @@ MonoBehaviour:
     foamSizeMultiplier: 1.5
     speed: 1
   waterDisplaceEffectsDist: 10
+  gunFireEffectSize: 1
   engaged: 0
   fire: 0
   fireAtWill: 0
@@ -916,6 +1019,107 @@ Transform:
   m_Father: {fileID: 5653193898873570415}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3021760168757312856
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3516268641210425496}
+  - component: {fileID: 3214052917466806831}
+  - component: {fileID: 5776394406423260966}
+  m_Layer: 9
+  m_Name: TurretBowB
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3516268641210425496
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3021760168757312856}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 6.4, z: 51}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 783108579195027807}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &3214052917466806831
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3021760168757312856}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 10, y: 8, z: 10}
+  m_Center: {x: 0, y: 1.5, z: -2}
+--- !u!114 &5776394406423260966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3021760168757312856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a94d5ca2aa76463cbedb8e310ab33d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  turretType: 1
+  ship: {fileID: 9121195042845819025}
+  turretCollider: {fileID: 3214052917466806831}
+  turretTransform: {fileID: 3189531592702823479}
+  sternTurret: 0
+  guns:
+  - gunTransform: {fileID: 698353050566397734}
+    gunEffectTransform: {fileID: 1485377123939068447}
+    gunTransformForwardInversed: 1
+    initLocalPos: {x: 0, y: 0, z: 0}
+  - gunTransform: {fileID: 4898764115513086896}
+    gunEffectTransform: {fileID: 2617134718552703824}
+    gunTransformForwardInversed: 1
+    initLocalPos: {x: 0, y: 0, z: 0}
+  turretMaxRotationAngle: 130
+  turretRotationSpeed: 8
+  gunsMaxElevationAngle: 37
+  gunsMinElevationAngle: -10
+  gunsElevationSpeed: 8
+  gunsCaliber: 203
+  muzzleVelocity: 925
+  gunsRange: 32200
+  gunsReload: 13.3
+  gunsPrecision: 0.5
+  gunRecoil: 0.01
+  gunRecoilSpeed: 0.75
+  shipRecoil: 13
+  waterDisplaceEffectSettings:
+    origin: {x: 0, y: 0, z: 0}
+    originOffset: {x: 0, y: -60, z: 0}
+    targetOffset: {x: 0, y: -62, z: 0}
+    size: 30
+    foamSizeMultiplier: 1.5
+    speed: 1
+  waterDisplaceEffectsDist: 10
+  gunFireEffectSize: 1
+  engaged: 0
+  fire: 0
+  fireAtWill: 0
+  reloadProgress: 0
+  turretRotation: 0
+  targetTurretRotation: 0
+  gunsElevation: 0
+  targetGunsElevation: 0
 --- !u!1 &3895326352262017121
 GameObject:
   m_ObjectHideFlags: 0
@@ -1306,6 +1510,107 @@ Transform:
   m_Father: {fileID: 8277664112003502614}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5293239667915569791
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2762180500971543528}
+  - component: {fileID: 1051297037914798201}
+  - component: {fileID: 966670489322353646}
+  m_Layer: 9
+  m_Name: TurretSternA
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2762180500971543528
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5293239667915569791}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 5, z: -59.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 783108579195027807}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1051297037914798201
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5293239667915569791}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 10, y: 5, z: 10}
+  m_Center: {x: 0, y: 1.5, z: -2}
+--- !u!114 &966670489322353646
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5293239667915569791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a94d5ca2aa76463cbedb8e310ab33d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  turretType: 4
+  ship: {fileID: 9121195042845819025}
+  turretCollider: {fileID: 1051297037914798201}
+  turretTransform: {fileID: 4483180436093614533}
+  sternTurret: 1
+  guns:
+  - gunTransform: {fileID: 1733481054412302699}
+    gunEffectTransform: {fileID: 4085163672152487394}
+    gunTransformForwardInversed: 0
+    initLocalPos: {x: 0, y: 0, z: 0}
+  - gunTransform: {fileID: 5653193898873570415}
+    gunEffectTransform: {fileID: 7738615559034729487}
+    gunTransformForwardInversed: 0
+    initLocalPos: {x: 0, y: 0, z: 0}
+  turretMaxRotationAngle: 145
+  turretRotationSpeed: 8
+  gunsMaxElevationAngle: 37
+  gunsMinElevationAngle: -10
+  gunsElevationSpeed: 8
+  gunsCaliber: 203
+  muzzleVelocity: 925
+  gunsRange: 32200
+  gunsReload: 13.3
+  gunsPrecision: 0.5
+  gunRecoil: 0.01
+  gunRecoilSpeed: 0.75
+  shipRecoil: 13
+  waterDisplaceEffectSettings:
+    origin: {x: 0, y: 0, z: 0}
+    originOffset: {x: 0, y: -60, z: 0}
+    targetOffset: {x: 0, y: -62, z: 0}
+    size: 30
+    foamSizeMultiplier: 1.5
+    speed: 1
+  waterDisplaceEffectsDist: 10
+  gunFireEffectSize: 1
+  engaged: 0
+  fire: 0
+  fireAtWill: 0
+  reloadProgress: 0
+  turretRotation: 0
+  targetTurretRotation: 0
+  gunsElevation: 0
+  targetGunsElevation: 0
 --- !u!1 &5345078921307497295
 GameObject:
   m_ObjectHideFlags: 0
@@ -2820,12 +3125,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7221653869512731332, guid: d18fbdeb915834f109452bfe7e3fab54, type: 3}
       propertyPath: gunTurrets.Array.size
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7221653869512731332, guid: d18fbdeb915834f109452bfe7e3fab54, type: 3}
       propertyPath: gunTurrets.Array.data[0]
       value: 
       objectReference: {fileID: 6331163022181407972}
+    - target: {fileID: 7221653869512731332, guid: d18fbdeb915834f109452bfe7e3fab54, type: 3}
+      propertyPath: gunTurrets.Array.data[1]
+      value: 
+      objectReference: {fileID: 5776394406423260966}
+    - target: {fileID: 7221653869512731332, guid: d18fbdeb915834f109452bfe7e3fab54, type: 3}
+      propertyPath: gunTurrets.Array.data[2]
+      value: 
+      objectReference: {fileID: 966670489322353646}
+    - target: {fileID: 7221653869512731332, guid: d18fbdeb915834f109452bfe7e3fab54, type: 3}
+      propertyPath: gunTurrets.Array.data[3]
+      value: 
+      objectReference: {fileID: 4917609758583445183}
     - target: {fileID: 8048513522309407665, guid: d18fbdeb915834f109452bfe7e3fab54, type: 3}
       propertyPath: m_LocalScale.x
       value: 27
