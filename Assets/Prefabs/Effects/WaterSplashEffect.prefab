@@ -169,7 +169,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 3
       scalar: 80
-      minScalar: 15
+      minScalar: 30
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -744,7 +744,7 @@ ParticleSystem:
     m_TextureBilinearFiltering: 0
     randomDirectionAmount: 1
     sphericalDirectionAmount: 0.05
-    randomPositionAmount: 1
+    randomPositionAmount: 10
     radius:
       value: 3
       mode: 0
