@@ -7,18 +7,30 @@ namespace Ships.ShipSystems.Editors {
         private GameObject lastTargetGO = null;
         private bool wrongTarget = false;
 
+        private void OnEnable() {
+            if (!Application.isPlaying) {
+                TargetingSystem t = (TargetingSystem)target;
+                t.Target = t.TargetGO != null ? t.TargetGO?.GetComponent<ITarget>() : null;
+            }
+        }
+
         public override void OnInspectorGUI() {
             TargetingSystem t = (TargetingSystem)target;
 
             if (DrawDefaultInspector()) {
                 if (t.TargetGO != lastTargetGO) {
-                    ITarget itarget = t.TargetGO.GetComponent<ITarget>();
-                    if (itarget != null) {
-                        t.Target = itarget;
+                    if (t.TargetGO == null) {
+                        t.Target = null;
                         wrongTarget = false;
                     } else {
-                        t.Target = null;
-                        wrongTarget = true;
+                        ITarget itarget = t.TargetGO.GetComponent<ITarget>();
+                        if (itarget != null) {
+                            t.Target = itarget;
+                            wrongTarget = false;
+                        } else {
+                            t.Target = null;
+                            wrongTarget = true;
+                        }
                     }
                 }
             }

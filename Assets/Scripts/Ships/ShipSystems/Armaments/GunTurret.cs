@@ -15,6 +15,9 @@ namespace Ships.ShipSystems.Armaments {
         /// </summary>
         public const float GUNS_RANGE_INGAME_MOD = 0.25f;
 
+        public delegate void FireEvent(GunTurret turret, Projectile[] projectiles);
+        public event FireEvent OnFire;
+
         [Header("Setup")]
         [SerializeField] private TurretType turretType = TurretType.BowA;
         [SerializeField] private Ship ship = null;
@@ -25,6 +28,7 @@ namespace Ships.ShipSystems.Armaments {
 
         public TurretType Type => turretType;
         public Ship Ship => ship;
+        public bool SternTurret => sternTurret;
         public int NumGuns => guns.Count;
 
         [Header("Stats")]
@@ -211,7 +215,8 @@ namespace Ships.ShipSystems.Armaments {
             reloadProgress = 0f;
 
             // Spawn projectile
-            guns.ForEach(gun => ProjectileManager.CreateProjectile(this, gun.gunEffectTransform));
+            List<Projectile> projectiles = new List<Projectile>();
+            guns.ForEach(gun => projectiles.Add(ProjectileManager.CreateProjectile(this, gun.gunEffectTransform)));
 
             // Add effects
             gunRecoilRoutines.ForEach(r => StopCoroutine(r));
@@ -232,6 +237,8 @@ namespace Ships.ShipSystems.Armaments {
                 waterDisplaceEffectSettings.origin = gun.gunEffectTransform.position + gun.gunEffectTransform.forward * waterDisplaceEffectsDist;
                 OceanManager.InitWaterDisplaceEffect(waterDisplaceEffectSettings);
             });
+
+            OnFire?.Invoke(this, projectiles.ToArray());
         }
 
         private IEnumerator GunRecoilEffectRoutine(GunRepresentation gun) {

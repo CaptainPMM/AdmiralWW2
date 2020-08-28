@@ -12,11 +12,12 @@ namespace Projectiles {
             if (projectilePrefab == null) Debug.LogWarning("ProjectileManager needs the assigned projectile prefab");
         }
 
-        public static void CreateProjectile(GunTurret fromTurret, Transform initTransform) {
+        public static Projectile CreateProjectile(GunTurret fromTurret, Transform initTransform) {
             GameObject projectileGO = Instantiate(Inst.projectilePrefab, Inst.transform);
             projectileGO.name = "Projectile<" + fromTurret.Ship.ShipName + ">";
             Projectile projectile = projectileGO.GetComponent<Projectile>();
             projectile.Init(fromTurret, initTransform);
+            return projectile;
         }
     }
 }

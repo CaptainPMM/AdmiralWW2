@@ -222,6 +222,130 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6083915761642122981, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: bestDistanceToRotOffsetDispersionHeuristic.m_Curve.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6083915761642122981, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: bestDistanceToRotOffsetDispersionHeuristic.m_Curve.Array.data[1].time
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 6083915761642122981, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: bestDistanceToRotOffsetDispersionHeuristic.m_Curve.Array.data[1].value
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6083915761642122981, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: bestDistanceToRotOffsetDispersionHeuristic.m_Curve.Array.data[1].outWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 6083915761642122981, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: bestDistanceToRotOffsetDispersionHeuristic.m_Curve.Array.data[2].time
+      value: 2000
+      objectReference: {fileID: 0}
+    - target: {fileID: 6083915761642122981, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: bestDistanceToRotOffsetDispersionHeuristic.m_Curve.Array.data[2].value
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6083915761642122981, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: bestDistanceToRotOffsetDispersionHeuristic.m_Curve.Array.data[2].inSlope
+      value: 0.003
+      objectReference: {fileID: 0}
+    - target: {fileID: 6083915761642122981, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: bestDistanceToRotOffsetDispersionHeuristic.m_Curve.Array.data[2].outSlope
+      value: 0.004
+      objectReference: {fileID: 0}
+    - target: {fileID: 6083915761642122981, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: bestDistanceToRotOffsetDispersionHeuristic.m_Curve.Array.data[2].tangentMode
+      value: 69
+      objectReference: {fileID: 0}
+    - target: {fileID: 6083915761642122981, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: bestDistanceToRotOffsetDispersionHeuristic.m_Curve.Array.data[2].inWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 6083915761642122981, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: bestDistanceToRotOffsetDispersionHeuristic.m_Curve.Array.data[0].inSlope
+      value: 0.005
+      objectReference: {fileID: 0}
+    - target: {fileID: 6083915761642122981, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: bestDistanceToRotOffsetDispersionHeuristic.m_Curve.Array.data[0].outSlope
+      value: 0.005
+      objectReference: {fileID: 0}
+    - target: {fileID: 6083915761642122981, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: bestDistanceToRotOffsetDispersionHeuristic.m_Curve.Array.data[1].inSlope
+      value: 0.005
+      objectReference: {fileID: 0}
+    - target: {fileID: 6083915761642122981, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: bestDistanceToRotOffsetDispersionHeuristic.m_Curve.Array.data[1].outSlope
+      value: 0.003
+      objectReference: {fileID: 0}
+    - target: {fileID: 6083915761642122981, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: bestDistanceToRotOffsetDispersionHeuristic.m_Curve.Array.data[2].outWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 6083915761642122981, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: bestDistanceToRotOffsetDispersionHeuristic.m_Curve.Array.data[3].time
+      value: 3000
+      objectReference: {fileID: 0}
+    - target: {fileID: 6083915761642122981, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: bestDistanceToRotOffsetDispersionHeuristic.m_Curve.Array.data[3].value
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 6083915761642122981, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: bestDistanceToRotOffsetDispersionHeuristic.m_Curve.Array.data[3].inSlope
+      value: 0.004
+      objectReference: {fileID: 0}
+    - target: {fileID: 6083915761642122981, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: bestDistanceToRotOffsetDispersionHeuristic.m_Curve.Array.data[3].outSlope
+      value: 0.0047142855
+      objectReference: {fileID: 0}
+    - target: {fileID: 6083915761642122981, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: bestDistanceToRotOffsetDispersionHeuristic.m_Curve.Array.data[3].tangentMode
+      value: 69
+      objectReference: {fileID: 0}
+    - target: {fileID: 6083915761642122981, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: bestDistanceToRotOffsetDispersionHeuristic.m_Curve.Array.data[3].inWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 6083915761642122981, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: bestDistanceToRotOffsetDispersionHeuristic.m_Curve.Array.data[1].tangentMode
+      value: 69
+      objectReference: {fileID: 0}
+    - target: {fileID: 6083915761642122981, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: bestDistanceToRotOffsetDispersionHeuristic.m_Curve.Array.data[3].outWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 6083915761642122981, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: bestDistanceToRotOffsetDispersionHeuristic.m_Curve.Array.data[4].time
+      value: 10000
+      objectReference: {fileID: 0}
+    - target: {fileID: 6083915761642122981, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: bestDistanceToRotOffsetDispersionHeuristic.m_Curve.Array.data[4].value
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 6083915761642122981, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: bestDistanceToRotOffsetDispersionHeuristic.m_Curve.Array.data[4].inSlope
+      value: 0.0047142855
+      objectReference: {fileID: 0}
+    - target: {fileID: 6083915761642122981, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: bestDistanceToRotOffsetDispersionHeuristic.m_Curve.Array.data[4].outSlope
+      value: 0.0047142855
+      objectReference: {fileID: 0}
+    - target: {fileID: 6083915761642122981, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: bestDistanceToRotOffsetDispersionHeuristic.m_Curve.Array.data[4].tangentMode
+      value: 34
+      objectReference: {fileID: 0}
+    - target: {fileID: 6083915761642122981, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: bestDistanceToRotOffsetDispersionHeuristic.m_Curve.Array.data[4].inWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 6083915761642122981, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: targetGO
+      value: 
+      objectReference: {fileID: 343354715}
+    - target: {fileID: 9121195042845819026, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: course
+      value: 355
+      objectReference: {fileID: 0}
     - target: {fileID: 9121195042845819036, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
       propertyPath: m_Name
       value: AdmiralHipper
@@ -276,6 +400,192 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 9121195042845819037, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
   m_PrefabInstance: {fileID: 293468700}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &343354714
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6083915761642122981, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: bestDistanceToRotOffsetDispersionHeuristic.m_Curve.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6083915761642122981, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: bestDistanceToRotOffsetDispersionHeuristic.m_Curve.Array.data[1].time
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 6083915761642122981, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: bestDistanceToRotOffsetDispersionHeuristic.m_Curve.Array.data[1].value
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6083915761642122981, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: bestDistanceToRotOffsetDispersionHeuristic.m_Curve.Array.data[1].outWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 6083915761642122981, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: bestDistanceToRotOffsetDispersionHeuristic.m_Curve.Array.data[2].time
+      value: 2000
+      objectReference: {fileID: 0}
+    - target: {fileID: 6083915761642122981, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: bestDistanceToRotOffsetDispersionHeuristic.m_Curve.Array.data[2].value
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6083915761642122981, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: bestDistanceToRotOffsetDispersionHeuristic.m_Curve.Array.data[2].inSlope
+      value: 0.003
+      objectReference: {fileID: 0}
+    - target: {fileID: 6083915761642122981, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: bestDistanceToRotOffsetDispersionHeuristic.m_Curve.Array.data[2].outSlope
+      value: 0.004
+      objectReference: {fileID: 0}
+    - target: {fileID: 6083915761642122981, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: bestDistanceToRotOffsetDispersionHeuristic.m_Curve.Array.data[2].tangentMode
+      value: 69
+      objectReference: {fileID: 0}
+    - target: {fileID: 6083915761642122981, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: bestDistanceToRotOffsetDispersionHeuristic.m_Curve.Array.data[2].inWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 6083915761642122981, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: bestDistanceToRotOffsetDispersionHeuristic.m_Curve.Array.data[0].inSlope
+      value: 0.005
+      objectReference: {fileID: 0}
+    - target: {fileID: 6083915761642122981, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: bestDistanceToRotOffsetDispersionHeuristic.m_Curve.Array.data[0].outSlope
+      value: 0.005
+      objectReference: {fileID: 0}
+    - target: {fileID: 6083915761642122981, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: bestDistanceToRotOffsetDispersionHeuristic.m_Curve.Array.data[1].inSlope
+      value: 0.005
+      objectReference: {fileID: 0}
+    - target: {fileID: 6083915761642122981, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: bestDistanceToRotOffsetDispersionHeuristic.m_Curve.Array.data[1].outSlope
+      value: 0.003
+      objectReference: {fileID: 0}
+    - target: {fileID: 6083915761642122981, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: bestDistanceToRotOffsetDispersionHeuristic.m_Curve.Array.data[2].outWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 6083915761642122981, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: bestDistanceToRotOffsetDispersionHeuristic.m_Curve.Array.data[3].time
+      value: 3000
+      objectReference: {fileID: 0}
+    - target: {fileID: 6083915761642122981, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: bestDistanceToRotOffsetDispersionHeuristic.m_Curve.Array.data[3].value
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 6083915761642122981, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: bestDistanceToRotOffsetDispersionHeuristic.m_Curve.Array.data[3].inSlope
+      value: 0.004
+      objectReference: {fileID: 0}
+    - target: {fileID: 6083915761642122981, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: bestDistanceToRotOffsetDispersionHeuristic.m_Curve.Array.data[3].outSlope
+      value: 0.0047142855
+      objectReference: {fileID: 0}
+    - target: {fileID: 6083915761642122981, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: bestDistanceToRotOffsetDispersionHeuristic.m_Curve.Array.data[3].tangentMode
+      value: 69
+      objectReference: {fileID: 0}
+    - target: {fileID: 6083915761642122981, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: bestDistanceToRotOffsetDispersionHeuristic.m_Curve.Array.data[3].inWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 6083915761642122981, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: bestDistanceToRotOffsetDispersionHeuristic.m_Curve.Array.data[1].tangentMode
+      value: 69
+      objectReference: {fileID: 0}
+    - target: {fileID: 6083915761642122981, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: bestDistanceToRotOffsetDispersionHeuristic.m_Curve.Array.data[3].outWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 6083915761642122981, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: bestDistanceToRotOffsetDispersionHeuristic.m_Curve.Array.data[4].time
+      value: 10000
+      objectReference: {fileID: 0}
+    - target: {fileID: 6083915761642122981, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: bestDistanceToRotOffsetDispersionHeuristic.m_Curve.Array.data[4].value
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 6083915761642122981, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: bestDistanceToRotOffsetDispersionHeuristic.m_Curve.Array.data[4].inSlope
+      value: 0.0047142855
+      objectReference: {fileID: 0}
+    - target: {fileID: 6083915761642122981, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: bestDistanceToRotOffsetDispersionHeuristic.m_Curve.Array.data[4].outSlope
+      value: 0.0047142855
+      objectReference: {fileID: 0}
+    - target: {fileID: 6083915761642122981, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: bestDistanceToRotOffsetDispersionHeuristic.m_Curve.Array.data[4].tangentMode
+      value: 34
+      objectReference: {fileID: 0}
+    - target: {fileID: 6083915761642122981, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: bestDistanceToRotOffsetDispersionHeuristic.m_Curve.Array.data[4].inWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 6083915761642122981, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: targetGO
+      value: 
+      objectReference: {fileID: 882580897}
+    - target: {fileID: 9121195042845819026, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: course
+      value: 345
+      objectReference: {fileID: 0}
+    - target: {fileID: 9121195042845819036, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: m_Name
+      value: AdmiralHipper2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9121195042845819037, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2500
+      objectReference: {fileID: 0}
+    - target: {fileID: 9121195042845819037, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9121195042845819037, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9121195042845819037, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9121195042845819037, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.13052624
+      objectReference: {fileID: 0}
+    - target: {fileID: 9121195042845819037, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9121195042845819037, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9914449
+      objectReference: {fileID: 0}
+    - target: {fileID: 9121195042845819037, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 9121195042845819037, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9121195042845819037, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -15
+      objectReference: {fileID: 0}
+    - target: {fileID: 9121195042845819037, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+--- !u!1 &343354715 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9121195042845819036, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+  m_PrefabInstance: {fileID: 343354714}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &363677959
 GameObject:
@@ -443,6 +753,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &882580897 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9121195042845819036, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+  m_PrefabInstance: {fileID: 293468700}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &923508181
 GameObject:
   m_ObjectHideFlags: 0

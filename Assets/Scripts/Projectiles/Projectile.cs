@@ -14,12 +14,17 @@ namespace Projectiles {
         /// </summary>
         public const float CALIBER_TO_SCALE = 0.01f;
 
+        public delegate void HitEvent(Projectile projectile, Vector3 worldPos);
+        public event HitEvent OnHit;
+
         [Header("Setup")]
         [SerializeField] private Rigidbody rb = null;
 
         [Header("Runtime settings (must set after instantiation)")]
         [SerializeField] private GunTurret fromTurret = null;
         [SerializeField] private Transform initTransform = null;
+
+        public GunTurret FromTurret => fromTurret;
 
         /// <summary>
         /// Call this "constructor" after instantiating the projectile prefab
@@ -76,6 +81,7 @@ namespace Projectiles {
                     foamSizeMultiplier = 4f
                 });
 
+                OnHit?.Invoke(this, transform.position);
                 Destroy(gameObject, DESTROY_DELAY_AFTER_HIT_OCEAN_SURFACE);
             }
         }
