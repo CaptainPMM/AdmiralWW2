@@ -13,6 +13,11 @@ namespace Ships.ShipSystems {
             gunTurrets.ForEach(gt => gt.Engaged = engaged);
         }
 
+        public void SetGunTurretsStabilization(bool stabilize) {
+            gunTurrets.ForEach(gt => gt.Stabilization = stabilize);
+        }
+
+
         public bool GunTurretsReadyAndAimed() {
             foreach (GunTurret gt in gunTurrets) {
                 if (!gt.ReadyToFire || !gt.AimReady) return false;

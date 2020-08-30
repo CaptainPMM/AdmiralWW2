@@ -60,6 +60,7 @@ namespace Ships.ShipSystems {
             }
 
             ship.Armament.SetEngageGunTurrets(false);
+            ship.Armament.SetGunTurretsStabilization(false);
 
             // Reset all values
             directDist = 0f;
@@ -83,6 +84,7 @@ namespace Ships.ShipSystems {
 
         private IEnumerator TargetingRoutine() {
             ship.Armament.SetEngageGunTurrets(true);
+            ship.Armament.SetGunTurretsStabilization(true);
             bestDist = Vector3.Distance(ship.WorldPos, target.WorldPos);
 
             while (target != null) {

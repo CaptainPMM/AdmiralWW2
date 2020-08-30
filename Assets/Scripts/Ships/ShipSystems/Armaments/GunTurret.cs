@@ -116,6 +116,10 @@ namespace Ships.ShipSystems.Armaments {
         [Header("Current state")]
         [SerializeField] private bool engaged = false;
         /// <summary>
+        /// Stabilize the gun elevation to counteract waves and other forces dispersing the shot
+        /// </summary>
+        [SerializeField] private bool stabilization = false;
+        /// <summary>
         /// Fire as soon as ReadyToFire (reloaded) [once]
         /// </summary>
         [SerializeField] private bool fire = false;
@@ -128,8 +132,16 @@ namespace Ships.ShipSystems.Armaments {
         [SerializeField, Range(-180, 180)] private float targetTurretRotation = 0f;
         [SerializeField, Range(-90, 90)] private float gunsElevation = 0f;
         [SerializeField, Range(-90, 90)] private float targetGunsElevation = 0f;
+        [SerializeField, Range(-90, 90)] private float stabilizationAngle = 0f;
 
         public bool Engaged { get => engaged; set => engaged = value; }
+        public bool Stabilization {
+            get => stabilization;
+            set {
+                if (value == false && stabilization == true) StartCoroutine(ResetGunStabilization());
+                stabilization = value;
+            }
+        }
         /// <summary>
         /// Fire as soon as ReadyToFire (reloaded) [once]
         /// </summary>
@@ -159,6 +171,7 @@ namespace Ships.ShipSystems.Armaments {
 
         private bool tempAimReady = false;
         private List<Coroutine> gunRecoilRoutines = new List<Coroutine>();
+        private sbyte turretLocationMod = -1;
 
         private void Awake() {
             if (ship == null) Debug.LogWarning("GunTurret needs an assigned ship");
@@ -173,6 +186,7 @@ namespace Ships.ShipSystems.Armaments {
                 gun.initLocalPos = gun.gunTransform.localPosition;
                 guns[i] = gun;
             }
+            turretLocationMod = sternTurret ? (sbyte)1 : (sbyte)-1;
         }
 
         private void FixedUpdate() {
@@ -188,6 +202,15 @@ namespace Ships.ShipSystems.Armaments {
                 }
 
                 if (!tempAimReady) Aim();
+
+                if (stabilization) {
+                    Vector3 forward = turretTransform.forward * turretLocationMod;
+                    Vector3 flatForward = Quaternion.AngleAxis(-turretTransform.rotation.eulerAngles.x, turretTransform.right) * forward;
+                    float forwardToFlatAngle = Vector3.SignedAngle(forward, flatForward, turretTransform.right) * -turretLocationMod;
+
+                    stabilizationAngle = Mathf.MoveTowards(stabilizationAngle, forwardToFlatAngle, gunsElevationSpeed * Time.fixedDeltaTime);
+                    guns.ForEach(gun => gun.gunTransform.localRotation = Quaternion.Euler(Mathf.Clamp(stabilizationAngle + gunsElevation, gunsMinElevationAngle, gunsMaxElevationAngle) * -turretLocationMod, 0, 0));
+                }
             }
         }
 
@@ -251,6 +274,14 @@ namespace Ships.ShipSystems.Armaments {
             // Recover init pos
             while (gun.gunTransform.localPosition != gun.initLocalPos) {
                 gun.gunTransform.localPosition = Vector3.Lerp(gun.gunTransform.localPosition, gun.initLocalPos, gunRecoilSpeed * GUN_RECOIL_RECOVER_SPEED_MULTIPLIER);
+                yield return new WaitForFixedUpdate();
+            }
+        }
+
+        private IEnumerator ResetGunStabilization() {
+            while (stabilizationAngle != 0f) {
+                stabilizationAngle = Mathf.MoveTowards(stabilizationAngle, 0f, gunsElevationSpeed * Time.fixedDeltaTime);
+                guns.ForEach(gun => gun.gunTransform.localRotation = Quaternion.Euler(Mathf.Clamp(stabilizationAngle + gunsElevation, gunsMinElevationAngle, gunsMaxElevationAngle) * -turretLocationMod, 0, 0));
                 yield return new WaitForFixedUpdate();
             }
         }
