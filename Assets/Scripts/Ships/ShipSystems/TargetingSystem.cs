@@ -96,6 +96,7 @@ namespace Ships.ShipSystems {
                 directEstimElev = distanceToElevationHeuristic.Evaluate(directDist);
                 estimFlightTime = elevationToFlightTimeHeuristic.Evaluate(directEstimElev);
                 estimTargetPos = target.WorldPos + target.Velocity * (estimFlightTime / Time.fixedDeltaTime);
+                estimTargetPos.y = 0f;
                 estimDist = Vector3.Distance(ship.WorldPos, estimTargetPos);
                 estimElev = distanceToElevationHeuristic.Evaluate(estimDist);
                 estimRot = Vector3.SignedAngle(ship.transform.forward, (target.WorldPos - ship.WorldPos).normalized, Vector3.up);
@@ -111,7 +112,11 @@ namespace Ships.ShipSystems {
                     ship.Armament.GunTurrets[i].TargetTurretRotation = estimRot + rotOffset;
                     ship.Armament.GunTurrets[i].TargetGunsElevation = estimElev + elevOffset;
                     if (ship.Armament.GunTurrets[i].SternTurret) {
-                        ship.Armament.GunTurrets[i].TargetTurretRotation = 90f + (90f - ship.Armament.GunTurrets[i].TargetTurretRotation);
+                        if (ship.Armament.GunTurrets[i].TargetTurretRotation >= 0) {
+                            ship.Armament.GunTurrets[i].TargetTurretRotation = 90f + (90f - ship.Armament.GunTurrets[i].TargetTurretRotation);
+                        } else {
+                            ship.Armament.GunTurrets[i].TargetTurretRotation = -(90f + (90f - Mathf.Abs(ship.Armament.GunTurrets[i].TargetTurretRotation)));
+                        }
                     }
 
                     currTurretOffsets.Add(new TurretOffsetSetting { turret = ship.Armament.GunTurrets[i], rotOffset = rotOffset, elevOffset = elevOffset });
