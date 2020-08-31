@@ -6,6 +6,7 @@ using Effects;
 
 namespace Projectiles {
     public class Projectile : MonoBehaviour {
+        private const float MAX_DISPERSION_ANGLE = 2f;
         private const float ADDITIONAL_GRAVITY_MULTIPLIER = 100f;
         private const float DESTROY_DELAY_AFTER_HIT_OCEAN_SURFACE = 3f;
 
@@ -47,12 +48,16 @@ namespace Projectiles {
             transform.position = initTransform.position;
             transform.rotation = initTransform.rotation;
 
+            // Apply dispersion
+            float invAccuracy = 1f - fromTurret.GunsPrecision;
+            transform.Rotate(Random.Range(0f, invAccuracy) * MAX_DISPERSION_ANGLE, Random.Range(0f, invAccuracy) * MAX_DISPERSION_ANGLE, Random.Range(0f, invAccuracy) * MAX_DISPERSION_ANGLE, Space.World);
+
             float scale = fromTurret.GunsCaliber * CALIBER_TO_SCALE;
             transform.localScale = new Vector3(scale, scale, scale);
 
             rb.mass = fromTurret.GunsCaliber;
 
-            rb.velocity = initTransform.forward * fromTurret.MuzzleVelocity;
+            rb.velocity = transform.forward * fromTurret.MuzzleVelocity;
         }
 
         private void FixedUpdate() {
