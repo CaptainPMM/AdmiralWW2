@@ -20,7 +20,7 @@ namespace Ships.ShipSystems {
 
         public bool GunTurretsReadyAndAimed() {
             foreach (GunTurret gt in gunTurrets) {
-                if (!gt.ReadyToFire || !gt.AimReady) return false;
+                if (!gt.Disabled && (!gt.ReadyToFire || !gt.AimReady)) return false;
             }
             return true;
         }

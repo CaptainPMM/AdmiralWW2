@@ -129,10 +129,12 @@ namespace Ships.ShipSystems {
                 lastVolleyProjectiles = 0;
                 lastVolleyResults.Clear();
                 foreach (GunTurret gt in ship.Armament.GunTurrets) {
-                    gt.OnFire += TurretFiredHandler;
-                    gt.Fire();
-                    lastVolleyProjectiles += gt.NumGuns;
-                    yield return new WaitForSecondsRealtime(volleyTurretFireDelay);
+                    if (!gt.Disabled) {
+                        gt.OnFire += TurretFiredHandler;
+                        gt.Fire();
+                        lastVolleyProjectiles += gt.NumGuns;
+                        yield return new WaitForSecondsRealtime(volleyTurretFireDelay);
+                    }
                 }
 
                 // Wait until all shots hit...

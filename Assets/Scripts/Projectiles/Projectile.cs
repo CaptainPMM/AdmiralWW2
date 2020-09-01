@@ -79,9 +79,13 @@ namespace Projectiles {
                     foamSizeMultiplier = 4f
                 });
 
-                OnHit?.Invoke(this, transform.position);
+                InvokeHitEvent();
                 Destroy(gameObject, DESTROY_DELAY_AFTER_HIT_OCEAN_SURFACE);
             }
+        }
+
+        public void InvokeHitEvent() {
+            OnHit?.Invoke(this, transform.position);
         }
     }
 }

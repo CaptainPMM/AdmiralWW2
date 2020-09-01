@@ -600,6 +600,7 @@ MonoBehaviour:
   gunRecoil: 0.01
   gunRecoilSpeed: 0.75
   shipRecoil: 13
+  turretArmor: 105
   waterDisplaceEffectSettings:
     origin: {x: 0, y: 0, z: 0}
     originOffset: {x: 0, y: -60, z: 0}
@@ -853,6 +854,7 @@ MonoBehaviour:
   gunRecoil: 0.01
   gunRecoilSpeed: 0.75
   shipRecoil: 13
+  turretArmor: 105
   waterDisplaceEffectSettings:
     origin: {x: 0, y: 0, z: 0}
     originOffset: {x: 0, y: -60, z: 0}
@@ -1417,6 +1419,7 @@ MonoBehaviour:
   gunRecoil: 0.01
   gunRecoilSpeed: 0.75
   shipRecoil: 13
+  turretArmor: 105
   waterDisplaceEffectSettings:
     origin: {x: 0, y: 0, z: 0}
     originOffset: {x: 0, y: -60, z: 0}
@@ -2035,6 +2038,7 @@ MonoBehaviour:
   gunRecoil: 0.01
   gunRecoilSpeed: 0.75
   shipRecoil: 13
+  turretArmor: 105
   waterDisplaceEffectSettings:
     origin: {x: 0, y: 0, z: 0}
     originOffset: {x: 0, y: -60, z: 0}

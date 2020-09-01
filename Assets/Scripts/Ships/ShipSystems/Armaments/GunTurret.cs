@@ -43,7 +43,7 @@ namespace Ships.ShipSystems.Armaments {
         /// </summary>
         [SerializeField, Range(0, 45)] private byte gunsElevationSpeed = 6;
         /// <summary>
-        /// The size/diameter of the the projectiles in millimeters (caliber/1000f => unity units/meters)
+        /// The size/diameter of the projectiles in millimeters (caliber/1000f => unity units/meters)
         /// </summary>
         [SerializeField] private ushort gunsCaliber = 200;
         /// <summary>
@@ -66,6 +66,10 @@ namespace Ships.ShipSystems.Armaments {
         [SerializeField] private float gunRecoil = 1f;
         [SerializeField] private float gunRecoilSpeed = 0.5f;
         [SerializeField] private float shipRecoil = 40f;
+        /// <summary>
+        /// The thickness of the turret armor in millimeters (turretArmor/1000f => unity units/meters)
+        /// </summary>
+        [SerializeField] private ushort turretArmor = 100;
         /// <summary>
         /// Ignore the origin position as it is overridden by the gun transforms and field waterDisplaceEffectsDist
         /// </summary>
@@ -111,8 +115,13 @@ namespace Ships.ShipSystems.Armaments {
         /// Accuracy of the guns, (0-1)
         /// </summary>
         public float GunsPrecision => gunsPrecision;
+        /// <summary>
+        /// The thickness of the turret armor in millimeters (turretArmor/1000f => unity units/meters)
+        /// </summary>
+        public ushort TurretArmor => turretArmor;
 
         [Header("Current state")]
+        [SerializeField] private bool disabled = false;
         [SerializeField] private bool engaged = false;
         /// <summary>
         /// Stabilize the gun elevation to counteract waves and other forces dispersing the shot
@@ -133,6 +142,7 @@ namespace Ships.ShipSystems.Armaments {
         [SerializeField, Range(-90, 90)] private float targetGunsElevation = 0f;
         [SerializeField, Range(-90, 90)] private float stabilizationAngle = 0f;
 
+        public bool Disabled { get => disabled; }
         public bool Engaged { get => engaged; set => engaged = value; }
         public bool Stabilization {
             get => stabilization;
@@ -282,6 +292,13 @@ namespace Ships.ShipSystems.Armaments {
                 guns.ForEach(gun => gun.gunTransform.localRotation = Quaternion.Euler(Mathf.Clamp(stabilizationAngle + gunsElevation, gunsMinElevationAngle, gunsMaxElevationAngle) * -turretLocationMod, 0, 0));
                 yield return new WaitForFixedUpdate();
             }
+        }
+
+        public void Disable() {
+            disabled = true;
+            enabled = false;
+            engaged = false;
+            StopAllCoroutines();
         }
 
         public enum TurretType : byte {

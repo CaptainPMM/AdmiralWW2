@@ -25,6 +25,8 @@ namespace Ships.DamageZones {
                 Projectile p = other.GetComponentInParent<Projectile>();
                 if (p.FromTurret.Ship != ship && p.enabled) {
                     ChooseStochasticDamageType(p);
+                    p.InvokeHitEvent();
+                    Destroy(p.gameObject);
                 }
             }
         }
