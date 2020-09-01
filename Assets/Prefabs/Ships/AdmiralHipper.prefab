@@ -368,6 +368,137 @@ Transform:
   m_Father: {fileID: 698353050566397734}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!1 &1030699335651125733
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 422869912111595120}
+  - component: {fileID: 3570715386283627820}
+  - component: {fileID: 5076593821142804142}
+  m_Layer: 11
+  m_Name: Deck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &422869912111595120
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1030699335651125733}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 10, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6207758476589786947}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &3570715386283627820
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1030699335651125733}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 15, y: 13, z: 88}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5076593821142804142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1030699335651125733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a8a79eea46e44ca19f88570079f2263, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ship: {fileID: 9121195042845819025}
+  hitCollider: {fileID: 3570715386283627820}
+  damageTypes:
+  - probability: 1
+    damageType: 0
+    param:
+      fparam: []
+      oparam: []
+--- !u!1 &1096738115223082308
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2962359201602474646}
+  - component: {fileID: 7563936237159824704}
+  - component: {fileID: 7855522250354913353}
+  m_Layer: 11
+  m_Name: TurretSternB
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2962359201602474646
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1096738115223082308}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 8.5, z: -50.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6207758476589786947}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &7563936237159824704
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1096738115223082308}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 9, y: 7, z: 11}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7855522250354913353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1096738115223082308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a8a79eea46e44ca19f88570079f2263, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ship: {fileID: 9121195042845819025}
+  hitCollider: {fileID: 7563936237159824704}
+  damageTypes:
+  - probability: 1
+    damageType: 2
+    param:
+      fparam: []
+      oparam:
+      - {fileID: 1407209638396774455}
 --- !u!1 &1388060179252109765
 GameObject:
   m_ObjectHideFlags: 0
@@ -409,7 +540,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5326851368197331149}
-  - component: {fileID: 2077994718935192178}
   - component: {fileID: 4917609758583445183}
   m_Layer: 9
   m_Name: TurretSternB
@@ -432,19 +562,6 @@ Transform:
   m_Father: {fileID: 783108579195027807}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &2077994718935192178
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1407209638396774455}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 10, y: 8, z: 10}
-  m_Center: {x: 0, y: 1.5, z: -2}
 --- !u!114 &4917609758583445183
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -459,7 +576,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   turretType: 0
   ship: {fileID: 9121195042845819025}
-  turretCollider: {fileID: 2077994718935192178}
   turretTransform: {fileID: 5706997895329374908}
   sternTurret: 1
   guns:
@@ -503,6 +619,89 @@ MonoBehaviour:
   gunsElevation: 0
   targetGunsElevation: 0
   stabilizationAngle: 0
+--- !u!1 &1441836936000804043
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7521594909067518793}
+  - component: {fileID: 8945909353276991915}
+  - component: {fileID: 3631077689324409221}
+  m_Layer: 11
+  m_Name: Stern
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7521594909067518793
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1441836936000804043}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -1.5, z: -77}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6207758476589786947}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &8945909353276991915
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1441836936000804043}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 15, y: 14, z: 50}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &3631077689324409221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1441836936000804043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a8a79eea46e44ca19f88570079f2263, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ship: {fileID: 9121195042845819025}
+  hitCollider: {fileID: 8945909353276991915}
+  damageTypes:
+  - probability: 0.25
+    damageType: 0
+    param:
+      fparam: []
+      oparam: []
+  - probability: 0.25
+    damageType: 1
+    param:
+      fparam:
+      - 2
+      - 0
+      - 1
+      oparam: []
+  - probability: 0.25
+    damageType: 3
+    param:
+      fparam: []
+      oparam: []
+  - probability: 0.25
+    damageType: 4
+    param:
+      fparam: []
+      oparam: []
 --- !u!1 &1494924609216552184
 GameObject:
   m_ObjectHideFlags: 0
@@ -594,7 +793,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2498493283155713096}
-  - component: {fileID: 2727000001902886}
   - component: {fileID: 6331163022181407972}
   m_Layer: 9
   m_Name: TurretBowA
@@ -617,19 +815,6 @@ Transform:
   m_Father: {fileID: 783108579195027807}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &2727000001902886
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1550353271243696652}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 10, y: 5, z: 10}
-  m_Center: {x: 0, y: 1.5, z: -2}
 --- !u!114 &6331163022181407972
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -644,7 +829,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   turretType: 0
   ship: {fileID: 9121195042845819025}
-  turretCollider: {fileID: 2727000001902886}
   turretTransform: {fileID: 7790146315799705113}
   sternTurret: 0
   guns:
@@ -770,6 +954,72 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &1692777799505338722
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 385095964906940183}
+  - component: {fileID: 1733957350309336724}
+  - component: {fileID: 3806685144531453994}
+  m_Layer: 11
+  m_Name: TurretBowB
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &385095964906940183
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1692777799505338722}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 8.5, z: 49}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6207758476589786947}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1733957350309336724
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1692777799505338722}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 9, y: 7, z: 11}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &3806685144531453994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1692777799505338722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a8a79eea46e44ca19f88570079f2263, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ship: {fileID: 9121195042845819025}
+  hitCollider: {fileID: 1733957350309336724}
+  damageTypes:
+  - probability: 1
+    damageType: 2
+    param:
+      fparam: []
+      oparam:
+      - {fileID: 3021760168757312856}
 --- !u!1 &1897922583244450701
 GameObject:
   m_ObjectHideFlags: 0
@@ -993,6 +1243,81 @@ Transform:
   m_Father: {fileID: 2426560175399870356}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!1 &2410106407444441434
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5467822970903091547}
+  - component: {fileID: 143585562451211154}
+  - component: {fileID: 3135028412547916561}
+  m_Layer: 11
+  m_Name: Hull
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5467822970903091547
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2410106407444441434}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6207758476589786947}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &143585562451211154
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2410106407444441434}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 22, y: 13, z: 105}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &3135028412547916561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2410106407444441434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a8a79eea46e44ca19f88570079f2263, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ship: {fileID: 9121195042845819025}
+  hitCollider: {fileID: 143585562451211154}
+  damageTypes:
+  - probability: 0.5
+    damageType: 0
+    param:
+      fparam: []
+      oparam: []
+  - probability: 0.5
+    damageType: 1
+    param:
+      fparam:
+      - 4
+      - 4
+      - 5
+      - 6
+      - 7
+      oparam: []
 --- !u!1 &2616965454648857510
 GameObject:
   m_ObjectHideFlags: 0
@@ -1032,7 +1357,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3516268641210425496}
-  - component: {fileID: 3214052917466806831}
   - component: {fileID: 5776394406423260966}
   m_Layer: 9
   m_Name: TurretBowB
@@ -1055,19 +1379,6 @@ Transform:
   m_Father: {fileID: 783108579195027807}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &3214052917466806831
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3021760168757312856}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 10, y: 8, z: 10}
-  m_Center: {x: 0, y: 1.5, z: -2}
 --- !u!114 &5776394406423260966
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1082,7 +1393,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   turretType: 1
   ship: {fileID: 9121195042845819025}
-  turretCollider: {fileID: 3214052917466806831}
   turretTransform: {fileID: 3189531592702823479}
   sternTurret: 0
   guns:
@@ -1126,6 +1436,80 @@ MonoBehaviour:
   gunsElevation: 0
   targetGunsElevation: 0
   stabilizationAngle: 0
+--- !u!1 &3865871598600082655
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3393758373056522093}
+  - component: {fileID: 7452339023828310076}
+  - component: {fileID: 8496156676003265042}
+  m_Layer: 11
+  m_Name: Bow
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3393758373056522093
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3865871598600082655}
+  m_LocalRotation: {x: -0.01745245, y: 0, z: 0, w: 0.99984777}
+  m_LocalPosition: {x: 0, y: -1, z: 77}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6207758476589786947}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -2, y: 0, z: 0}
+--- !u!65 &7452339023828310076
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3865871598600082655}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 15, y: 13, z: 50}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8496156676003265042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3865871598600082655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a8a79eea46e44ca19f88570079f2263, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ship: {fileID: 9121195042845819025}
+  hitCollider: {fileID: 7452339023828310076}
+  damageTypes:
+  - probability: 0.5
+    damageType: 0
+    param:
+      fparam: []
+      oparam: []
+  - probability: 0.5
+    damageType: 1
+    param:
+      fparam:
+      - 3
+      - 2
+      - 3
+      - 8
+      oparam: []
 --- !u!1 &3895326352262017121
 GameObject:
   m_ObjectHideFlags: 0
@@ -1486,6 +1870,72 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &4360381334555720038
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1694841643090468782}
+  - component: {fileID: 263841180213655549}
+  - component: {fileID: 8228738162240349957}
+  m_Layer: 11
+  m_Name: TurretSternA
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1694841643090468782
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4360381334555720038}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 6.5, z: -61.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6207758476589786947}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &263841180213655549
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4360381334555720038}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 9, y: 4.5, z: 11}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8228738162240349957
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4360381334555720038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a8a79eea46e44ca19f88570079f2263, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ship: {fileID: 9121195042845819025}
+  hitCollider: {fileID: 263841180213655549}
+  damageTypes:
+  - probability: 1
+    damageType: 2
+    param:
+      fparam: []
+      oparam:
+      - {fileID: 5293239667915569791}
 --- !u!1 &4977188958019289812
 GameObject:
   m_ObjectHideFlags: 0
@@ -1525,7 +1975,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2762180500971543528}
-  - component: {fileID: 1051297037914798201}
   - component: {fileID: 966670489322353646}
   m_Layer: 9
   m_Name: TurretSternA
@@ -1548,19 +1997,6 @@ Transform:
   m_Father: {fileID: 783108579195027807}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &1051297037914798201
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5293239667915569791}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 10, y: 5, z: 10}
-  m_Center: {x: 0, y: 1.5, z: -2}
 --- !u!114 &966670489322353646
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1575,7 +2011,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   turretType: 4
   ship: {fileID: 9121195042845819025}
-  turretCollider: {fileID: 1051297037914798201}
   turretTransform: {fileID: 4483180436093614533}
   sternTurret: 1
   guns:
@@ -1700,6 +2135,72 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &5577076906438377738
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2608496371491392704}
+  - component: {fileID: 5164022767425032630}
+  - component: {fileID: 8432395665370965122}
+  m_Layer: 11
+  m_Name: TurretBowA
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2608496371491392704
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5577076906438377738}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 6.5, z: 60}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6207758476589786947}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &5164022767425032630
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5577076906438377738}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 9, y: 4.5, z: 11}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8432395665370965122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5577076906438377738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a8a79eea46e44ca19f88570079f2263, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ship: {fileID: 9121195042845819025}
+  hitCollider: {fileID: 5164022767425032630}
+  damageTypes:
+  - probability: 1
+    damageType: 2
+    param:
+      fparam: []
+      oparam:
+      - {fileID: 1550353271243696652}
 --- !u!1 &5626832956106541262
 GameObject:
   m_ObjectHideFlags: 0
@@ -2140,6 +2641,296 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &6083915761642122981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9121195042845819036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0405aca79776b42088e7b22d984ace90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distanceToElevationHeuristic:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 50
+      value: -10
+      inSlope: 0.1
+      outSlope: 0.1
+      tangentMode: 69
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 100
+      value: -5
+      inSlope: 0.1
+      outSlope: 0.0060975607
+      tangentMode: 69
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 920
+      value: 0
+      inSlope: 0.0060975607
+      outSlope: 0.000877193
+      tangentMode: 69
+      weightedMode: 1
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 3200
+      value: 2
+      inSlope: 0.000877193
+      outSlope: 0.0012
+      tangentMode: 69
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 5700
+      value: 5
+      inSlope: 0.0012
+      outSlope: 0.0029411765
+      tangentMode: 69
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 7400
+      value: 10
+      inSlope: 0.0029411765
+      outSlope: 0.007142857
+      tangentMode: 69
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 8100
+      value: 15
+      inSlope: 0.007142857
+      outSlope: 0.05
+      tangentMode: 69
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 8200
+      value: 20
+      inSlope: 0.05
+      outSlope: 0.05
+      tangentMode: 69
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  elevationToFlightTimeHeuristic:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: -10
+      value: 0.1
+      inSlope: 0.08181818
+      outSlope: 0.060000002
+      tangentMode: 69
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: -5
+      value: 0.4
+      inSlope: 0.060000002
+      outSlope: 0.32
+      tangentMode: 69
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0
+      value: 2
+      inSlope: 0.32
+      outSlope: 1
+      tangentMode: 69
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 2
+      value: 4
+      inSlope: 1
+      outSlope: 2
+      tangentMode: 69
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 5
+      value: 10
+      inSlope: 2
+      outSlope: 1.6
+      tangentMode: 69
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 10
+      value: 18
+      inSlope: 1.6
+      outSlope: 1.4
+      tangentMode: 69
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 15
+      value: 25
+      inSlope: 1.4
+      outSlope: 1
+      tangentMode: 69
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 20
+      value: 30
+      inSlope: 1
+      outSlope: 0.33333334
+      tangentMode: 69
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 35
+      value: 35
+      inSlope: 0.33333334
+      outSlope: 0
+      tangentMode: 69
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  bestDistanceToRotOffsetDispersionHeuristic:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0.005
+      outSlope: 0.005
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1000
+      value: 5
+      inSlope: 0.005
+      outSlope: 0.003
+      tangentMode: 69
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 2000
+      value: 8
+      inSlope: 0.003
+      outSlope: 0.004
+      tangentMode: 69
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 3000
+      value: 12
+      inSlope: 0.004
+      outSlope: 0.0047142855
+      tangentMode: 69
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 10000
+      value: 45
+      inSlope: 0.0047142855
+      outSlope: 0.0047142855
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  bestDistanceToElevOffsetDispersionHeuristic:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0.001
+      outSlope: 0.001
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1000
+      value: 1
+      inSlope: 0.0015
+      outSlope: 0.0015
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 2000
+      value: 3
+      inSlope: 0.0015625
+      outSlope: 0.0015625
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 10000
+      value: 12
+      inSlope: 0.001125
+      outSlope: 0.001125
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  waitForTurretsCheckInterval: 1
+  waitForProjectileHitsCheckInterval: 3
+  volleyTurretFireDelay: 0.1
+  ship: {fileID: 9121195042845819025}
+  targetGO: {fileID: 0}
+  directDist: 0
+  directEstimElev: 0
+  estimFlightTime: 0
+  estimTargetPos: {x: 0, y: 0, z: 0}
+  estimDist: 0
+  estimRot: 0
+  estimElev: 0
+  bestDist: 3.4028235e+38
+  bestRotOffset: 0
+  bestElevOffset: 0
+  currRotOffsetDispersion: 0
+  currElevOffsetDispersion: 0
+  currTurretOffsets: []
+  lastVolleyProjectiles: 0
+  lastVolleyResults: []
 --- !u!1 &7412591794976286980
 GameObject:
   m_ObjectHideFlags: 0
@@ -2689,296 +3480,6 @@ Transform:
   m_Father: {fileID: 7823669381373250184}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: -0.048, y: 0, z: 95}
---- !u!114 &6083915761642122981
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9121195042845819036}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0405aca79776b42088e7b22d984ace90, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  distanceToElevationHeuristic:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 50
-      value: -10
-      inSlope: 0.1
-      outSlope: 0.1
-      tangentMode: 69
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 100
-      value: -5
-      inSlope: 0.1
-      outSlope: 0.0060975607
-      tangentMode: 69
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 920
-      value: 0
-      inSlope: 0.0060975607
-      outSlope: 0.000877193
-      tangentMode: 69
-      weightedMode: 1
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 3200
-      value: 2
-      inSlope: 0.000877193
-      outSlope: 0.0012
-      tangentMode: 69
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 5700
-      value: 5
-      inSlope: 0.0012
-      outSlope: 0.0029411765
-      tangentMode: 69
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 7400
-      value: 10
-      inSlope: 0.0029411765
-      outSlope: 0.007142857
-      tangentMode: 69
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 8100
-      value: 15
-      inSlope: 0.007142857
-      outSlope: 0.05
-      tangentMode: 69
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 8200
-      value: 20
-      inSlope: 0.05
-      outSlope: 0.05
-      tangentMode: 69
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  elevationToFlightTimeHeuristic:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: -10
-      value: 0.1
-      inSlope: 0.08181818
-      outSlope: 0.060000002
-      tangentMode: 69
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: -5
-      value: 0.4
-      inSlope: 0.060000002
-      outSlope: 0.32
-      tangentMode: 69
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0
-    - serializedVersion: 3
-      time: 0
-      value: 2
-      inSlope: 0.32
-      outSlope: 1
-      tangentMode: 69
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 2
-      value: 4
-      inSlope: 1
-      outSlope: 2
-      tangentMode: 69
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 5
-      value: 10
-      inSlope: 2
-      outSlope: 1.6
-      tangentMode: 69
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 10
-      value: 18
-      inSlope: 1.6
-      outSlope: 1.4
-      tangentMode: 69
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 15
-      value: 25
-      inSlope: 1.4
-      outSlope: 1
-      tangentMode: 69
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 20
-      value: 30
-      inSlope: 1
-      outSlope: 0.33333334
-      tangentMode: 69
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 35
-      value: 35
-      inSlope: 0.33333334
-      outSlope: 0
-      tangentMode: 69
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  bestDistanceToRotOffsetDispersionHeuristic:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0.005
-      outSlope: 0.005
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1000
-      value: 5
-      inSlope: 0.005
-      outSlope: 0.003
-      tangentMode: 69
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 2000
-      value: 8
-      inSlope: 0.003
-      outSlope: 0.004
-      tangentMode: 69
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 3000
-      value: 12
-      inSlope: 0.004
-      outSlope: 0.0047142855
-      tangentMode: 69
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 10000
-      value: 45
-      inSlope: 0.0047142855
-      outSlope: 0.0047142855
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  bestDistanceToElevOffsetDispersionHeuristic:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0.001
-      outSlope: 0.001
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1000
-      value: 1
-      inSlope: 0.0015
-      outSlope: 0.0015
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 2000
-      value: 3
-      inSlope: 0.0015625
-      outSlope: 0.0015625
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 10000
-      value: 12
-      inSlope: 0.001125
-      outSlope: 0.001125
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  waitForTurretsCheckInterval: 1
-  waitForProjectileHitsCheckInterval: 3
-  volleyTurretFireDelay: 0.1
-  ship: {fileID: 9121195042845819025}
-  targetGO: {fileID: 0}
-  directDist: 0
-  directEstimElev: 0
-  estimFlightTime: 0
-  estimTargetPos: {x: 0, y: 0, z: 0}
-  estimDist: 0
-  estimRot: 0
-  estimElev: 0
-  bestDist: 3.4028235e+38
-  bestRotOffset: 0
-  bestElevOffset: 0
-  currRotOffsetDispersion: 0
-  currElevOffsetDispersion: 0
-  currTurretOffsets: []
-  lastVolleyProjectiles: 0
-  lastVolleyResults: []
 --- !u!1 &9212030457654181278
 GameObject:
   m_ObjectHideFlags: 0
@@ -3462,6 +3963,11 @@ PrefabInstance:
 --- !u!4 &783108579195027807 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8037195245851530373, guid: d18fbdeb915834f109452bfe7e3fab54, type: 3}
+  m_PrefabInstance: {fileID: 7302572934983013850}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &6207758476589786947 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3706902388314387097, guid: d18fbdeb915834f109452bfe7e3fab54, type: 3}
   m_PrefabInstance: {fileID: 7302572934983013850}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &9121195043212309390 stripped

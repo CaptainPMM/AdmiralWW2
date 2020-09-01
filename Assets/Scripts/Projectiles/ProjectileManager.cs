@@ -13,10 +13,10 @@ namespace Projectiles {
         }
 
         public static Projectile CreateProjectile(GunTurret fromTurret, Transform initTransform) {
-            GameObject projectileGO = Instantiate(Inst.projectilePrefab, Inst.transform);
+            GameObject projectileGO = Instantiate(Inst.projectilePrefab, initTransform.position, initTransform.rotation, Inst.transform);
             projectileGO.name = "Projectile<" + fromTurret.Ship.ShipName + ">";
             Projectile projectile = projectileGO.GetComponent<Projectile>();
-            projectile.Init(fromTurret, initTransform);
+            projectile.Init(fromTurret);
             return projectile;
         }
     }

@@ -216,6 +216,7 @@ Transform:
   - {fileID: 7622829054251452123}
   - {fileID: 6207724368189678503}
   - {fileID: 8037195245851530373}
+  - {fileID: 3706902388314387097}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -253,7 +254,9 @@ MonoBehaviour:
   autopilot: {fileID: 2000458003251877192}
   oceanInputs: {fileID: 2381157071640289361}
   armament: {fileID: 7221653869512731332}
+  targeting: {fileID: 0}
   type: 0
+  nationality: 0
   shipDesignation: 0
   shipName: Default
   shipClass: Default Class
@@ -655,6 +658,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e805932ee1bff467183a029bb952c008, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gunTurrets: []
 --- !u!1 &4844141531034300559
 GameObject:
   m_ObjectHideFlags: 0
@@ -850,3 +854,33 @@ MonoBehaviour:
   _maxSpeed: 90
   _warnOnSpeedClamp: 0
   _velocityPositionOffset: 0
+--- !u!1 &7910640597001586417
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3706902388314387097}
+  m_Layer: 11
+  m_Name: DamageZones
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3706902388314387097
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7910640597001586417}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2000458003251877191}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

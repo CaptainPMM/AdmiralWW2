@@ -23,7 +23,6 @@ namespace Projectiles {
 
         [Header("Runtime settings (must set after instantiation)")]
         [SerializeField] private GunTurret fromTurret = null;
-        [SerializeField] private Transform initTransform = null;
 
         public GunTurret FromTurret => fromTurret;
 
@@ -31,10 +30,8 @@ namespace Projectiles {
         /// Call this "constructor" after instantiating the projectile prefab
         /// </summary>
         /// <param name="fromTurret">GunTurret that fired the projectile</param>
-        /// <param name="initTransform">The transform to initiate this projectile at with correct position and orientation/rotation</param>
-        public void Init(GunTurret fromTurret, Transform initTransform) {
+        public void Init(GunTurret fromTurret) {
             this.fromTurret = fromTurret;
-            this.initTransform = initTransform;
         }
 
         private void Awake() {
@@ -43,10 +40,6 @@ namespace Projectiles {
 
         private void Start() {
             if (fromTurret == null) { Debug.LogWarning("Projetile needs a fromTurret (call Init() after instantiating the prefab)"); return; }
-            if (initTransform == null) { Debug.LogWarning("Projetile needs an initTransform (call Init() after instantiating the prefab)"); return; }
-
-            transform.position = initTransform.position;
-            transform.rotation = initTransform.rotation;
 
             // Apply dispersion
             float invAccuracy = 1f - fromTurret.GunsPrecision;

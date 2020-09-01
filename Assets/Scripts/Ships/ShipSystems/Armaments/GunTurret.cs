@@ -21,7 +21,6 @@ namespace Ships.ShipSystems.Armaments {
         [Header("Setup")]
         [SerializeField] private TurretType turretType = TurretType.BowA;
         [SerializeField] private Ship ship = null;
-        [SerializeField] private Collider turretCollider = null;
         [SerializeField] private Transform turretTransform = null;
         [SerializeField] private bool sternTurret = false;
         [SerializeField] private List<GunRepresentation> guns = new List<GunRepresentation>();
@@ -175,7 +174,6 @@ namespace Ships.ShipSystems.Armaments {
 
         private void Awake() {
             if (ship == null) Debug.LogWarning("GunTurret needs an assigned ship");
-            if (turretCollider == null) Debug.LogWarning("GunTurret needs an assigned turret collider");
             if (turretTransform == null) Debug.LogWarning("GunTurret needs an assigned turret transform");
             if (guns.Count == 0) Debug.LogWarning("GunTurret needs minimum one gun");
         }
