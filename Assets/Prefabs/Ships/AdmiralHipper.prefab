@@ -681,23 +681,23 @@ MonoBehaviour:
   ship: {fileID: 9121195042845819025}
   hitCollider: {fileID: 8945909353276991915}
   damageTypes:
-  - probability: 0.25
+  - probability: 0.7
     damageType: 0
     param:
       fparam: []
       oparam: []
-  - probability: 0.25
+  - probability: 0.1
     damageType: 1
     param:
       fparam:
       - 2
       oparam: []
-  - probability: 0.25
+  - probability: 0.1
     damageType: 3
     param:
       fparam: []
       oparam: []
-  - probability: 0.25
+  - probability: 0.1
     damageType: 4
     param:
       fparam: []
@@ -1305,12 +1305,12 @@ MonoBehaviour:
   ship: {fileID: 9121195042845819025}
   hitCollider: {fileID: 143585562451211154}
   damageTypes:
-  - probability: 0.5
+  - probability: 0.8
     damageType: 0
     param:
       fparam: []
       oparam: []
-  - probability: 0.5
+  - probability: 0.2
     damageType: 1
     param:
       fparam:
@@ -1496,12 +1496,12 @@ MonoBehaviour:
   ship: {fileID: 9121195042845819025}
   hitCollider: {fileID: 7452339023828310076}
   damageTypes:
-  - probability: 0.5
+  - probability: 0.8
     damageType: 0
     param:
       fparam: []
       oparam: []
-  - probability: 0.5
+  - probability: 0.2
     damageType: 1
     param:
       fparam:

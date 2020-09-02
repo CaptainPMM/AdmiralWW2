@@ -51,15 +51,15 @@ namespace Ships {
         /// <summary>
         /// Remaining hitpoints. Durability of the ship (hull), each projectile that hits reduces this number by the projectiles caliber
         /// </summary>
-        [SerializeField] private uint hullHitpoints;
+        [SerializeField] private float hullHitpoints;
 
         public float Speed => rb.velocity.magnitude;
         public ushort Course => course;
         /// <summary>
         /// Remaining hitpoints. Durability of the ship (hull), each projectile that hits reduces this number by the projectiles caliber
         /// </summary>
-        public uint HullHitpoints => hullHitpoints;
-        public void DamageHull(uint damage) { hullHitpoints = (uint)Mathf.Max(0f, (int)hullHitpoints - damage); }
+        public float HullHitpoints => hullHitpoints;
+        public void DamageHull(float damage) { hullHitpoints = Mathf.Max(0f, hullHitpoints - damage); }
         [SerializeField] private List<WaterIngressSection> waterIngressSections = new List<WaterIngressSection>();
         public void AddWaterIngress(byte sectionID) { waterIngressSections.Find(w => w.sectionID == sectionID).numHoles++; }
 
@@ -115,6 +115,10 @@ namespace Ships {
                             section.floatPoints[i].weight = Mathf.Lerp(0f, section.initFloatPointWeights[i], 1f - section.waterLevel);
                         }
                     }
+                }
+                if (section.waterLevel > 0f) {
+                    // Damage ship
+                    DamageHull(section.waterLevel * Global.Ships.WATER_INGRESS_HULL_DAMAGE_FACTOR);
                 }
             }
         }

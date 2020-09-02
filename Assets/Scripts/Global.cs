@@ -4,6 +4,7 @@ public static class Global {
     }
     public static class Ships {
         public const float WATER_INGRESS_STRENGTH = 0.00004f;
+        public const float WATER_INGRESS_HULL_DAMAGE_FACTOR = 0.25f;
     }
     public static class Penetration {
         /// <summary>
