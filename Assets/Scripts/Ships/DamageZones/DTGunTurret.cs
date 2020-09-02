@@ -10,7 +10,7 @@ namespace Ships.DamageZones {
 
         public override void InflictDamage(DamageZone damageZone, Projectiles.Projectile projectile, DamageParams param = default) {
             GunTurret turret = ((GameObject)param.oparam[0]).GetComponent<GunTurret>();
-            if (PenetrationCheck(projectile, turret.TurretArmor)) {
+            if (PenetrationCheck(projectile, turret.TurretArmor, Vector3.Angle(damageZone.Ship.transform.forward, projectile.transform.forward))) {
                 // Hit particle effect
 
 
