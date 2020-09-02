@@ -90,6 +90,7 @@ namespace Ships.ShipSystems {
             while (target != null) {
                 // Wait until all turrets reloaded and aimed...
                 while (!ship.Armament.GunTurretsReadyAndAimed()) yield return new WaitForSecondsRealtime(waitForTurretsCheckInterval);
+                if (target == null || target.Equals(null)) break;
 
                 // Calculate estimated values
                 directDist = Vector3.Distance(ship.WorldPos, target.WorldPos);
@@ -124,6 +125,7 @@ namespace Ships.ShipSystems {
 
                 // Wait until all turrets reloaded and aimed...
                 while (!ship.Armament.GunTurretsReadyAndAimed()) yield return new WaitForSecondsRealtime(waitForTurretsCheckInterval);
+                if (target == null || target.Equals(null)) break;
 
                 // Fire volley!
                 lastVolleyProjectiles = 0;
@@ -139,6 +141,7 @@ namespace Ships.ShipSystems {
 
                 // Wait until all shots hit...
                 while (lastVolleyResults.Count < lastVolleyProjectiles) yield return new WaitForSecondsRealtime(waitForProjectileHitsCheckInterval);
+                if (target == null || target.Equals(null)) break;
 
                 // Find best shot and apply offset values
                 bestDist = float.MaxValue;
@@ -157,6 +160,9 @@ namespace Ships.ShipSystems {
                     bestElevOffset = tos.elevOffset;
                 }
             }
+
+            target = null;
+            ResetTargeting();
         }
 
         private void TurretFiredHandler(GunTurret turret, Projectile[] projectiles) {

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Ocean;
 using Ocean.OceanPhysics;
 using Ships.ShipSystems;
 
@@ -154,11 +155,12 @@ namespace Ships {
         }
 
         private IEnumerator SinkingRoutine() {
-            while (floatPhysics.ForceFactor > 1f) {
+            while (transform.position.y > OceanManager.OceanSurfaceYPos - Global.Ships.SINKING_DESTROY_SHIP_DEPTH) {
                 floatPhysics.ForceFactor *= Global.Ships.SINKING_FORCE_FACTOR_REDUCTION_FACTOR;
                 yield return new WaitForFixedUpdate();
             }
             floatPhysics.ForceFactor = 0f;
+            Destroy(gameObject);
         }
 
         [System.Serializable]

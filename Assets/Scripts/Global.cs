@@ -12,6 +12,7 @@ public static class Global {
         /// 0.5 = force factor is halfed each fixed update
         /// </summary>
         public const float SINKING_FORCE_FACTOR_REDUCTION_FACTOR = 0.999f;
+        public const ushort SINKING_DESTROY_SHIP_DEPTH = 300;
     }
     public static class Penetration {
         /// <summary>
