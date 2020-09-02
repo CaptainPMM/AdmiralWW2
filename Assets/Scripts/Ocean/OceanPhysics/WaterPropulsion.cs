@@ -20,10 +20,12 @@ namespace Ocean.OceanPhysics {
 
         [Header("Current state")]
         [SerializeField] private bool engineOn = true;
+        [SerializeField] private bool engineDisabled = false;
         [SerializeField, Range(0f, 1f)] private float throttle = 0f;
         [SerializeField, Range(-90f, 90f)] private float rudderAngle = 0f;
 
         public bool EngineOn { get => engineOn; set => engineOn = value; }
+        public bool EngineDisabled { get => engineDisabled; }
         public float Throttle { get => throttle; set => targetThrottle = Mathf.Clamp01(value); }
         public float RudderAngle { get => rudderAngle; set => targetRudderAngle = Mathf.Clamp(value, -maxRudderAngle, maxRudderAngle); }
 
@@ -47,11 +49,11 @@ namespace Ocean.OceanPhysics {
 
             if (ship.FloatPhysics.InWater) {
                 // Propeller is in water
-                if (engineOn && throttle > 0f) ApplyThrottleForce();
+                if (engineOn && !engineDisabled && throttle > 0f) ApplyThrottleForce();
                 if (rudderAngle != 0f) ApplyRudderForce();
             }
 
-            if (throttle > 0) {
+            if (!engineDisabled && throttle > 0) {
                 foreach (Transform t in propellerTransforms) t.Rotate(0, 0, throttle * propellerRotationSpeed, Space.Self);
             }
         }
@@ -80,6 +82,10 @@ namespace Ocean.OceanPhysics {
 
         private void CalcForceWorldPos() {
             forceWorldPos = ship.Rigidbody.transform.TransformPoint(propellerOffset);
+        }
+
+        public void DisableEngine() {
+            engineDisabled = true;
         }
 
         private void OnDrawGizmosSelected() {
