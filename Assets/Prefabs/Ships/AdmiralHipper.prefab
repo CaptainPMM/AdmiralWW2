@@ -610,6 +610,7 @@ MonoBehaviour:
     speed: 1
   waterDisplaceEffectsDist: 10
   gunFireEffectSize: 1
+  disabled: 0
   engaged: 0
   stabilization: 0
   fire: 0
@@ -864,6 +865,7 @@ MonoBehaviour:
     speed: 1
   waterDisplaceEffectsDist: 10
   gunFireEffectSize: 1
+  disabled: 0
   engaged: 0
   stabilization: 0
   fire: 0
@@ -1429,6 +1431,7 @@ MonoBehaviour:
     speed: 1
   waterDisplaceEffectsDist: 10
   gunFireEffectSize: 1
+  disabled: 0
   engaged: 0
   stabilization: 0
   fire: 0
@@ -2048,6 +2051,7 @@ MonoBehaviour:
     speed: 1
   waterDisplaceEffectsDist: 10
   gunFireEffectSize: 1
+  disabled: 0
   engaged: 0
   stabilization: 0
   fire: 0
@@ -3918,6 +3922,14 @@ PrefabInstance:
       propertyPath: targeting
       value: 
       objectReference: {fileID: 6083915761642122981}
+    - target: {fileID: 2000458003251877195, guid: d18fbdeb915834f109452bfe7e3fab54, type: 3}
+      propertyPath: hullArmor
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 2000458003251877195, guid: d18fbdeb915834f109452bfe7e3fab54, type: 3}
+      propertyPath: maxHullHitpoints
+      value: 5000
+      objectReference: {fileID: 0}
     - target: {fileID: 3152973512260159280, guid: d18fbdeb915834f109452bfe7e3fab54, type: 3}
       propertyPath: m_IsActive
       value: 0

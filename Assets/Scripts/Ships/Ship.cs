@@ -28,18 +28,37 @@ namespace Ships {
         [SerializeField] private ShipDesignation shipDesignation = ShipDesignation.None;
         [SerializeField] private string shipName = "";
         [SerializeField] private string shipClass = "";
+        /// <summary>
+        /// Durability of the ship (hull), each projectile that hits reduces this number by the projectiles caliber
+        /// </summary>
+        [SerializeField] private uint maxHullHitpoints = 5000;
+        /// <summary>
+        /// Armor thickness in mm of the hull
+        /// </summary>
+        [SerializeField] private ushort hullArmor = 80;
 
         public ShipType Type => type;
         public Nationality Nationality => nationality;
         public ShipDesignation ShipDesignation => shipDesignation;
         public string ShipName => shipName;
         public string ShipClass => shipClass;
+        public uint MaxHullHitpoints => maxHullHitpoints;
+        public ushort HullArmor => hullArmor;
 
         [Header("Current state")]
         [SerializeField] private ushort course;
+        /// <summary>
+        /// Remaining hitpoints. Durability of the ship (hull), each projectile that hits reduces this number by the projectiles caliber
+        /// </summary>
+        [SerializeField] private uint hullHitpoints;
 
         public float Speed => rb.velocity.magnitude;
         public ushort Course => course;
+        /// <summary>
+        /// Remaining hitpoints. Durability of the ship (hull), each projectile that hits reduces this number by the projectiles caliber
+        /// </summary>
+        public uint HullHitpoints => hullHitpoints;
+        public void DamageHull(uint damage) { hullHitpoints -= damage; }
 
         public GameObject GameObject => gameObject;
         public Vector3 WorldPos => transform.position;
@@ -57,6 +76,7 @@ namespace Ships {
 
         private void Start() {
             floatPhysics.OnInWaterChange += OnInWaterChangeHandler;
+            hullHitpoints = maxHullHitpoints;
         }
 
         private void FixedUpdate() {

@@ -260,7 +260,10 @@ MonoBehaviour:
   shipDesignation: 0
   shipName: Default
   shipClass: Default Class
+  maxHullHitpoints: 1800
+  hullArmor: 40
   course: 0
+  hullHitpoints: 0
 --- !u!114 &2000458003251877188
 MonoBehaviour:
   m_ObjectHideFlags: 0
