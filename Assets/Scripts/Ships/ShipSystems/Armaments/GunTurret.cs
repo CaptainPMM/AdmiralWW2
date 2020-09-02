@@ -115,6 +115,7 @@ namespace Ships.ShipSystems.Armaments {
         /// Accuracy of the guns, (0-1)
         /// </summary>
         public float GunsPrecision => gunsPrecision;
+        public float ShipRecoil => shipRecoil;
         /// <summary>
         /// The thickness of the turret armor in millimeters (turretArmor/1000f => unity units/meters)
         /// </summary>

@@ -8,7 +8,6 @@ namespace Projectiles {
     public class Projectile : MonoBehaviour {
         private const float MAX_DISPERSION_ANGLE = 2f;
         private const float ADDITIONAL_GRAVITY_MULTIPLIER = 100f;
-        private const float DESTROY_DELAY_AFTER_HIT_OCEAN_SURFACE = 3f;
 
         /// <summary>
         /// Multiply the caliber with this value to scale the projectile model correctly
@@ -83,12 +82,16 @@ namespace Projectiles {
                 });
 
                 InvokeHitEvent();
-                Destroy(gameObject, DESTROY_DELAY_AFTER_HIT_OCEAN_SURFACE);
+                Destroy(gameObject);
             }
         }
 
         public void InvokeHitEvent() {
             OnHit?.Invoke(this, transform.position);
+        }
+
+        public Vector3 GetPreviousPosition() {
+            return transform.position - rb.velocity * Time.fixedDeltaTime;
         }
     }
 }

@@ -377,6 +377,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gunFirePrefab: {fileID: 2814833915443997468, guid: 20b471cdead18457cab3eaf3e867f4a3, type: 3}
   waterSplashPrefab: {fileID: 6972235519330703799, guid: 907f9975f23b143b1a283602554b9a58, type: 3}
+  projectilePenPrefab: {fileID: 8472217910257071731, guid: ae2c0e70df62e4b57b414c1aa13747ef, type: 3}
+  projectileBouncePrefab: {fileID: 2904816674959960151, guid: afb4fd0b534774fa98698f2fc9fe9842, type: 3}
 --- !u!4 &585649287
 Transform:
   m_ObjectHideFlags: 0

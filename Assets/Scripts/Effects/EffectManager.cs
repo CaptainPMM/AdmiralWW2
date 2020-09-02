@@ -7,6 +7,8 @@ namespace Effects {
         [Header("Setup")]
         [SerializeField] private GameObject gunFirePrefab = null;
         [SerializeField] private GameObject waterSplashPrefab = null;
+        [SerializeField] private GameObject projectilePenPrefab = null;
+        [SerializeField] private GameObject projectileBouncePrefab = null;
 
         private void Awake() {
             Inst = this;
@@ -27,6 +29,24 @@ namespace Effects {
             eGO.transform.position = worldTransform.position;
             eGO.transform.rotation = worldTransform.rotation;
             eGO.transform.localScale = worldTransform.localScale;
+            Destroy(eGO, eGO.GetComponent<ParticleSystem>().main.duration);
+        }
+
+        public static void InitProjectilePenEffect(Projectiles.Projectile projectile) {
+            GameObject eGO = Instantiate(Inst.projectilePenPrefab, Inst.transform);
+            eGO.name = "ProjectilePenEffect";
+            eGO.transform.position = projectile.GetPreviousPosition();
+            eGO.transform.rotation = projectile.transform.rotation;
+            eGO.transform.localScale *= projectile.FromTurret.GunsCaliber / Global.Effects.PROJECTILE_PEN_EFFECT_SIZEMOD_REFERENCE_CALIBER;
+            Destroy(eGO, eGO.GetComponent<ParticleSystem>().main.duration);
+        }
+
+        public static void InitProjectileBounceEffect(Projectiles.Projectile projectile) {
+            GameObject eGO = Instantiate(Inst.projectileBouncePrefab, Inst.transform);
+            eGO.name = "ProjectileBounceEffect";
+            eGO.transform.position = projectile.GetPreviousPosition();
+            eGO.transform.rotation = projectile.transform.rotation;
+            eGO.transform.localScale *= projectile.FromTurret.GunsCaliber / Global.Effects.PROJECTILE_PEN_EFFECT_SIZEMOD_REFERENCE_CALIBER;
             Destroy(eGO, eGO.GetComponent<ParticleSystem>().main.duration);
         }
     }
