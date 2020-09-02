@@ -15,6 +15,8 @@ namespace Ocean.OceanPhysics {
         [SerializeField] private List<FloatPoint> floatPoints = new List<FloatPoint>();
         [SerializeField] private float forceFactor = 5000f;
 
+        public float ForceFactor { get => forceFactor; set => forceFactor = Mathf.Max(0f, value); }
+
         /// <summary>
         /// Ignore wave lengths below this value, usually the boat width
         /// </summary>

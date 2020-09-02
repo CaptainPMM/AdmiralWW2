@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Ocean.OceanPhysics;
@@ -47,19 +48,27 @@ namespace Ships {
         public ushort HullArmor => hullArmor;
 
         [Header("Current state")]
-        [SerializeField] private ushort course;
+        [SerializeField] private bool destroyed = false;
+        [SerializeField] private ushort course = 0;
         /// <summary>
         /// Remaining hitpoints. Durability of the ship (hull), each projectile that hits reduces this number by the projectiles caliber
         /// </summary>
         [SerializeField] private float hullHitpoints;
 
         public float Speed => rb.velocity.magnitude;
+        public bool Destroyed => destroyed;
         public ushort Course => course;
         /// <summary>
         /// Remaining hitpoints. Durability of the ship (hull), each projectile that hits reduces this number by the projectiles caliber
         /// </summary>
         public float HullHitpoints => hullHitpoints;
-        public void DamageHull(float damage) { hullHitpoints = Mathf.Max(0f, hullHitpoints - damage); }
+        public void DamageHull(float damage) {
+            float newHullHP = hullHitpoints - damage;
+            if (newHullHP <= 0f) {
+                DestroyShip();
+                hullHitpoints = 0f;
+            } else hullHitpoints = newHullHP;
+        }
         [SerializeField] private List<WaterIngressSection> waterIngressSections = new List<WaterIngressSection>();
         public void AddWaterIngress(byte sectionID) { waterIngressSections.Find(w => w.sectionID == sectionID).numHoles++; }
 
@@ -125,6 +134,31 @@ namespace Ships {
 
         private void OnInWaterChangeHandler(bool inWater) {
             oceanInputs.SetEnabled(inWater);
+        }
+
+        [ContextMenu("Destroy Ship")]
+        private void DestroyShip() {
+            if (!destroyed) {
+                destroyed = true;
+
+                // Disable ship components
+                propulsion.enabled = false;
+                autopilot.enabled = false;
+                armament.SetEngageGunTurrets(false);
+                targeting.enabled = false;
+                targeting.StopAllCoroutines();
+
+                // Sink ship
+                StartCoroutine(SinkingRoutine());
+            }
+        }
+
+        private IEnumerator SinkingRoutine() {
+            while (floatPhysics.ForceFactor > 1f) {
+                floatPhysics.ForceFactor *= Global.Ships.SINKING_FORCE_FACTOR_REDUCTION_FACTOR;
+                yield return new WaitForFixedUpdate();
+            }
+            floatPhysics.ForceFactor = 0f;
         }
 
         [System.Serializable]

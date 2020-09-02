@@ -5,6 +5,13 @@ public static class Global {
     public static class Ships {
         public const float WATER_INGRESS_STRENGTH = 0.00004f;
         public const float WATER_INGRESS_HULL_DAMAGE_FACTOR = 0.25f;
+        /// <summary>
+        /// 0 = immediatley set force factor of floating physics to 0,
+        /// 1 = no force factor change,
+        /// >1 = force factor even increases,
+        /// 0.5 = force factor is halfed each fixed update
+        /// </summary>
+        public const float SINKING_FORCE_FACTOR_REDUCTION_FACTOR = 0.999f;
     }
     public static class Penetration {
         /// <summary>
