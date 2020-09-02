@@ -691,8 +691,6 @@ MonoBehaviour:
     param:
       fparam:
       - 2
-      - 0
-      - 1
       oparam: []
   - probability: 0.25
     damageType: 3
@@ -1316,11 +1314,7 @@ MonoBehaviour:
     damageType: 1
     param:
       fparam:
-      - 4
-      - 4
-      - 5
-      - 6
-      - 7
+      - 1
       oparam: []
 --- !u!1 &2616965454648857510
 GameObject:
@@ -1511,10 +1505,7 @@ MonoBehaviour:
     damageType: 1
     param:
       fparam:
-      - 3
-      - 2
-      - 3
-      - 8
+      - 0
       oparam: []
 --- !u!1 &3895326352262017121
 GameObject:
@@ -3789,6 +3780,30 @@ PrefabInstance:
     - target: {fileID: 2000458003251877188, guid: d18fbdeb915834f109452bfe7e3fab54, type: 3}
       propertyPath: rbDragInWater
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2000458003251877188, guid: d18fbdeb915834f109452bfe7e3fab54, type: 3}
+      propertyPath: floatPoints.Array.data[0].sectionID
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2000458003251877188, guid: d18fbdeb915834f109452bfe7e3fab54, type: 3}
+      propertyPath: floatPoints.Array.data[1].sectionID
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2000458003251877188, guid: d18fbdeb915834f109452bfe7e3fab54, type: 3}
+      propertyPath: floatPoints.Array.data[4].sectionID
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2000458003251877188, guid: d18fbdeb915834f109452bfe7e3fab54, type: 3}
+      propertyPath: floatPoints.Array.data[5].sectionID
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2000458003251877188, guid: d18fbdeb915834f109452bfe7e3fab54, type: 3}
+      propertyPath: floatPoints.Array.data[6].sectionID
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2000458003251877188, guid: d18fbdeb915834f109452bfe7e3fab54, type: 3}
+      propertyPath: floatPoints.Array.data[7].sectionID
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2000458003251877189, guid: d18fbdeb915834f109452bfe7e3fab54, type: 3}
       propertyPath: m_Mass

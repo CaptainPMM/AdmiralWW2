@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using Ocean.OceanPhysics;
 using Ships.ShipSystems;
@@ -58,7 +59,9 @@ namespace Ships {
         /// Remaining hitpoints. Durability of the ship (hull), each projectile that hits reduces this number by the projectiles caliber
         /// </summary>
         public uint HullHitpoints => hullHitpoints;
-        public void DamageHull(uint damage) { hullHitpoints -= damage; }
+        public void DamageHull(uint damage) { hullHitpoints = (uint)Mathf.Max(0f, (int)hullHitpoints - damage); }
+        [SerializeField] private List<WaterIngressSection> waterIngressSections = new List<WaterIngressSection>();
+        public void AddWaterIngress(byte sectionID) { waterIngressSections.Find(w => w.sectionID == sectionID).numHoles++; }
 
         public GameObject GameObject => gameObject;
         public Vector3 WorldPos => transform.position;
@@ -77,10 +80,23 @@ namespace Ships {
         private void Start() {
             floatPhysics.OnInWaterChange += OnInWaterChangeHandler;
             hullHitpoints = maxHullHitpoints;
+
+            // Init water ingress corridors
+            for (int i = 0; i < floatPhysics.NumFloatPointSections; i++) {
+                waterIngressSections.Add(new WaterIngressSection() {
+                    sectionID = (byte)i,
+                    floatPoints = floatPhysics.GetFloatPointsBySectionID((byte)i),
+                    initFloatPointWeights = new List<float>(),
+                    numHoles = 0,
+                    waterLevel = 0f
+                });
+                waterIngressSections[i].floatPoints.ForEach(fp => waterIngressSections[i].initFloatPointWeights.Add(fp.weight));
+            }
         }
 
         private void FixedUpdate() {
             UpdateCourse();
+            HandleWaterIngress();
         }
 
         private void UpdateCourse() {
@@ -89,8 +105,31 @@ namespace Ships {
             else course = (ushort)(360 + signedAngle);
         }
 
+        private void HandleWaterIngress() {
+            foreach (WaterIngressSection section in waterIngressSections) {
+                if (section.numHoles > 0) {
+                    // Fill up section with water
+                    section.waterLevel = Mathf.Min(1f, section.waterLevel + section.numHoles * Global.Ships.WATER_INGRESS_STRENGTH);
+                }
+                if (section.waterLevel > 0) {
+                    for (int i = 0; i < section.floatPoints.Count; i++) {
+                        section.floatPoints[i].weight = Mathf.Lerp(0f, section.initFloatPointWeights[i], 1f - section.waterLevel);
+                    }
+                }
+            }
+        }
+
         private void OnInWaterChangeHandler(bool inWater) {
             oceanInputs.SetEnabled(inWater);
+        }
+
+        [System.Serializable]
+        public class WaterIngressSection {
+            public byte sectionID;
+            public List<FloatPhysics.FloatPoint> floatPoints;
+            public List<float> initFloatPointWeights;
+            public int numHoles;
+            public float waterLevel;
         }
     }
 }

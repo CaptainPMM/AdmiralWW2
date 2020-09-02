@@ -14,7 +14,7 @@ namespace Ships.DamageZones {
                 EffectManager.InitProjectilePenEffect(projectile);
                 damageZone.Ship.Rigidbody.AddForceAtPosition(projectile.Velocity * projectile.FromTurret.GunsCaliber * damageZone.Ship.Armament.GunTurrets[0].ShipRecoil, projectile.GetPreviousPosition(), ForceMode.Impulse);
 
-                // Add ship damage
+                // Disable rudder
                 damageZone.Ship.Propulsion.DisableRudder();
             } else {
                 // Bounce effects

@@ -2,6 +2,9 @@ public static class Global {
     public static class LayerNames {
         public const string PROJECTILES = "Projectiles";
     }
+    public static class Ships {
+        public const float WATER_INGRESS_STRENGTH = 0.00004f;
+    }
     public static class Penetration {
         /// <summary>
         /// 0f = min/off (no reduction),

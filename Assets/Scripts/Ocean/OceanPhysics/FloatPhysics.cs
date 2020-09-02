@@ -43,9 +43,12 @@ namespace Ocean.OceanPhysics {
         private Vector3[] sampleResDisplacements;
         private Vector3[] sampleResVelocities;
 
+        private Dictionary<byte, List<FloatPoint>> floatPointsBySectionID = new Dictionary<byte, List<FloatPoint>>();
+        public byte NumFloatPointSections => (byte)floatPointsBySectionID.Count;
+        public List<FloatPoint> GetFloatPointsBySectionID(byte sectionID) { return floatPointsBySectionID[sectionID]; }
+
         private bool newInWater;
         private float initRbDrag; // Air drag (not suitable for water)
-
 
         /* FloatingObjectBase overrides */
         public override float ObjectWidth => minWaveLength;
@@ -58,6 +61,12 @@ namespace Ocean.OceanPhysics {
 
         private void Awake() {
             if (rb == null) Debug.LogWarning("FloatPhysics script needs an assigned rigidbody to apply forces on");
+
+            // Assign float points to section mapping dict
+            foreach (FloatPoint p in floatPoints) {
+                if (floatPointsBySectionID.ContainsKey(p.sectionID)) floatPointsBySectionID[p.sectionID].Add(p);
+                else floatPointsBySectionID.Add(p.sectionID, new List<FloatPoint>() { p });
+            }
         }
 
         private void Start() {
@@ -149,8 +158,8 @@ namespace Ocean.OceanPhysics {
             /// Offset position from the parent gameobject
             /// </summary>
             public Vector3 offsetPos;
-
             public float weight = 1f;
+            public byte sectionID;
         }
     }
 }
