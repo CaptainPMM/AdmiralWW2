@@ -107,13 +107,13 @@ namespace Ships {
 
         private void HandleWaterIngress() {
             foreach (WaterIngressSection section in waterIngressSections) {
-                if (section.numHoles > 0) {
-                    // Fill up section with water
-                    section.waterLevel = Mathf.Min(1f, section.waterLevel + section.numHoles * Global.Ships.WATER_INGRESS_STRENGTH);
-                }
-                if (section.waterLevel > 0) {
-                    for (int i = 0; i < section.floatPoints.Count; i++) {
-                        section.floatPoints[i].weight = Mathf.Lerp(0f, section.initFloatPointWeights[i], 1f - section.waterLevel);
+                if (section.waterLevel < 1f) {
+                    if (section.numHoles > 0) {
+                        // Fill up section with water
+                        section.waterLevel = Mathf.Min(1f, section.waterLevel + section.numHoles * Global.Ships.WATER_INGRESS_STRENGTH);
+                        for (int i = 0; i < section.floatPoints.Count; i++) {
+                            section.floatPoints[i].weight = Mathf.Lerp(0f, section.initFloatPointWeights[i], 1f - section.waterLevel);
+                        }
                     }
                 }
             }
