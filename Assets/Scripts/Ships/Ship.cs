@@ -7,6 +7,9 @@ using Ships.ShipSystems;
 
 namespace Ships {
     public class Ship : MonoBehaviour, ITarget {
+        public delegate void ShipSinkingEvent(Ship ship);
+        public event ShipSinkingEvent OnSinking;
+
         [Header("Setup")]
         [SerializeField] private Rigidbody rb = null;
         [SerializeField] private FloatPhysics floatPhysics = null;
@@ -151,6 +154,8 @@ namespace Ships {
 
                 // Sink ship
                 StartCoroutine(SinkingRoutine());
+
+                OnSinking.Invoke(this);
             }
         }
 
