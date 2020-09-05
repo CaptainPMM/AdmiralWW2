@@ -3945,6 +3945,10 @@ PrefabInstance:
       propertyPath: maxHullHitpoints
       value: 5000
       objectReference: {fileID: 0}
+    - target: {fileID: 2699623411222123251, guid: d18fbdeb915834f109452bfe7e3fab54, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 45
+      objectReference: {fileID: 0}
     - target: {fileID: 3152973512260159280, guid: d18fbdeb915834f109452bfe7e3fab54, type: 3}
       propertyPath: m_IsActive
       value: 0
