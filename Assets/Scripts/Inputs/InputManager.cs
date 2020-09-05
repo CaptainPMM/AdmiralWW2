@@ -1,19 +1,31 @@
 using UnityEngine;
 using Cam;
+using Ships;
 
 namespace Inputs {
     public class InputManager : MonoBehaviour {
         public static InputManager Inst { get; private set; }
 
+        [Header("Setup")]
+        [SerializeField] private LayerMask shipsLayer = new LayerMask();
+
         [Header("Current state")]
         [SerializeField] private bool camSpeedModMultiplierActive = false;
+        [SerializeField] private Ship selectedShip = null;
+
+        private Camera mainCam = null;
 
         private void Awake() {
             Inst = this;
         }
 
+        private void Start() {
+            mainCam = CamController.MainCam;
+        }
+
         private void Update() {
             HandleCamInputs();
+            HandleMouseInputs();
         }
 
         private void HandleCamInputs() {
@@ -49,6 +61,23 @@ namespace Inputs {
                 CamController.Inst.RotateAxisX(-Input.GetAxis("Mouse Y"), camSpeedModMultiplierActive);
                 CamController.Inst.RotateAxisY(Input.GetAxis("Mouse X"), camSpeedModMultiplierActive);
             }
+        }
+
+        private void HandleMouseInputs() {
+            if (Input.GetMouseButtonDown(0)) {
+                Ray ray = mainCam.ScreenPointToRay(Input.mousePosition);
+                RaycastHit hit;
+                if (Physics.Raycast(ray, out hit, mainCam.farClipPlane, shipsLayer, QueryTriggerInteraction.Collide)) {
+                    Ship ship = hit.collider.gameObject.GetComponentInParent<Ship>();
+                    SelectShip(ship?.PlayerTag == GameManager.ThisPlayerTag ? ship : null);
+                } else SelectShip(null);
+            }
+        }
+
+        private void SelectShip(Ship ship) {
+            if (selectedShip != null) selectedShip.UI.SetSelected(false);
+            selectedShip = ship;
+            if (ship != null) selectedShip.UI.SetSelected(true);
         }
     }
 }

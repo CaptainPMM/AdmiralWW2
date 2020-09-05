@@ -1,5 +1,7 @@
 public static class Global {
     public static class LayerNames {
+        public const string UI = "UI";
+        public const string SHIPS = "Ships";
         public const string PROJECTILES = "Projectiles";
     }
     public static class Ships {

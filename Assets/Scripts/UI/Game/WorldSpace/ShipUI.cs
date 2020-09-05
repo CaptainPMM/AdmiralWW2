@@ -46,5 +46,15 @@ namespace UI.Game.WorldSpace {
             healthbar.fillRect.gameObject.SetActive(false);
             enabled = false;
         }
+
+        public void SetSelected(bool selected) {
+            if (selected) {
+                Color color = GameManager.GetPlayer(ship.PlayerTag).Color;
+                color.r = 1f - color.r;
+                color.g = 1f - color.g;
+                color.b = 1f - color.b;
+                shipNameTxt.color = color;
+            } else shipNameTxt.color = Color.white;
+        }
     }
 }

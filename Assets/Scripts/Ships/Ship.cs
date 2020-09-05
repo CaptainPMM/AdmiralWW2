@@ -4,6 +4,7 @@ using UnityEngine;
 using Ocean;
 using Ocean.OceanPhysics;
 using Ships.ShipSystems;
+using UI.Game.WorldSpace;
 
 namespace Ships {
     public class Ship : MonoBehaviour, ITarget {
@@ -18,6 +19,7 @@ namespace Ships {
         [SerializeField] private ShipOceanInputs oceanInputs = null;
         [SerializeField] private Armament armament = null;
         [SerializeField] private TargetingSystem targeting = null;
+        [SerializeField] private ShipUI ui = null;
 
         public Rigidbody Rigidbody => rb;
         public FloatPhysics FloatPhysics => floatPhysics;
@@ -27,6 +29,7 @@ namespace Ships {
         public ShipOceanInputs OceanInputs => oceanInputs;
         public Armament Armament => armament;
         public TargetingSystem Targeting => targeting;
+        public ShipUI UI => ui;
 
         [Header("Settings")]
         [SerializeField] private ShipType type = ShipType.Default;
@@ -90,6 +93,7 @@ namespace Ships {
             if (oceanInputs == null) Debug.LogWarning("Ship script needs an assigned ocean inputs handler");
             if (armament == null) Debug.LogWarning("Ship script needs an armament");
             if (targeting == null) Debug.LogWarning("Ship script needs an targeting system");
+            if (ui == null) Debug.LogWarning("Ship script needs an UI");
         }
 
         private void Start() {
