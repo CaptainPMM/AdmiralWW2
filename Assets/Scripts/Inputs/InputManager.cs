@@ -37,10 +37,10 @@ namespace Inputs {
 
             // Check cam scrolling
             if (Input.mouseScrollDelta.y != 0f) {
-                if (Input.mouseScrollDelta.y < 0f) CamController.Inst.ScrollUp(camSpeedModMultiplierActive);
+                if (Input.mouseScrollDelta.y > 0f) CamController.Inst.ScrollUp(camSpeedModMultiplierActive);
                 else CamController.Inst.ScrollDown(camSpeedModMultiplierActive);
             } else if (Input.mouseScrollDelta.x != 0 && camSpeedModMultiplierActive) {
-                if (Input.mouseScrollDelta.x < 0f) CamController.Inst.ScrollUp(camSpeedModMultiplierActive);
+                if (Input.mouseScrollDelta.x > 0f) CamController.Inst.ScrollUp(camSpeedModMultiplierActive);
                 else CamController.Inst.ScrollDown(camSpeedModMultiplierActive);
             }
 

@@ -40,7 +40,8 @@ namespace Cam {
         private void Update() {
             camRigTransform.position = Vector3.Lerp(camRigTransform.position, newPos, Time.deltaTime * inertia);
             mainCam.transform.localPosition = Vector3.Lerp(mainCam.transform.localPosition, new Vector3(0f, newScrollHeight, 0f), Time.deltaTime * inertia);
-            mainCam.transform.localRotation = Quaternion.Lerp(mainCam.transform.localRotation, Quaternion.Euler(newRotation), Time.deltaTime * inertia);
+            mainCam.transform.localRotation = Quaternion.Lerp(mainCam.transform.localRotation, Quaternion.Euler(newRotation.x, 0f, 0f), Time.deltaTime * inertia);
+            camRigTransform.rotation = Quaternion.Lerp(camRigTransform.rotation, Quaternion.Euler(0f, newRotation.y, 0f), Time.deltaTime * inertia);
         }
 
         public void MoveLeft(bool mod = false) {
