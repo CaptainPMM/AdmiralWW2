@@ -3,6 +3,7 @@ using UnityEngine;
 namespace Cam {
     public class CamController : MonoBehaviour {
         public static CamController Inst { get; private set; }
+        public static Camera MainCam => Inst.mainCam;
 
         [SerializeField] private Camera mainCam = null;
         [SerializeField] private Transform camRigTransform = null;
