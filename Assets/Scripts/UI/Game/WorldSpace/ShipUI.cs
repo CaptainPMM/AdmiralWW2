@@ -6,6 +6,7 @@ using TMPro;
 namespace UI.Game.WorldSpace {
     public class ShipUI : MonoBehaviour {
         [SerializeField] private Ship ship = null;
+        [SerializeField] private Image panel = null;
         [SerializeField] private TextMeshProUGUI shipNameTxt = null;
         [SerializeField] private Slider healthbar = null;
         [SerializeField] private TextMeshProUGUI healthTxt = null;
@@ -22,6 +23,11 @@ namespace UI.Game.WorldSpace {
             healthbar.maxValue = ship.MaxHullHitpoints;
             healthbar.value = healthbar.maxValue;
             UpdateHealthTxt();
+
+            Color playerColor = GameManager.GetPlayer(ship.PlayerTag).Color;
+            panel.color = new Color(playerColor.r, playerColor.g, playerColor.b, panel.color.a);
+            healthbar.fillRect.GetComponent<Image>().color = playerColor;
+
             ship.OnSinking += ShipSinkingHandler;
         }
 
@@ -31,7 +37,7 @@ namespace UI.Game.WorldSpace {
         }
 
         private void UpdateHealthTxt() {
-            healthTxt.text = ship.HullHitpoints + " / " + ship.MaxHullHitpoints;
+            healthTxt.text = (int)ship.HullHitpoints + " / " + ship.MaxHullHitpoints;
         }
 
         private void ShipSinkingHandler(Ship ship) {

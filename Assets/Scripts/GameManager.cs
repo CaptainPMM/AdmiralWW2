@@ -13,9 +13,9 @@ public class GameManager : MonoBehaviour {
     [Header("Current state")]
     [SerializeField] private Player thisPlayer = null;
 
-    public PlayerTag ThisPlayerTag => thisPlayerTag;
-    public Player ThisPlayer => thisPlayer;
-    public Player GetPlayer(PlayerTag tag) { return players.Find(p => p.Tag == tag); }
+    public static PlayerTag ThisPlayerTag => Inst.thisPlayerTag;
+    public static Player ThisPlayer => Inst.thisPlayer;
+    public static Player GetPlayer(PlayerTag tag) { return Inst.players.Find(p => p.Tag == tag); }
 
     private void Awake() {
         Inst = this;

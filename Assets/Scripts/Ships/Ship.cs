@@ -52,6 +52,7 @@ namespace Ships {
         public ushort HullArmor => hullArmor;
 
         [Header("Current state")]
+        [SerializeField] private PlayerTag playerTag = PlayerTag.Player0;
         [SerializeField] private bool destroyed = false;
         [SerializeField] private ushort course = 0;
         /// <summary>
@@ -59,6 +60,7 @@ namespace Ships {
         /// </summary>
         [SerializeField] private float hullHitpoints;
 
+        public PlayerTag PlayerTag => playerTag;
         public float Speed => rb.velocity.magnitude;
         public bool Destroyed => destroyed;
         public ushort Course => course;

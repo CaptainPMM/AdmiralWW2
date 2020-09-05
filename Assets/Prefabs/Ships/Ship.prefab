@@ -1594,6 +1594,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ship: {fileID: 2000458003251877195}
+  panel: {fileID: 646569811026358289}
   shipNameTxt: {fileID: 2648617141010164974}
   healthbar: {fileID: 1416919762983373205}
   healthTxt: {fileID: 8357178833158982591}
