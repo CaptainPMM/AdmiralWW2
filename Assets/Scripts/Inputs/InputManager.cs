@@ -13,6 +13,8 @@ namespace Inputs {
         [SerializeField] private bool camSpeedModMultiplierActive = false;
         [SerializeField] private Ship selectedShip = null;
 
+        public static Ship SelectedShip => Inst.selectedShip;
+
         private Camera mainCam = null;
 
         private void Awake() {
