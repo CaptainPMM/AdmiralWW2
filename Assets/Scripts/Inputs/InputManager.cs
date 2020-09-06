@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using Cam;
 using Ships;
+using UI.Game;
 
 namespace Inputs {
     public class InputManager : MonoBehaviour {
@@ -86,7 +87,12 @@ namespace Inputs {
         private void SelectShip(Ship ship) {
             if (selectedShip != null) selectedShip.UI.SetSelected(false);
             selectedShip = ship;
-            if (ship != null) selectedShip.UI.SetSelected(true);
+            if (ship != null) {
+                selectedShip.UI.SetSelected(true);
+                GameUI.Inst.SetShipSelectionVisible(true);
+            } else {
+                GameUI.Inst.SetShipSelectionVisible(false);
+            }
         }
     }
 }

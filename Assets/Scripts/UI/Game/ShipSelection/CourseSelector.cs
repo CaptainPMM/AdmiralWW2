@@ -3,7 +3,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using Inputs;
 
-namespace UI.Game.ShipSelectionPanels {
+namespace UI.Game.ShipSelection {
     public class CourseSelector : MonoBehaviour, IScrollHandler {
         [SerializeField] private Image compassNeedleImg = null;
         [SerializeField] private Image compassShipNeedleImg = null;
@@ -12,7 +12,7 @@ namespace UI.Game.ShipSelectionPanels {
             if (InputManager.SelectedShip) {
                 compassNeedleImg.rectTransform.rotation = Quaternion.Euler(0f, 0f, 360 - InputManager.SelectedShip.Autopilot.Course);
                 compassShipNeedleImg.rectTransform.rotation = Quaternion.Euler(0f, 0f, 360 - InputManager.SelectedShip.Course);
-            } else enabled = false;
+            } else GameUI.Inst.SetShipSelectionVisible(false);
         }
 
         private void FixedUpdate() {
