@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 using Cam;
 using Ships;
 
@@ -13,7 +14,7 @@ namespace Inputs {
         [SerializeField] private bool camSpeedModMultiplierActive = false;
         [SerializeField] private Ship selectedShip = null;
 
-        public static Ship SelectedShip => Inst.selectedShip;
+        public static Ship SelectedShip => Inst?.selectedShip;
 
         private Camera mainCam = null;
 
@@ -50,12 +51,14 @@ namespace Inputs {
             }
 
             // Check cam scrolling
-            if (Input.mouseScrollDelta.y != 0f) {
-                if (Input.mouseScrollDelta.y > 0f) CamController.Inst.ScrollUp(camSpeedModMultiplierActive);
-                else CamController.Inst.ScrollDown(camSpeedModMultiplierActive);
-            } else if (Input.mouseScrollDelta.x != 0 && camSpeedModMultiplierActive) {
-                if (Input.mouseScrollDelta.x > 0f) CamController.Inst.ScrollUp(camSpeedModMultiplierActive);
-                else CamController.Inst.ScrollDown(camSpeedModMultiplierActive);
+            if (!MouseHoversUI()) {
+                if (Input.mouseScrollDelta.y != 0f) {
+                    if (Input.mouseScrollDelta.y > 0f) CamController.Inst.ScrollUp(camSpeedModMultiplierActive);
+                    else CamController.Inst.ScrollDown(camSpeedModMultiplierActive);
+                } else if (Input.mouseScrollDelta.x != 0 && camSpeedModMultiplierActive) {
+                    if (Input.mouseScrollDelta.x > 0f) CamController.Inst.ScrollUp(camSpeedModMultiplierActive);
+                    else CamController.Inst.ScrollDown(camSpeedModMultiplierActive);
+                }
             }
 
             // Check cam rotating
@@ -66,7 +69,7 @@ namespace Inputs {
         }
 
         private void HandleMouseInputs() {
-            if (Input.GetMouseButtonDown(0)) {
+            if (Input.GetMouseButtonDown(0) && !MouseHoversUI()) {
                 Ray ray = mainCam.ScreenPointToRay(Input.mousePosition);
                 RaycastHit hit;
                 if (Physics.Raycast(ray, out hit, mainCam.farClipPlane, shipsLayer, QueryTriggerInteraction.Collide)) {
@@ -74,6 +77,10 @@ namespace Inputs {
                     SelectShip(ship?.PlayerTag == GameManager.ThisPlayerTag ? ship : null);
                 } else SelectShip(null);
             }
+        }
+
+        private bool MouseHoversUI() {
+            return EventSystem.current.IsPointerOverGameObject();
         }
 
         private void SelectShip(Ship ship) {
