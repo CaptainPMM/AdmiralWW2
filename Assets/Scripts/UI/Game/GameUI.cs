@@ -20,13 +20,16 @@ namespace UI.Game {
 
         public void SetShipSelectionVisible(bool visible) {
             shipSelection.SetActive(visible);
-            SetCurrShipTarget(visible ? InputManager.SelectedShip.Targeting.TargetGO?.GetComponent<Ship>() : null); // Currently only ship targets are supported!
+            GameObject selectedShipTargetGO = InputManager.SelectedShip?.Targeting.TargetGO;
+            if (visible && selectedShipTargetGO != null && !selectedShipTargetGO.Equals(null)) {
+                SetCurrShipTarget(selectedShipTargetGO.GetComponent<Ship>()); // Currently only ship targets are supported!
+            } else SetCurrShipTarget(null);
         }
 
         public void SetCurrShipTarget(Ship ship) {
-            if (currShipTarget != null) currShipTarget.UI.SetSelected(false);
+            if (currShipTarget != null && !currShipTarget.Equals(null)) currShipTarget.UI.SetSelected(false);
             currShipTarget = ship;
-            if (currShipTarget != null) currShipTarget.UI.SetSelected(true);
+            if (currShipTarget != null && !currShipTarget.Equals(null)) currShipTarget.UI.SetSelected(true);
         }
     }
 }

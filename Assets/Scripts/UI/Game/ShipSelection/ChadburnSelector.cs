@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,9 +12,13 @@ namespace UI.Game.ShipSelection {
 
         private void OnEnable() {
             if (InputManager.SelectedShip) {
-                toggleGroup.GetFirstActiveToggle().isOn = false;
-                GetToggleByChadburn(InputManager.SelectedShip.Autopilot.Chadburn).isOn = true;
+                StartCoroutine(DelayedChadburnSelectorSetter(InputManager.SelectedShip.Autopilot.Chadburn));
             } else GameUI.Inst?.SetShipSelectionVisible(false);
+        }
+
+        private IEnumerator DelayedChadburnSelectorSetter(Autopilot.ChadburnSetting chadburnSetting) {
+            yield return new WaitForEndOfFrame();
+            GetToggleByChadburn(chadburnSetting).isOn = true;
         }
 
         private Toggle GetToggleByChadburn(Autopilot.ChadburnSetting chadburn) {

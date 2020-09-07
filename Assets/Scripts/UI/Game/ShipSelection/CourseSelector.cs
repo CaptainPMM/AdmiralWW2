@@ -23,7 +23,7 @@ namespace UI.Game.ShipSelection {
         }
 
         private void UpdateTargetIndicator() {
-            if (InputManager.SelectedShip.Targeting.Target != null) {
+            if (InputManager.SelectedShip.Targeting.Target != null && !InputManager.SelectedShip.Targeting.Target.Equals(null)) {
                 compassTargetIndicatorImg.rectTransform.rotation = Quaternion.Euler(0f, 0f, compassShipNeedleImg.rectTransform.localRotation.eulerAngles.z - Vector3.SignedAngle(InputManager.SelectedShip.transform.forward, (InputManager.SelectedShip.Targeting.TargetGO.transform.position - InputManager.SelectedShip.transform.position).normalized, Vector3.up));
                 compassTargetIndicatorImg.gameObject.SetActive(true);
             } else compassTargetIndicatorImg.gameObject.SetActive(false);
