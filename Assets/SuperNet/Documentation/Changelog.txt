@@ -1,0 +1,60 @@
+# Changelog
+
+## [1.2] - 2020-08-09
+### Netcode
+- Peers now keep the connection open for a short while after receiving a disconnect request
+- All allocations across all peers on the host are now pooled via a single Allocator instance
+- Added ICryptoRandom and CryptoRandom to reuse the random number generator
+- CryptoRSA is now lazy-initialized to avoid initialization when authentication isn't used
+- Added inline Curve25519 methods for key generation to avoid extra allocations
+- IPResolver async methods can now be cancelled with a token
+- IPResolver GetLocalAddress now takes a port and constructs an IPEndPoint
+- Writer and Reader now compile on all Unity platforms
+- Added Encrypted and Authenticate fields to ConnectionRequest
+- Connection requests can now be accepted regardless of their encryption status
+- A disposed connection request can now still be rejected
+- Host ticks are no longer in unix time
+- Added internal access modifier to internal fields and methods
+- Added SuperNet assembly definition to prevent access to internal fields and methods
+- Exception messages now include extra information with string.Format()
+- MessageSent.SendCount renamed to Attempts
+- All spawned tasks now use PreferFairness to reduce latency
+### Events
+- Added OnHostShutdown event
+- OnPeerUpdateRTT doesn't have old rtt anymore
+- Removed ticks from OnHostReceiveUnconnected and OnHostReceiveBroadcast events
+### PeerConfig
+- New DisconnectDelay value controlling how long a connection stays open after a disconnect
+- Removed BuffersExpandLength, BuffersMaxLength, ReceivePoolCount values in favor of the new Allocator
+- Removed FragmentMaxCount, FragmentMaxLength values in favor of the new Allocator
+### HostConfig
+- Removed BuffersExpandLength, BuffersMaxLength, ReceivePoolLength values in favor of the new Allocator
+- Removed Authenticator, Compressor, Exchanger values in favor of internal initialization
+- Removed Authentication value (now automatically enabled if public or private keys are set)
+- Removed UnconnectedTimed (now always disabled as ticks are inaccurate)
+- Renamed ReceivePoolCount to ReceiveCount as it has nothing to do with the array pool anymore
+- Five new allocator values
+- New ReceiveMTU value
+### Examples & Documentation
+- Added chat server program that can be compiled without Unity
+- Arena example rewritten with easier to understand code
+- Arena relay program now has cleaner console output
+
+## [1.1] - 2020-07-27
+### Netcode
+- IPResolver async methods now use DNS.GetHostAddressesAsync
+- Added IPResolver method to get the local (LAN) IPAddress
+- Removed MessageType from the MessageReceived handle as it was always MessageType.Custom
+- Ordered reliable messages that come out of order are now properly reassembled back into order
+- New PeerConfig.OrderedDelayMax and PeerConfig.OrderedDelayTimeout configuration values
+- Fixed bug where broadcast didn't work with CRC32 enabled
+### Examples & Documentation
+- Created changelog and readme
+- Moved all examples into the SuperNet.Examples namespace
+- New Chat example with separate server and client scenes
+- New P2P example showcasing UDP hole punching for P2P connections
+- New Broadcast example showcasing host discovery on LAN networks
+- Arena relay now sends local IP for servers on the same IP instead of 127.0.0.1
+
+## [1.0] - 2020-07-23
+- Initial release
