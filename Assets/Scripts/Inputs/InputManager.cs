@@ -78,6 +78,14 @@ namespace Inputs {
                     SelectShip(ship?.PlayerTag == GameManager.ThisPlayerTag ? ship : null);
                 } else SelectShip(null);
             }
+            if (SelectedShip && Input.GetMouseButtonDown(1) && !MouseHoversUI()) {
+                Ray ray = mainCam.ScreenPointToRay(Input.mousePosition);
+                RaycastHit hit;
+                if (Physics.Raycast(ray, out hit, mainCam.farClipPlane, shipsLayer, QueryTriggerInteraction.Collide)) {
+                    Ship ship = hit.collider.gameObject.GetComponentInParent<Ship>();
+                    TargetShip(ship?.PlayerTag != GameManager.ThisPlayerTag ? ship : null);
+                } else TargetShip(null);
+            }
         }
 
         private bool MouseHoversUI() {
@@ -93,6 +101,11 @@ namespace Inputs {
             } else {
                 GameUI.Inst.SetShipSelectionVisible(false);
             }
+        }
+
+        private void TargetShip(Ship ship) {
+            selectedShip.Targeting.Target = ship;
+            GameUI.Inst.SetCurrShipTarget(ship); // Currently only ship targets are supported!
         }
     }
 }
