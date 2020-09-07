@@ -4,6 +4,7 @@ using UnityEngine;
 using Ocean;
 using Ocean.OceanPhysics;
 using Ships.ShipSystems;
+using Ships.DamageZones;
 using UI.Game.WorldSpace;
 
 namespace Ships {
@@ -45,6 +46,7 @@ namespace Ships {
         /// Armor thickness in mm of the hull
         /// </summary>
         [SerializeField] private ushort hullArmor = 80;
+        [SerializeField] private List<DamageZone> damageZones = new List<DamageZone>();
 
         public ShipType Type => type;
         public Nationality Nationality => nationality;
@@ -53,6 +55,7 @@ namespace Ships {
         public string ShipClass => shipClass;
         public uint MaxHullHitpoints => maxHullHitpoints;
         public ushort HullArmor => hullArmor;
+        public List<DamageZone> DamageZones => damageZones;
 
         [Header("Current state")]
         [SerializeField] private PlayerTag playerTag = PlayerTag.Player0;

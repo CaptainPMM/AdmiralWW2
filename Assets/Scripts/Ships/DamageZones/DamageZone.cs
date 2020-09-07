@@ -7,8 +7,11 @@ namespace Ships.DamageZones {
         [SerializeField] private Ship ship = null;
         [SerializeField] private Collider hitCollider = null;
         [SerializeField] private List<DamageTypeEntry> damageTypes = new List<DamageTypeEntry>();
+        [SerializeField] private List<DamageType> damages = new List<DamageType>();
 
         public Ship Ship => ship;
+        public List<DamageTypeEntry> DamageTypes => damageTypes;
+        public List<DamageType> Damages => damages;
 
         private void Awake() {
             if (ship == null) Debug.LogWarning("DamageZone needs an assigned ship");
@@ -37,6 +40,7 @@ namespace Ships.DamageZones {
             for (int i = 0; i < damageTypes.Count; i++) {
                 if (damageTypes[i].probability + probabilitySum > r) {
                     BaseDamageType.CreateDamage(damageTypes[i].damageType).InflictDamage(this, projectile, damageTypes[i].param);
+                    if (!damages.Contains(damageTypes[i].damageType)) damages.Add(damageTypes[i].damageType);
                     return;
                 } else probabilitySum += damageTypes[i].probability;
             }
