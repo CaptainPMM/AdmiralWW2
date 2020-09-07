@@ -83,6 +83,7 @@ namespace Ships {
         }
         [SerializeField] private List<WaterIngressSection> waterIngressSections = new List<WaterIngressSection>();
         public void AddWaterIngress(byte sectionID) { waterIngressSections.Find(w => w.sectionID == sectionID).numHoles++; }
+        public List<WaterIngressSection> WaterIngressSections => waterIngressSections;
 
         public GameObject GameObject => gameObject;
         public Vector3 WorldPos => transform.position;
