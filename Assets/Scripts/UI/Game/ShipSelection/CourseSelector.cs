@@ -12,7 +12,7 @@ namespace UI.Game.ShipSelection {
             if (InputManager.SelectedShip) {
                 compassNeedleImg.rectTransform.rotation = Quaternion.Euler(0f, 0f, 360 - InputManager.SelectedShip.Autopilot.Course);
                 compassShipNeedleImg.rectTransform.rotation = Quaternion.Euler(0f, 0f, 360 - InputManager.SelectedShip.Course);
-            } else GameUI.Inst.SetShipSelectionVisible(false);
+            } else GameUI.Inst?.SetShipSelectionVisible(false);
         }
 
         private void FixedUpdate() {
