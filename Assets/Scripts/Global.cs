@@ -28,4 +28,8 @@ public static class Global {
     public static class Effects {
         public const float PROJECTILE_PEN_EFFECT_SIZEMOD_REFERENCE_CALIBER = 200f;
     }
+    public static class WebRequestURLs {
+        public const string REGISTER_MPGAME = "https://admiralww2-p2p-manager.herokuapp.com/registermpgame";
+        public const string LISTEN_FOR_JOIN = "https://admiralww2-p2p-manager.herokuapp.com/listenforjoin";
+    }
 }
