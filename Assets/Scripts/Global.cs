@@ -31,5 +31,8 @@ public static class Global {
     public static class WebRequestURLs {
         public const string REGISTER_MPGAME = "https://admiralww2-p2p-manager.herokuapp.com/registermpgame";
         public const string LISTEN_FOR_JOIN = "https://admiralww2-p2p-manager.herokuapp.com/listenforjoin";
+        public const string START_OR_REMOVE_GAME = "https://admiralww2-p2p-manager.herokuapp.com/startorremovempgame";
+        public const string FETCH_MP_GAMES_LIST = "https://admiralww2-p2p-manager.herokuapp.com/mpgameslist";
+        public const string JOIN_MPGAME = "https://admiralww2-p2p-manager.herokuapp.com/joinmpgame";
     }
 }

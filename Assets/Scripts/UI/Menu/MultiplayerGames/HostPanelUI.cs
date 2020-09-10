@@ -5,16 +5,22 @@ using Utils;
 
 namespace UI.Menu.MultiplayerGames {
     public class HostPanelUI : MonoBehaviour {
+        [SerializeField] private JoinPanelUI joinPanel = null;
         [SerializeField] private TMP_InputField nameInput = null;
         [SerializeField] private TMP_InputField portInput = null;
         [SerializeField] private TextMeshProUGUI infoTxt = null;
         [SerializeField] private Button hostBtn = null;
+
+        public Button HostBtn => hostBtn;
 
         private Color initInfoTxtColor;
 
         private bool nameValid = false;
         private bool portValid = false;
         private bool hosting = false;
+        private string token = "";
+
+        public bool Hosting => hosting;
 
         private void Awake() {
             initInfoTxtColor = infoTxt.color;
@@ -24,6 +30,8 @@ namespace UI.Menu.MultiplayerGames {
             nameInput.text = "";
             portInput.text = "";
             infoTxt.text = "";
+
+            joinPanel.SetLockAllJoinButtons(false);
 
             nameInput.interactable = true;
             portInput.interactable = true;
@@ -58,6 +66,16 @@ namespace UI.Menu.MultiplayerGames {
                 // Cancel hosting
                 StopAllCoroutines();
                 Start();
+                WebRequest.Get(this, Global.WebRequestURLs.START_OR_REMOVE_GAME, (req, res, error, errorMsg) => {
+                    if (error) {
+                        Error("Could not stop hosting:\n" + errorMsg);
+                    } else {
+                        Info("Stopped hosting");
+                    }
+                }, new WebRequest.GetParam[] {
+                    new WebRequest.GetParam("token", token)
+                });
+                token = "";
             }
         }
 
@@ -66,7 +84,9 @@ namespace UI.Menu.MultiplayerGames {
         }
 
         private void HostGame() {
+            joinPanel.SetLockAllJoinButtons(true);
             hosting = true;
+            token = "";
             hostBtn.interactable = false;
             nameInput.interactable = false;
             portInput.interactable = false;
@@ -86,7 +106,6 @@ namespace UI.Menu.MultiplayerGames {
 
         private void ListenForPlayerJoin(string tokenJSON) {
             Info("Waiting for player to join...\n(Press ESC to cancel hosting)");
-            string token;
             try { token = JsonUtility.FromJson<WebRequest.WebToken>(tokenJSON).token; } catch { Error("Could not parse token", true); return; }
 
             WebRequest.Get(this, Global.WebRequestURLs.LISTEN_FOR_JOIN, (req, res, error, errorMsg) => {

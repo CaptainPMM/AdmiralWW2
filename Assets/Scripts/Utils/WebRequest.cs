@@ -60,6 +60,18 @@ namespace Utils {
         }
 
         [System.Serializable]
+        public class MPGamesList {
+            public MPGame[] mpGames;
+        }
+
+        [System.Serializable]
+        public class MPGame {
+            public string name;
+            public string hostIP;
+            public int hostPort;
+        }
+
+        [System.Serializable]
         private class WebError {
             public int status = -1;
             public string type = "<empty>";

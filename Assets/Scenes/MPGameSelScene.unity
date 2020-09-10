@@ -1252,6 +1252,7 @@ GameObject:
   - component: {fileID: 721763204}
   - component: {fileID: 721763206}
   - component: {fileID: 721763205}
+  - component: {fileID: 721763207}
   m_Layer: 5
   m_Name: GamesList
   m_TagString: Untagged
@@ -1320,6 +1321,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 721763203}
   m_CullTransparentMesh: 0
+--- !u!114 &721763207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 721763203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1b170741fcb5410aba80af7c289bb57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameListEntryPrefab: {fileID: 8274708836230768174, guid: c2ea691ebc3f94135bb37565e5c7f054, type: 3}
+  hostPanel: {fileID: 1136363859}
+  portInput: {fileID: 677017619}
+  reloadGamesBtn: {fileID: 320358289}
+  infoTxt: {fileID: 859515621}
+  scrollContent: {fileID: 907342883}
 --- !u!1 &749988543
 GameObject:
   m_ObjectHideFlags: 0
@@ -2158,6 +2177,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49577954f52a04d49b710b4449995df9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  joinPanel: {fileID: 721763207}
   nameInput: {fileID: 1202138812}
   portInput: {fileID: 1099840631}
   infoTxt: {fileID: 859515621}
@@ -2793,11 +2813,11 @@ MonoBehaviour:
   m_Content: {fileID: 907342883}
   m_Horizontal: 0
   m_Vertical: 1
-  m_MovementType: 1
+  m_MovementType: 2
   m_Elasticity: 0.1
-  m_Inertia: 1
+  m_Inertia: 0
   m_DecelerationRate: 0.135
-  m_ScrollSensitivity: 1
+  m_ScrollSensitivity: 15
   m_Viewport: {fileID: 551137372}
   m_HorizontalScrollbar: {fileID: 390158837}
   m_VerticalScrollbar: {fileID: 1880630120}
