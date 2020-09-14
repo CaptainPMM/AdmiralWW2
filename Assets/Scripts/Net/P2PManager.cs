@@ -14,6 +14,7 @@ namespace Net {
         public event PeerEvents.OnConnectHandler OnPeerConnect;
         public event PeerEvents.OnDisconnectHandler OnPeerDisconnect;
         public event PeerEvents.OnExceptionHandler OnPeerException;
+        public event PeerEvents.OnUpdateRTTHandler OnPeerRTT;
 
         private void Awake() {
             if (Inst != null) Destroy(gameObject);
@@ -83,7 +84,7 @@ namespace Net {
         }
 
         private void OnUpdateRTT(Peer peer, ushort rtt) {
-            MessageHandler.Run(() => Debug.Log("Ping " + rtt));
+            MessageHandler.Run(() => OnPeerRTT?.Invoke(peer, rtt));
         }
 
         private void OnDestroy() {
