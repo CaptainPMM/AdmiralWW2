@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
 using Net;
@@ -101,6 +102,7 @@ namespace UI.Menu.MultiplayerGames {
                         if (error) {
                             Error("Unlucky, there was an error:\n" + errorMsg, true);
                         } else {
+                            Application.wantsToQuit += ApplicationQuitHandler;
                             ListenForPlayerJoin(res);
                         }
                     }, new WebRequest.GetParam[] {
@@ -130,11 +132,14 @@ namespace UI.Menu.MultiplayerGames {
                         try { peer = JsonUtility.FromJson<WebRequest.Peer>(res); } catch { Error("Could not parse peer infos", true); return; }
                         Info($"Player joined: {peer.peerIP}:{peer.peerPort}\nConnecting to player...");
 
-                        // TEST
-                        print("Connecting to player at " + peer.peerIP + ":" + peer.peerPort);
                         P2PManager.Inst.InitHost(int.Parse(portInput.text));
-                        P2PManager.Inst.OnPeerConnect += (SuperNet.Transport.Peer p) => {
-                            Debug.Log(p.Remote + " connected, juhu!");
+                        P2PManager.Inst.OnPeerConnect += (p) => {
+                            Info("Connected to " + p.Remote + ". Starting game...");
+                            Global.State.playerTag = PlayerTag.Player0;
+                            SceneManager.LoadScene(Global.SceneNames.GAME_SCENE, LoadSceneMode.Single);
+                        };
+                        P2PManager.Inst.OnPeerException += (p, exception) => {
+                            Error("Could not connect to peer " + p.Remote + ">:\n" + exception.Message);
                         };
                         P2PManager.Inst.Connect(peer.peerIP, peer.peerPort);
                     }
@@ -153,6 +158,27 @@ namespace UI.Menu.MultiplayerGames {
             if (resetHosting) Start();
             infoTxt.text = txt;
             infoTxt.color = Color.red;
+        }
+
+        private bool ApplicationQuitHandler() {
+            if (hosting && token != "") {
+                WebRequest.Get(P2PManager.Inst, Global.WebRequestURLs.START_OR_REMOVE_GAME, (req, res, error, errorMsg) => {
+                    Application.Quit();
+                }, new WebRequest.GetParam[] {
+                    new WebRequest.GetParam("token", token)
+                });
+                hosting = false;
+                token = "";
+                return false;
+            } else return true;
+        }
+
+        private void OnDestroy() {
+            if (hosting && token != "") {
+                WebRequest.Get(P2PManager.Inst, Global.WebRequestURLs.START_OR_REMOVE_GAME, null, new WebRequest.GetParam[] {
+                    new WebRequest.GetParam("token", token)
+                });
+            }
         }
     }
 }

@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using TMPro;
 using Net;
 
@@ -97,12 +98,14 @@ namespace UI.Menu.MultiplayerGames {
                                     try { mpGame = JsonUtility.FromJson<WebRequest.MPGame>(res); } catch { Error("Could not parse game infos"); return; }
                                     Info("Connecting to host...");
 
-                                    // TEST
-                                    print("Connecting to " + mpGame.name + " at " + mpGame.hostIP + ":" + mpGame.hostPort);
                                     P2PManager.Inst.InitHost(ge.OwnPort);
-                                    P2PManager.Inst.OnPeerConnect += (SuperNet.Transport.Peer p) => {
-                                        Debug.Log(p.Remote + " connected, juhu!");
-                                        P2PManager.Inst.Send(new Net.MessageTypes.MTTest() { Msg = "Hi" });
+                                    P2PManager.Inst.OnPeerConnect += (peer) => {
+                                        Info("Connected. Starting game...");
+                                        Global.State.playerTag = PlayerTag.Player1;
+                                        SceneManager.LoadScene(Global.SceneNames.GAME_SCENE, LoadSceneMode.Single);
+                                    };
+                                    P2PManager.Inst.OnPeerException += (peer, exception) => {
+                                        Error("Could not connect to host:\n" + exception.Message);
                                     };
                                     P2PManager.Inst.Connect(mpGame.hostIP, mpGame.hostPort);
                                 }

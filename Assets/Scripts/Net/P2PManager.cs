@@ -88,6 +88,7 @@ namespace Net {
         }
 
         private void OnDestroy() {
+            Peer?.Disconnect();
             Host?.Shutdown();
         }
     }

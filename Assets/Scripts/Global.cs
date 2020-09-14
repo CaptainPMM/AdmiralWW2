@@ -4,6 +4,9 @@ public static class Global {
         public const string SHIPS = "Ships";
         public const string PROJECTILES = "Projectiles";
     }
+    public static class SceneNames {
+        public const string GAME_SCENE = "GameScene";
+    }
     public static class Ships {
         public const float WATER_INGRESS_STRENGTH = 0.00004f;
         public const float WATER_INGRESS_HULL_DAMAGE_FACTOR = 0.25f;
@@ -34,5 +37,9 @@ public static class Global {
         public const string START_OR_REMOVE_GAME = "https://admiralww2-p2p-manager.herokuapp.com/startorremovempgame";
         public const string FETCH_MP_GAMES_LIST = "https://admiralww2-p2p-manager.herokuapp.com/mpgameslist";
         public const string JOIN_MPGAME = "https://admiralww2-p2p-manager.herokuapp.com/joinmpgame";
+    }
+
+    public static class State {
+        public static PlayerTag playerTag;
     }
 }

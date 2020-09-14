@@ -21,16 +21,16 @@ namespace Net {
                 yield return webRequest.SendWebRequest();
 
                 if (webRequest.isNetworkError) {
-                    onComplete.Invoke(webRequest, null, true, webRequest.error);
+                    onComplete?.Invoke(webRequest, null, true, webRequest.error);
                 } else if (webRequest.responseCode >= 400) {
                     try {
                         WebError err = JsonUtility.FromJson<WebError>(webRequest.downloadHandler.text);
-                        onComplete.Invoke(webRequest, null, true, $"ERROR {err.status}: {err.type}\n{err.msg}");
+                        onComplete?.Invoke(webRequest, null, true, $"ERROR {err.status}: {err.type}\n{err.msg}");
                     } catch {
-                        onComplete.Invoke(webRequest, null, true, "ERROR " + webRequest.error);
+                        onComplete?.Invoke(webRequest, null, true, "ERROR " + webRequest.error);
                     }
                 } else {
-                    onComplete.Invoke(webRequest, webRequest.downloadHandler.text, false, null);
+                    onComplete?.Invoke(webRequest, webRequest.downloadHandler.text, false, null);
                 }
             }
         }
