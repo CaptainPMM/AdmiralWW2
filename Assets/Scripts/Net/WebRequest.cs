@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Networking;
 
-namespace Utils {
+namespace Net {
     public static class WebRequest {
         public static Coroutine Get(MonoBehaviour origin, string url, WebRequestCompleted onComplete, GetParam[] param = null) {
             // Add optional parameters to url

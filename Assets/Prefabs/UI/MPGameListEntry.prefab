@@ -147,7 +147,7 @@ GameObject:
   - component: {fileID: 8274708835306466241}
   - component: {fileID: 8274708835306466246}
   m_Layer: 5
-  m_Name: HostBtn
+  m_Name: JoinBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

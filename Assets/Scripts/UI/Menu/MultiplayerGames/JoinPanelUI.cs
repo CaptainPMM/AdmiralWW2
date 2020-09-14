@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using Utils;
+using Net;
 
 namespace UI.Menu.MultiplayerGames {
     public class JoinPanelUI : MonoBehaviour {
@@ -80,20 +80,38 @@ namespace UI.Menu.MultiplayerGames {
                 ge.JoinBtn.onClick.RemoveAllListeners();
                 ge.JoinBtn.onClick.AddListener(() => {
                     SetLockAllButtons(true);
-                    Info("Joining the game...");
-                    WebRequest.Get(this, Global.WebRequestURLs.JOIN_MPGAME, (req, res, error, errorMsg) => {
-                        if (error) {
+
+                    Info("Obtaining public IP...");
+                    PublicIP.Fetch(this, (ip) => {
+                        if (ip == null) {
                             SetLockAllButtons(false);
-                            Error("Could not join the game:\n" + errorMsg);
+                            Error("Could not obtain public IP address");
                         } else {
-                            WebRequest.MPGame mpGame;
-                            try { mpGame = JsonUtility.FromJson<WebRequest.MPGame>(res); } catch { Error("Could not parse game infos"); return; }
-                            Info("Connecting to host...");
-                            print("Connecting to " + mpGame.name + " at " + mpGame.hostIP + ":" + mpGame.hostPort);
+                            Info("Joining the game...");
+                            WebRequest.Get(this, Global.WebRequestURLs.JOIN_MPGAME, (req, res, error, errorMsg) => {
+                                if (error) {
+                                    SetLockAllButtons(false);
+                                    Error("Could not join the game:\n" + errorMsg);
+                                } else {
+                                    WebRequest.MPGame mpGame;
+                                    try { mpGame = JsonUtility.FromJson<WebRequest.MPGame>(res); } catch { Error("Could not parse game infos"); return; }
+                                    Info("Connecting to host...");
+
+                                    // TEST
+                                    print("Connecting to " + mpGame.name + " at " + mpGame.hostIP + ":" + mpGame.hostPort);
+                                    P2PManager.Inst.InitHost(ge.OwnPort);
+                                    P2PManager.Inst.OnPeerConnect += (SuperNet.Transport.Peer p) => {
+                                        Debug.Log(p.Remote + " connected, juhu!");
+                                        P2PManager.Inst.Send(new Net.MessageTypes.MTTest() { Msg = "Hi" });
+                                    };
+                                    P2PManager.Inst.Connect(mpGame.hostIP, mpGame.hostPort);
+                                }
+                            }, new WebRequest.GetParam[] {
+                                new WebRequest.GetParam("name", ge.GameName),
+                                new WebRequest.GetParam("ownIP", ip.ToString()),
+                                new WebRequest.GetParam("ownPort", ge.OwnPort.ToString())
+                            });
                         }
-                    }, new WebRequest.GetParam[] {
-                        new WebRequest.GetParam("name", ge.GameName),
-                        new WebRequest.GetParam("ownPort", ge.OwnPort.ToString())
                     });
                 });
             }

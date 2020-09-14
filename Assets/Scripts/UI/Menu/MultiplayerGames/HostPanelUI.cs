@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using Utils;
+using Net;
 
 namespace UI.Menu.MultiplayerGames {
     public class HostPanelUI : MonoBehaviour {
@@ -90,17 +90,25 @@ namespace UI.Menu.MultiplayerGames {
             hostBtn.interactable = false;
             nameInput.interactable = false;
             portInput.interactable = false;
-            Info("Connecting...");
 
-            WebRequest.Get(this, Global.WebRequestURLs.REGISTER_MPGAME, (req, res, error, errorMsg) => {
-                if (error) {
-                    Error("Unlucky, there was an error:\n" + errorMsg, true);
+            Info("Obtaining public IP...");
+            PublicIP.Fetch(this, (ip) => {
+                if (ip == null) {
+                    Error("Could not obtain public IP address", true);
                 } else {
-                    ListenForPlayerJoin(res);
+                    Info("Connecting...");
+                    WebRequest.Get(this, Global.WebRequestURLs.REGISTER_MPGAME, (req, res, error, errorMsg) => {
+                        if (error) {
+                            Error("Unlucky, there was an error:\n" + errorMsg, true);
+                        } else {
+                            ListenForPlayerJoin(res);
+                        }
+                    }, new WebRequest.GetParam[] {
+                        new WebRequest.GetParam("name", nameInput.text),
+                        new WebRequest.GetParam("hostIP", ip.ToString()),
+                        new WebRequest.GetParam("hostPort", portInput.text)
+                    });
                 }
-            }, new WebRequest.GetParam[] {
-                new WebRequest.GetParam("name", nameInput.text),
-                new WebRequest.GetParam("hostPort", portInput.text)
             });
         }
 
@@ -121,6 +129,14 @@ namespace UI.Menu.MultiplayerGames {
                         WebRequest.Peer peer;
                         try { peer = JsonUtility.FromJson<WebRequest.Peer>(res); } catch { Error("Could not parse peer infos", true); return; }
                         Info($"Player joined: {peer.peerIP}:{peer.peerPort}\nConnecting to player...");
+
+                        // TEST
+                        print("Connecting to player at " + peer.peerIP + ":" + peer.peerPort);
+                        P2PManager.Inst.InitHost(int.Parse(portInput.text));
+                        P2PManager.Inst.OnPeerConnect += (SuperNet.Transport.Peer p) => {
+                            Debug.Log(p.Remote + " connected, juhu!");
+                        };
+                        P2PManager.Inst.Connect(peer.peerIP, peer.peerPort);
                     }
                 }
             }, new WebRequest.GetParam[] {
