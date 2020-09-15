@@ -43,10 +43,12 @@ public class GameManager : MonoBehaviour {
             s.OnSinking += ShipSinkingHandler;
         }));
 
-        // Stop game until all players are loaded
-        Time.timeScale = 0f;
-        MessageHandler.Inst.OnReceivedGameReady += ReceiveGameReadyHandler;
-        StartCoroutine(WaitForPeerGameReady());
+        if (P2PManager.Inst != null && P2PManager.Inst.Peer != null && P2PManager.Inst.Peer.Connected) {
+            // Stop game until all players are loaded
+            Time.timeScale = 0f;
+            MessageHandler.Inst.OnReceivedGameReady += ReceiveGameReadyHandler;
+            StartCoroutine(WaitForPeerGameReady());
+        }
     }
 
     private IEnumerator WaitForPeerGameReady() {

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 33068fc021dadc04dab6e00e4ff45c00, type: 3}
-  m_Name: OceanWaves
+  m_Name: OceanWavesWindy
   m_EditorClassIdentifier: 
   _windSpeed: 12.5
   _fetch: 500000
