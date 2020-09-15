@@ -1,7 +1,11 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Ships;
 using Cam;
+using Net;
+using Net.MessageTypes;
+using SuperNet.Transport;
 
 public class GameManager : MonoBehaviour {
     public static GameManager Inst { get; private set; }
@@ -14,6 +18,8 @@ public class GameManager : MonoBehaviour {
 
     [Header("Current state")]
     [SerializeField] private Player thisPlayer = null;
+
+    private bool allPlayersReady = false;
 
     public static PlayerTag ThisPlayerTag => Inst.thisPlayerTag;
     public static Player ThisPlayer => Inst.thisPlayer;
@@ -34,6 +40,26 @@ public class GameManager : MonoBehaviour {
         fleets.ForEach(f => f.Ships.ForEach(s => {
             s.OnSinking += ShipSinkingHandler;
         }));
+
+        // Stop game until all players are loaded
+        Time.timeScale = 0f;
+        MessageHandler.Inst.OnReceivedGameReady += ReceiveGameReadyHandler;
+        StartCoroutine(WaitForPeerGameReady());
+    }
+
+    private IEnumerator WaitForPeerGameReady() {
+        do {
+            P2PManager.Inst.Send(new MTGameReady());
+            yield return new WaitForSecondsRealtime(0.05f);
+        } while (!allPlayersReady);
+
+        // Start game
+        Time.timeScale = 1f;
+    }
+
+    private void ReceiveGameReadyHandler(Peer peer) {
+        MessageHandler.Inst.OnReceivedGameReady -= ReceiveGameReadyHandler;
+        allPlayersReady = true;
     }
 
     private void ShipSinkingHandler(Ship ship) {

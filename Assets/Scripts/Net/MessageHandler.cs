@@ -9,6 +9,9 @@ namespace Net {
     public class MessageHandler : MonoBehaviour {
         public static MessageHandler Inst { get; private set; }
 
+        public delegate void ReceivedGameReadyEvent(Peer peer);
+        public event ReceivedGameReadyEvent OnReceivedGameReady;
+
         private ConcurrentQueue<Action> runQ = new ConcurrentQueue<Action>();
         public static void Run(Action action) { Inst.runQ.Enqueue(action); }
 
@@ -34,6 +37,9 @@ namespace Net {
                     MTTest test = new MTTest();
                     test.Read(reader);
                     Run(() => HandleMTTest(test));
+                    break;
+                case MessageType.GameReady:
+                    Run(() => Inst.OnReceivedGameReady?.Invoke(peer));
                     break;
                 default:
                     Run(() => Debug.LogWarning("Could not handle net message of type " + messageType));
