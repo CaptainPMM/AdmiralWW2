@@ -105,4 +105,14 @@ public class GameManager : MonoBehaviour {
             } else Debug.LogWarning("Ship with ID " + shipID + " not found");
         } else Debug.LogWarning("Fleet of player tag " + playerTag + " not found");
     }
+
+    public void SetShipCourse(PlayerTag playerTag, ID shipID, ushort course) {
+        PlayerFleet fleet = fleets.Find(f => f.PlayerTag == playerTag);
+        if (fleet != null) {
+            Ship ship = fleet.Ships.Find(s => s.ID == shipID);
+            if (ship != null) {
+                ship.Autopilot.Course = course;
+            } else Debug.LogWarning("Ship with ID " + shipID + " not found");
+        } else Debug.LogWarning("Fleet of player tag " + playerTag + " not found");
+    }
 }

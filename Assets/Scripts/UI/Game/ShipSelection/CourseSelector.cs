@@ -2,6 +2,8 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using Inputs;
+using Net;
+using Net.MessageTypes;
 
 namespace UI.Game.ShipSelection {
     public class CourseSelector : MonoBehaviour, IScrollHandler {
@@ -31,7 +33,9 @@ namespace UI.Game.ShipSelection {
 
         public void OnScroll(PointerEventData eventData) {
             compassNeedleImg.rectTransform.Rotate(0f, 0f, -eventData.scrollDelta.y, Space.Self);
-            InputManager.SelectedShip.Autopilot.Course = (ushort)(360 - Mathf.RoundToInt(compassNeedleImg.rectTransform.localRotation.eulerAngles.z));
+            ushort course = (ushort)(360 - Mathf.RoundToInt(compassNeedleImg.rectTransform.localRotation.eulerAngles.z));
+            P2PManager.Inst.Send(new MTShipCourse { PlayerTag = GameManager.ThisPlayerTag, ShipID = InputManager.SelectedShip.ID, Course = course });
+            InputManager.SelectedShip.Autopilot.Course = course;
             eventData.Use();
         }
     }

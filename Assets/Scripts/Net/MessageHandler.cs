@@ -51,6 +51,11 @@ namespace Net {
                     chad.Read(reader);
                     Run(() => GameManager.Inst.SetShipChadburn(chad.PlayerTag, chad.ShipID, chad.ChadburnSetting));
                     break;
+                case MessageType.ShipCourse:
+                    MTShipCourse course = new MTShipCourse();
+                    course.Read(reader);
+                    Run(() => GameManager.Inst.SetShipCourse(course.PlayerTag, course.ShipID, course.Course));
+                    break;
                 default:
                     Run(() => Debug.LogWarning("Could not handle net message of type " + messageType));
                     break;
