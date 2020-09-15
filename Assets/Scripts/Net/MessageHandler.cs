@@ -46,6 +46,11 @@ namespace Net {
                     seed.Read(reader);
                     Run(() => SafeRandom.Seed = seed.Seed);
                     break;
+                case MessageType.ShipChadburn:
+                    MTShipChadburn chad = new MTShipChadburn();
+                    chad.Read(reader);
+                    Run(() => GameManager.Inst.SetShipChadburn(chad.PlayerTag, chad.ShipID, chad.ChadburnSetting));
+                    break;
                 default:
                     Run(() => Debug.LogWarning("Could not handle net message of type " + messageType));
                     break;

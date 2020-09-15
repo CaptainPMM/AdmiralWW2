@@ -58,6 +58,7 @@ namespace Ships {
         public List<DamageZone> DamageZones => damageZones;
 
         [Header("Current state")]
+        [SerializeField] private ID id = new ID("");
         [SerializeField] private PlayerTag playerTag = PlayerTag.Player0;
         [SerializeField] private bool destroyed = false;
         [SerializeField] private ushort course = 0;
@@ -66,6 +67,7 @@ namespace Ships {
         /// </summary>
         [SerializeField] private float hullHitpoints;
 
+        public ID ID => id;
         public PlayerTag PlayerTag => playerTag;
         public float Speed => rb.velocity.magnitude;
         public bool Destroyed => destroyed;

@@ -418,6 +418,10 @@ PrefabInstance:
       propertyPath: targetGO
       value: 
       objectReference: {fileID: 1412742410}
+    - target: {fileID: 9121195042845819025, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: id.id
+      value: 19204839
+      objectReference: {fileID: 0}
     - target: {fileID: 9121195042845819036, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
       propertyPath: m_Name
       value: AdmiralHipper
@@ -3012,6 +3016,10 @@ PrefabInstance:
     - target: {fileID: 9121195042845819025, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
       propertyPath: playerTag
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9121195042845819025, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: id.id
+      value: 77738392
       objectReference: {fileID: 0}
     - target: {fileID: 9121195042845819036, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
       propertyPath: m_Name

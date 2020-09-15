@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using Inputs;
 using Ships.ShipSystems;
+using Net;
+using Net.MessageTypes;
 
 namespace UI.Game.ShipSelection {
     public class ChadburnSelector : MonoBehaviour {
@@ -30,7 +32,11 @@ namespace UI.Game.ShipSelection {
         }
 
         public void OnToggleChange(bool isOn) {
-            if (isOn) InputManager.SelectedShip.Autopilot.Chadburn = GetChadburnByToggle(toggleGroup.GetFirstActiveToggle());
+            if (isOn) {
+                Autopilot.ChadburnSetting chad = GetChadburnByToggle(toggleGroup.GetFirstActiveToggle());
+                P2PManager.Inst.Send(new MTShipChadburn { PlayerTag = GameManager.ThisPlayerTag, ShipID = InputManager.SelectedShip.ID, ChadburnSetting = chad });
+                InputManager.SelectedShip.Autopilot.Chadburn = chad;
+            }
         }
 
         [System.Serializable]

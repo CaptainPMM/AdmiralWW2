@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Ships;
+using Ships.ShipSystems;
 using Cam;
 using Net;
 using Net.MessageTypes;
@@ -93,5 +94,15 @@ public class GameManager : MonoBehaviour {
                 return;
             }
         }
+    }
+
+    public void SetShipChadburn(PlayerTag playerTag, ID shipID, Autopilot.ChadburnSetting chadburnSetting) {
+        PlayerFleet fleet = fleets.Find(f => f.PlayerTag == playerTag);
+        if (fleet != null) {
+            Ship ship = fleet.Ships.Find(s => s.ID == shipID);
+            if (ship != null) {
+                ship.Autopilot.Chadburn = chadburnSetting;
+            } else Debug.LogWarning("Ship with ID " + shipID + " not found");
+        } else Debug.LogWarning("Fleet of player tag " + playerTag + " not found");
     }
 }
