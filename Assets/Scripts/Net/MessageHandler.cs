@@ -56,6 +56,11 @@ namespace Net {
                     course.Read(reader);
                     Run(() => GameManager.Inst.SetShipCourse(course.PlayerTag, course.ShipID, course.Course));
                     break;
+                case MessageType.ShipTarget:
+                    MTShipTarget target = new MTShipTarget();
+                    target.Read(reader);
+                    Run(() => GameManager.Inst.SetShipTarget(target.PlayerTag, target.ShipID, target.HasTarget, target.TargetShipID));
+                    break;
                 default:
                     Run(() => Debug.LogWarning("Could not handle net message of type " + messageType));
                     break;

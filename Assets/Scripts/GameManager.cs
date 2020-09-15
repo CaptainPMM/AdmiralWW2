@@ -115,4 +115,28 @@ public class GameManager : MonoBehaviour {
             } else Debug.LogWarning("Ship with ID " + shipID + " not found");
         } else Debug.LogWarning("Fleet of player tag " + playerTag + " not found");
     }
+
+    public void SetShipTarget(PlayerTag playerTag, ID shipID, bool hasTarget, ID targetShipID) {
+        PlayerFleet fleet = fleets.Find(f => f.PlayerTag == playerTag);
+        if (fleet != null) {
+            Ship ship = fleet.Ships.Find(s => s.ID == shipID);
+            if (ship != null) {
+                if (hasTarget) {
+                    Ship target = FindShipByID(targetShipID);
+                    if (target != null) {
+                        ship.Targeting.Target = target;
+                    } else Debug.LogWarning(("Target ship ID " + targetShipID + " not found"));
+                } else ship.Targeting.Target = null;
+            } else Debug.LogWarning("Ship with ID " + shipID + " not found");
+        } else Debug.LogWarning("Fleet of player tag " + playerTag + " not found");
+    }
+
+    public Ship FindShipByID(ID id) {
+        foreach (PlayerFleet fleet in fleets) {
+            foreach (Ship ship in fleet.Ships) {
+                if (ship.ID == id) return ship;
+            }
+        }
+        return null;
+    }
 }
