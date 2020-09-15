@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Ships;
+using Cam;
 
 public class GameManager : MonoBehaviour {
     public static GameManager Inst { get; private set; }
@@ -9,6 +10,7 @@ public class GameManager : MonoBehaviour {
     [SerializeField] private List<Player> players = new List<Player>();
     [SerializeField] private List<PlayerFleet> fleets = new List<PlayerFleet>();
     [SerializeField] private PlayerTag thisPlayerTag = PlayerTag.Player0;
+    [SerializeField] private CamController camController = null;
 
     [Header("Current state")]
     [SerializeField] private Player thisPlayer = null;
@@ -19,14 +21,19 @@ public class GameManager : MonoBehaviour {
 
     private void Awake() {
         Inst = this;
+
+        thisPlayerTag = Global.State.playerTag;
+        thisPlayer = GetPlayer(thisPlayerTag);
+
+        // Move camera to first ship in fleet
+        Vector3 shipPos = fleets.Find(f => f.PlayerTag == thisPlayerTag).Ships[0].transform.position;
+        camController.transform.position = new Vector3(shipPos.x, 0f, shipPos.z);
     }
 
     private void Start() {
         fleets.ForEach(f => f.Ships.ForEach(s => {
             s.OnSinking += ShipSinkingHandler;
         }));
-
-        thisPlayer = GetPlayer(thisPlayerTag);
     }
 
     private void ShipSinkingHandler(Ship ship) {

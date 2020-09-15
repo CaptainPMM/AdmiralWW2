@@ -40,6 +40,6 @@ public static class Global {
     }
 
     public static class State {
-        public static PlayerTag playerTag;
+        public static PlayerTag playerTag = PlayerTag.Player0;
     }
 }

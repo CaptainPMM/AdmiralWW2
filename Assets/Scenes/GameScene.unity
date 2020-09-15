@@ -2277,7 +2277,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 923508181}
   m_LocalRotation: {x: 0.17364816, y: 0, z: 0, w: 0.9848078}
-  m_LocalPosition: {x: 0, y: 100, z: 0}
+  m_LocalPosition: {x: 0, y: 60, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 616036863}
@@ -2526,6 +2526,7 @@ MonoBehaviour:
     - {fileID: 1412742415}
     sunkShips: []
   thisPlayerTag: 0
+  camController: {fileID: 672450411}
   thisPlayer:
     tag: 0
     name: Player 0
