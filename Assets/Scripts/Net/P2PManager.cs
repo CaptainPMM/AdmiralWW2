@@ -44,8 +44,8 @@ namespace Net {
             if (address == null) return false;
 
             PeerConfig config = new PeerConfig() {
-                ConnectAttempts = 20,
-                ConnectDelay = 1000,
+                ConnectAttempts = 40,
+                ConnectDelay = 200,
                 DisconnectDelay = 1000,
                 DuplicateTimeout = 3000,
                 PingDelay = 2000
@@ -88,8 +88,8 @@ namespace Net {
         }
 
         private void OnDestroy() {
-            Peer?.Disconnect();
-            Host?.Shutdown();
+            if (Peer != null && !Peer.Disposed) Peer.Disconnect();
+            if (Host != null && !Host.Disposed) Host.Shutdown();
         }
     }
 }
