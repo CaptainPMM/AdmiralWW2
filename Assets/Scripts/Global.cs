@@ -40,6 +40,7 @@ public static class Global {
     }
 
     public static class State {
+        public static bool isRandomSeedHost = false;
         public static PlayerTag playerTag = PlayerTag.Player0;
     }
 }

@@ -35,7 +35,7 @@ namespace Ships.DamageZones {
         }
 
         private void ChooseStochasticDamageType(Projectile projectile) {
-            float r = Random.Range(0f, 1f) * 0.999f;
+            float r = SafeRandom.Range(0f, 1f) * 0.999f;
             float probabilitySum = 0f;
             for (int i = 0; i < damageTypes.Count; i++) {
                 if (damageTypes[i].probability + probabilitySum > r) {

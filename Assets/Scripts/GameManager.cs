@@ -10,6 +10,8 @@ using SuperNet.Transport;
 public class GameManager : MonoBehaviour {
     public static GameManager Inst { get; private set; }
 
+    private const float DISTRIBUTE_RANDOM_SEED_INTERVAL = 1f;
+
     [Header("Setup")]
     [SerializeField] private List<Player> players = new List<Player>();
     [SerializeField] private List<PlayerFleet> fleets = new List<PlayerFleet>();
@@ -54,12 +56,24 @@ public class GameManager : MonoBehaviour {
         } while (!allPlayersReady);
 
         // Start game
+        if (Global.State.isRandomSeedHost) {
+            StartCoroutine(DistributeRandomSeed());
+        }
         Time.timeScale = 1f;
     }
 
     private void ReceiveGameReadyHandler(Peer peer) {
         MessageHandler.Inst.OnReceivedGameReady -= ReceiveGameReadyHandler;
         allPlayersReady = true;
+    }
+
+    private IEnumerator DistributeRandomSeed() {
+        while (P2PManager.Inst.Peer.Connected) {
+            int seed = (int)System.DateTime.Now.Ticks;
+            P2PManager.Inst.Send(new MTRandomSeed { Seed = seed });
+            SafeRandom.Seed = seed;
+            yield return new WaitForSecondsRealtime(DISTRIBUTE_RANDOM_SEED_INTERVAL);
+        }
     }
 
     private void ShipSinkingHandler(Ship ship) {

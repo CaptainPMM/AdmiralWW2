@@ -135,6 +135,7 @@ namespace UI.Menu.MultiplayerGames {
                         P2PManager.Inst.InitHost(int.Parse(portInput.text));
                         P2PManager.Inst.OnPeerConnect += (p) => {
                             Info("Connected to " + p.Remote + ". Starting game...");
+                            Global.State.isRandomSeedHost = true;
                             Global.State.playerTag = PlayerTag.Player0;
                             SceneManager.LoadScene(Global.SceneNames.GAME_SCENE, LoadSceneMode.Single);
                         };

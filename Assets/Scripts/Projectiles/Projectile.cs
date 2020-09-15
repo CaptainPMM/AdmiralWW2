@@ -45,7 +45,7 @@ namespace Projectiles {
 
             // Apply dispersion
             float invAccuracy = 1f - fromTurret.GunsPrecision;
-            transform.Rotate(Random.Range(0f, invAccuracy) * MAX_DISPERSION_ANGLE, Random.Range(0f, invAccuracy) * MAX_DISPERSION_ANGLE, Random.Range(0f, invAccuracy) * MAX_DISPERSION_ANGLE, Space.World);
+            transform.Rotate(SafeRandom.Range(0f, invAccuracy) * MAX_DISPERSION_ANGLE, SafeRandom.Range(0f, invAccuracy) * MAX_DISPERSION_ANGLE, SafeRandom.Range(0f, invAccuracy) * MAX_DISPERSION_ANGLE, Space.World);
 
             float scale = fromTurret.GunsCaliber * CALIBER_TO_SCALE;
             transform.localScale = new Vector3(scale, scale, scale);

@@ -36,19 +36,20 @@ namespace Net {
                 case MessageType.Test:
                     MTTest test = new MTTest();
                     test.Read(reader);
-                    Run(() => HandleMTTest(test));
+                    Run(() => Debug.Log("Received MTTest with msg: " + test.Msg));
                     break;
                 case MessageType.GameReady:
                     Run(() => Inst.OnReceivedGameReady?.Invoke(peer));
+                    break;
+                case MessageType.RandomSeed:
+                    MTRandomSeed seed = new MTRandomSeed();
+                    seed.Read(reader);
+                    Run(() => SafeRandom.Seed = seed.Seed);
                     break;
                 default:
                     Run(() => Debug.LogWarning("Could not handle net message of type " + messageType));
                     break;
             }
-        }
-
-        private static void HandleMTTest(MTTest msg) {
-            Debug.Log("Received MTTest with msg: " + msg.Msg);
         }
     }
 }
