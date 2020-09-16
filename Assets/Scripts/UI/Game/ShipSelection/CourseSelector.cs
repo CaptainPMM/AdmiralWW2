@@ -34,7 +34,7 @@ namespace UI.Game.ShipSelection {
         public void OnScroll(PointerEventData eventData) {
             compassNeedleImg.rectTransform.Rotate(0f, 0f, -eventData.scrollDelta.y, Space.Self);
             ushort course = (ushort)(360 - Mathf.RoundToInt(compassNeedleImg.rectTransform.localRotation.eulerAngles.z));
-            P2PManager.Inst.Send(new MTShipCourse { PlayerTag = GameManager.ThisPlayerTag, ShipID = InputManager.SelectedShip.ID, Course = course });
+            if (P2PManager.IsMPActive()) P2PManager.Inst.Send(new MTShipCourse { PlayerTag = GameManager.ThisPlayerTag, ShipID = InputManager.SelectedShip.ID, Course = course });
             InputManager.SelectedShip.Autopilot.Course = course;
             eventData.Use();
         }

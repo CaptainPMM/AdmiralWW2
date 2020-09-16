@@ -24,6 +24,10 @@ namespace Net {
             }
         }
 
+        public static bool IsMPActive() {
+            return Inst != null && Inst.Peer != null && Inst.Peer.Connected;
+        }
+
         public void InitHost(int port) {
             HostConfig config = new HostConfig {
                 DualMode = true,

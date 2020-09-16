@@ -5,6 +5,7 @@ namespace Net.MessageTypes {
         RandomSeed = 2,
         ShipChadburn = 3,
         ShipCourse = 4,
-        ShipTarget = 5
+        ShipTarget = 5,
+        SyncGame = 6
     }
 }

@@ -19,12 +19,14 @@ namespace Ships.ShipSystems.Armaments {
         public event FireEvent OnFire;
 
         [Header("Setup")]
+        [SerializeField] private ID id = new ID("");
         [SerializeField] private TurretType turretType = TurretType.BowA;
         [SerializeField] private Ship ship = null;
         [SerializeField] private Transform turretTransform = null;
         [SerializeField] private bool sternTurret = false;
         [SerializeField] private List<GunRepresentation> guns = new List<GunRepresentation>();
 
+        public ID ID => id;
         public TurretType Type => turretType;
         public Ship Ship => ship;
         public bool SternTurret => sternTurret;
@@ -142,6 +144,7 @@ namespace Ships.ShipSystems.Armaments {
         [SerializeField, Range(-90, 90)] private float gunsElevation = 0f;
         [SerializeField, Range(-90, 90)] private float targetGunsElevation = 0f;
         [SerializeField, Range(-90, 90)] private float stabilizationAngle = 0f;
+        [SerializeField] private uint numShotsFired = 0;
 
         public bool Disabled { get => disabled; }
         public bool Engaged { get => engaged; set => engaged = value; }
@@ -176,8 +179,13 @@ namespace Ships.ShipSystems.Armaments {
         /// Guns are aimed
         /// </summary>
         public bool AimReady => turretRotation == targetTurretRotation && gunsElevation == targetGunsElevation;
+        public float ReloadProgress => reloadProgress;
+        public float TurretRotation => turretRotation;
         public float TargetTurretRotation { get => targetTurretRotation; set => targetTurretRotation = Mathf.Clamp(value, -turretMaxRotationAngle, turretMaxRotationAngle); }
+        public float GunsElevation => gunsElevation;
         public float TargetGunsElevation { get => targetGunsElevation; set => targetGunsElevation = Mathf.Clamp(value, gunsMinElevationAngle, gunsMaxElevationAngle); }
+        public float StabilizationAngle => stabilizationAngle;
+        public uint NumShotsFired => numShotsFired;
 
         private bool tempAimReady = false;
         private List<Coroutine> gunRecoilRoutines = new List<Coroutine>();
@@ -187,6 +195,9 @@ namespace Ships.ShipSystems.Armaments {
             if (ship == null) Debug.LogWarning("GunTurret needs an assigned ship");
             if (turretTransform == null) Debug.LogWarning("GunTurret needs an assigned turret transform");
             if (guns.Count == 0) Debug.LogWarning("GunTurret needs minimum one gun");
+
+            byte typeID = (byte)turretType;
+            id = new ID(ship.ID + "g" + typeID);
         }
 
         private void Start() {
@@ -248,7 +259,12 @@ namespace Ships.ShipSystems.Armaments {
 
             // Spawn projectile
             List<Projectile> projectiles = new List<Projectile>();
-            guns.ForEach(gun => projectiles.Add(ProjectileManager.CreateProjectile(this, gun.gunEffectTransform)));
+            guns.ForEach(gun => {
+                numShotsFired++;
+                Projectile p = ProjectileManager.CreateProjectile(this, gun.gunEffectTransform);
+                p.SetID(new ID(id + "p" + numShotsFired));
+                projectiles.Add(p);
+            });
 
             // Add effects
             gunRecoilRoutines.ForEach(r => StopCoroutine(r));

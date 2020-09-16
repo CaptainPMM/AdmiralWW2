@@ -5,7 +5,7 @@ namespace Net.MessageTypes {
     public class MTShipCourse : IMessage {
         public bool Timed => false;
         public bool Reliable => true;
-        public bool Ordered => false;
+        public bool Ordered => true;
         public bool Unique => true;
         public byte Channel => (byte)MessageType.ShipCourse;
 

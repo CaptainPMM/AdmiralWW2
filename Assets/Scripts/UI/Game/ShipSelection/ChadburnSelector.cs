@@ -34,7 +34,7 @@ namespace UI.Game.ShipSelection {
         public void OnToggleChange(bool isOn) {
             if (isOn) {
                 Autopilot.ChadburnSetting chad = GetChadburnByToggle(toggleGroup.GetFirstActiveToggle());
-                P2PManager.Inst.Send(new MTShipChadburn { PlayerTag = GameManager.ThisPlayerTag, ShipID = InputManager.SelectedShip.ID, ChadburnSetting = chad });
+                if (P2PManager.IsMPActive()) P2PManager.Inst.Send(new MTShipChadburn { PlayerTag = GameManager.ThisPlayerTag, ShipID = InputManager.SelectedShip.ID, ChadburnSetting = chad });
                 InputManager.SelectedShip.Autopilot.Chadburn = chad;
             }
         }

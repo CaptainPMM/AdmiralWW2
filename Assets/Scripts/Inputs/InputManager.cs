@@ -106,10 +106,12 @@ namespace Inputs {
         }
 
         private void TargetShip(Ship ship) {
-            if (ship == null) {
-                P2PManager.Inst.Send(new MTShipTarget { PlayerTag = GameManager.ThisPlayerTag, ShipID = selectedShip.ID, HasTarget = false });
-            } else {
-                P2PManager.Inst.Send(new MTShipTarget { PlayerTag = GameManager.ThisPlayerTag, ShipID = selectedShip.ID, HasTarget = true, TargetShipID = ship.ID });
+            if (P2PManager.IsMPActive()) {
+                if (ship == null) {
+                    P2PManager.Inst.Send(new MTShipTarget { PlayerTag = GameManager.ThisPlayerTag, ShipID = selectedShip.ID, HasTarget = false });
+                } else {
+                    P2PManager.Inst.Send(new MTShipTarget { PlayerTag = GameManager.ThisPlayerTag, ShipID = selectedShip.ID, HasTarget = true, TargetShipID = ship.ID });
+                }
             }
             selectedShip.Targeting.Target = ship;
             GameUI.Inst.SetCurrShipTarget(ship); // Currently only ship targets are supported!

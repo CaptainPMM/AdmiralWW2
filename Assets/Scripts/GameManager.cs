@@ -44,7 +44,7 @@ public class GameManager : MonoBehaviour {
             s.OnSinking += ShipSinkingHandler;
         }));
 
-        if (P2PManager.Inst != null && P2PManager.Inst.Peer != null && P2PManager.Inst.Peer.Connected) {
+        if (P2PManager.IsMPActive()) {
             // Stop game until all players are loaded
             Time.timeScale = 0f;
             MessageHandler.Inst.OnReceivedGameReady += ReceiveGameReadyHandler;

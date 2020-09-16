@@ -24,8 +24,10 @@ namespace Projectiles {
         public float Mass => rb.mass;
 
         [Header("Runtime settings (must set after instantiation)")]
+        [SerializeField] private ID id = new ID("");
         [SerializeField] private GunTurret fromTurret = null;
 
+        public ID ID => id;
         public GunTurret FromTurret => fromTurret;
 
         /// <summary>
@@ -84,6 +86,10 @@ namespace Projectiles {
                 InvokeHitEvent();
                 Destroy(gameObject);
             }
+        }
+
+        public void SetID(ID id) {
+            this.id = id;
         }
 
         public void InvokeHitEvent() {

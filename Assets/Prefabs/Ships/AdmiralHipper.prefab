@@ -426,14 +426,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ship: {fileID: 9121195042845819025}
+  id:
+    id: 
   hitCollider: {fileID: 3570715386283627820}
-  damageZoneName: DZDeck
   damageTypes:
   - probability: 1
     damageType: 0
     param:
       fparam: []
       oparam: []
+  damages: 
 --- !u!1 &1096738115223082308
 GameObject:
   m_ObjectHideFlags: 0
@@ -492,8 +494,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ship: {fileID: 9121195042845819025}
+  id:
+    id: 
   hitCollider: {fileID: 7563936237159824704}
-  damageZoneName: DZTurretSternB
   damageTypes:
   - probability: 1
     damageType: 2
@@ -501,6 +504,7 @@ MonoBehaviour:
       fparam: []
       oparam:
       - {fileID: 1407209638396774455}
+  damages: 
 --- !u!1 &1388060179252109765
 GameObject:
   m_ObjectHideFlags: 0
@@ -576,7 +580,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a94d5ca2aa76463cbedb8e310ab33d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  turretType: 0
+  id:
+    id: 
+  turretType: 5
   ship: {fileID: 9121195042845819025}
   turretTransform: {fileID: 5706997895329374908}
   sternTurret: 1
@@ -623,6 +629,7 @@ MonoBehaviour:
   gunsElevation: 0
   targetGunsElevation: 0
   stabilizationAngle: 0
+  numShotsFired: 0
 --- !u!1 &1441836936000804043
 GameObject:
   m_ObjectHideFlags: 0
@@ -681,8 +688,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ship: {fileID: 9121195042845819025}
+  id:
+    id: 
   hitCollider: {fileID: 8945909353276991915}
-  damageZoneName: DZStern
   damageTypes:
   - probability: 0.7
     damageType: 0
@@ -705,6 +713,7 @@ MonoBehaviour:
     param:
       fparam: []
       oparam: []
+  damages: 
 --- !u!1 &1494924609216552184
 GameObject:
   m_ObjectHideFlags: 0
@@ -830,6 +839,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a94d5ca2aa76463cbedb8e310ab33d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  id:
+    id: 
   turretType: 0
   ship: {fileID: 9121195042845819025}
   turretTransform: {fileID: 7790146315799705113}
@@ -877,6 +888,7 @@ MonoBehaviour:
   gunsElevation: 0
   targetGunsElevation: 0
   stabilizationAngle: 0
+  numShotsFired: 0
 --- !u!1 &1689950774136413119
 GameObject:
   m_ObjectHideFlags: 0
@@ -1017,8 +1029,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ship: {fileID: 9121195042845819025}
+  id:
+    id: 
   hitCollider: {fileID: 1733957350309336724}
-  damageZoneName: DZTurretBowB
   damageTypes:
   - probability: 1
     damageType: 2
@@ -1026,6 +1039,7 @@ MonoBehaviour:
       fparam: []
       oparam:
       - {fileID: 3021760168757312856}
+  damages: 
 --- !u!1 &1897922583244450701
 GameObject:
   m_ObjectHideFlags: 0
@@ -1307,8 +1321,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ship: {fileID: 9121195042845819025}
+  id:
+    id: 
   hitCollider: {fileID: 143585562451211154}
-  damageZoneName: DZHull
   damageTypes:
   - probability: 0.8
     damageType: 0
@@ -1321,6 +1336,7 @@ MonoBehaviour:
       fparam:
       - 1
       oparam: []
+  damages: 
 --- !u!1 &2616965454648857510
 GameObject:
   m_ObjectHideFlags: 0
@@ -1394,6 +1410,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a94d5ca2aa76463cbedb8e310ab33d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  id:
+    id: 
   turretType: 1
   ship: {fileID: 9121195042845819025}
   turretTransform: {fileID: 3189531592702823479}
@@ -1441,6 +1459,7 @@ MonoBehaviour:
   gunsElevation: 0
   targetGunsElevation: 0
   stabilizationAngle: 0
+  numShotsFired: 0
 --- !u!1 &3865871598600082655
 GameObject:
   m_ObjectHideFlags: 0
@@ -1499,8 +1518,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ship: {fileID: 9121195042845819025}
+  id:
+    id: 
   hitCollider: {fileID: 7452339023828310076}
-  damageZoneName: DZBow
   damageTypes:
   - probability: 0.8
     damageType: 0
@@ -1513,6 +1533,7 @@ MonoBehaviour:
       fparam:
       - 0
       oparam: []
+  damages: 
 --- !u!1 &3895326352262017121
 GameObject:
   m_ObjectHideFlags: 0
@@ -1931,8 +1952,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ship: {fileID: 9121195042845819025}
+  id:
+    id: 
   hitCollider: {fileID: 263841180213655549}
-  damageZoneName: DZTurretSternA
   damageTypes:
   - probability: 1
     damageType: 2
@@ -1940,6 +1962,7 @@ MonoBehaviour:
       fparam: []
       oparam:
       - {fileID: 5293239667915569791}
+  damages: 
 --- !u!1 &4977188958019289812
 GameObject:
   m_ObjectHideFlags: 0
@@ -2013,6 +2036,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a94d5ca2aa76463cbedb8e310ab33d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  id:
+    id: 
   turretType: 4
   ship: {fileID: 9121195042845819025}
   turretTransform: {fileID: 4483180436093614533}
@@ -2060,6 +2085,7 @@ MonoBehaviour:
   gunsElevation: 0
   targetGunsElevation: 0
   stabilizationAngle: 0
+  numShotsFired: 0
 --- !u!1 &5345078921307497295
 GameObject:
   m_ObjectHideFlags: 0
@@ -2199,8 +2225,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ship: {fileID: 9121195042845819025}
+  id:
+    id: 
   hitCollider: {fileID: 5164022767425032630}
-  damageZoneName: DZTurretBowA
   damageTypes:
   - probability: 1
     damageType: 2
@@ -2208,6 +2235,7 @@ MonoBehaviour:
       fparam: []
       oparam:
       - {fileID: 1550353271243696652}
+  damages: 
 --- !u!1 &5626832956106541262
 GameObject:
   m_ObjectHideFlags: 0
