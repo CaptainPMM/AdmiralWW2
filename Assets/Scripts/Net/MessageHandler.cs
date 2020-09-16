@@ -61,6 +61,11 @@ namespace Net {
                     target.Read(reader);
                     Run(() => GameManager.Inst.SetShipTarget(target.PlayerTag, target.ShipID, target.HasTarget, target.TargetShipID));
                     break;
+                case MessageType.SyncGame:
+                    MTSyncGame sync = new MTSyncGame();
+                    sync.Read(reader);
+                    Run(() => print("TODO"));
+                    break;
                 default:
                     Run(() => Debug.LogWarning("Could not handle net message of type " + messageType));
                     break;

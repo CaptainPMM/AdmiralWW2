@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Ships;
 using Ships.ShipSystems;
+using Projectiles;
 using Cam;
 using Net;
 using Net.MessageTypes;
@@ -21,6 +22,11 @@ public class GameManager : MonoBehaviour {
 
     [Header("Current state")]
     [SerializeField] private Player thisPlayer = null;
+
+    [Header("MP settings")]
+    [SerializeField] private bool stopGameSync = false;
+    [SerializeField] private bool syncGames = true;
+    [SerializeField] private float syncGamesInterval = 10f;
 
     private bool allPlayersReady = false;
 
@@ -62,6 +68,7 @@ public class GameManager : MonoBehaviour {
         if (Global.State.isRandomSeedHost) {
             StartCoroutine(DistributeRandomSeed());
         }
+        StartCoroutine(SyncGames());
         Time.timeScale = 1f;
     }
 
@@ -76,6 +83,24 @@ public class GameManager : MonoBehaviour {
             P2PManager.Inst.Send(new MTRandomSeed { Seed = seed });
             SafeRandom.Seed = seed;
             yield return new WaitForSecondsRealtime(DISTRIBUTE_RANDOM_SEED_INTERVAL);
+        }
+    }
+
+    private IEnumerator SyncGames() {
+        while (!stopGameSync) {
+            yield return new WaitForSecondsRealtime(syncGamesInterval);
+            if (syncGames) {
+                List<Projectile> projectiles = new List<Projectile>();
+                for (int i = 0; i < ProjectileManager.Inst.transform.childCount; i++) {
+                    projectiles.Add(ProjectileManager.Inst.transform.GetChild(i).GetComponent<Projectile>());
+                }
+                List<Ship> ships = new List<Ship>();
+                foreach (PlayerFleet fleet in fleets) {
+                    ships.AddRange(fleet.Ships);
+                    ships.AddRange(fleet.SunkShips);
+                }
+                P2PManager.Inst.Send(new MTSyncGame(projectiles.ToArray(), ships.ToArray()));
+            }
         }
     }
 
