@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using Ships;
 using Ships.ShipSystems;
+using Ships.ShipSystems.Armaments;
+using Ships.DamageZones;
 using Projectiles;
 using Cam;
 using Net;
@@ -26,7 +28,7 @@ public class GameManager : MonoBehaviour {
     [Header("MP settings")]
     [SerializeField] private bool stopGameSync = false;
     [SerializeField] private bool syncGames = true;
-    [SerializeField] private float syncGamesInterval = 10f;
+    [SerializeField] private float syncGamesInterval = 30f;
 
     private bool allPlayersReady = false;
 
@@ -68,7 +70,7 @@ public class GameManager : MonoBehaviour {
         if (Global.State.isRandomSeedHost) {
             StartCoroutine(DistributeRandomSeed());
         }
-        StartCoroutine(SyncGames());
+        StartCoroutine(SyncGamesRoutine());
         Time.timeScale = 1f;
     }
 
@@ -86,7 +88,7 @@ public class GameManager : MonoBehaviour {
         }
     }
 
-    private IEnumerator SyncGames() {
+    private IEnumerator SyncGamesRoutine() {
         while (!stopGameSync) {
             yield return new WaitForSecondsRealtime(syncGamesInterval);
             if (syncGames) {
@@ -156,6 +158,14 @@ public class GameManager : MonoBehaviour {
         } else Debug.LogWarning("Fleet of player tag " + playerTag + " not found");
     }
 
+    public Projectile FindProjectileByID(ID id) {
+        for (int i = 0; i < ProjectileManager.Inst.transform.childCount; i++) {
+            Projectile p = ProjectileManager.Inst.transform.GetChild(i).GetComponent<Projectile>();
+            if (p.ID == id) return p;
+        }
+        return null;
+    }
+
     public Ship FindShipByID(ID id) {
         foreach (PlayerFleet fleet in fleets) {
             foreach (Ship ship in fleet.Ships) {
@@ -163,5 +173,77 @@ public class GameManager : MonoBehaviour {
             }
         }
         return null;
+    }
+
+    public void SyncGames(MTSyncGame sync) {
+        // Sync projectiles
+        for (int i = 0; i < sync.NumProjectiles; i++) {
+            Projectile p = FindProjectileByID(sync.ProjectileIDs[i]);
+            if (p) {
+                p.transform.position += (sync.ProjectilePositions[i] - p.transform.position) * 0.5f;
+                p.transform.rotation = Quaternion.Lerp(p.transform.rotation, Quaternion.Euler(sync.ProjectileRotations[i]), 0.5f);
+                p.Velocity = Vector3.Lerp(p.Velocity, sync.ProjectileVelocities[i], 0.5f);
+            } else Debug.LogWarning("Sync projectile: could not find id " + sync.ProjectileIDs[i]);
+        }
+
+        // Sync ships
+        uint waterIngressSectionsCounter = 0;
+        uint gunTurretsCounter = 0;
+        uint damageZoneCounter = 0;
+        uint damageZoneDamagesCounter = 0;
+
+        for (int i = 0; i < sync.NumShips; i++) {
+            Ship s = FindShipByID(sync.ShipIDs[i]);
+            bool counterUpdated = false;
+            if (s != null && !s.Equals(null)) {
+                if (sync.ShipsHitpoints[i] <= 0 && !s.Destroyed) s.DamageHull(float.MaxValue);
+                else if (!s.Destroyed) {
+                    s.HullHitpoints = Mathf.Lerp(s.HullHitpoints, sync.ShipsHitpoints[i], 0.5f);
+                    s.transform.position += (sync.ShipPositions[i] - s.transform.position) * 0.5f;
+                    s.transform.rotation = Quaternion.Lerp(s.transform.rotation, Quaternion.Euler(sync.ShipRotations[i]), 0.5f);
+                    s.Velocity = Vector3.Lerp(s.Velocity, sync.ShipVelocities[i], 0.5f);
+                    for (byte waterIngressSectionIndex = 0; waterIngressSectionIndex < sync.ShipsNumWaterIngressSections[i]; waterIngressSectionIndex++) {
+                        Ship.WaterIngressSection section = s.WaterIngressSections.Find(wis => wis.sectionID == sync.WaterIngressSectionsIDs[waterIngressSectionsCounter]);
+                        section.numHoles = Mathf.CeilToInt(Mathf.Lerp(section.numHoles, sync.WaterIngressNumHoles[waterIngressSectionsCounter], 0.5f));
+                        section.waterLevel = Mathf.Lerp(section.waterLevel, sync.WaterIngressWaterLevels[waterIngressSectionsCounter++], 0.5f);
+                    }
+                    if (s.PlayerTag != thisPlayerTag) {
+                        s.Autopilot.Chadburn = sync.ShipChadburnSettings[i];
+                        s.Autopilot.Course = sync.ShipCourses[i];
+                        if (sync.ShipsHasTarget[i]) s.Targeting.Target = FindShipByID(sync.ShipsTargetShipID[i]);
+                        else s.Targeting.Target = null;
+                    }
+                    for (byte gunTurretIndex = 0; gunTurretIndex < sync.ShipsNumGunTurrets[i]; gunTurretIndex++) {
+                        GunTurret t = s.Armament.GunTurrets.Find(gt => gt.ID == sync.GunTurretIDs[gunTurretsCounter]);
+                        if (sync.GunTurretsDisabled[gunTurretsCounter]) t.Disable();
+                        t.ReloadProgress = Mathf.Lerp(t.ReloadProgress, sync.GunTurretsReloadProgress[gunTurretsCounter], 0.5f);
+                        t.TurretRotation = Mathf.Lerp(t.TurretRotation, sync.GunTurretsRotation[gunTurretsCounter], 0.5f);
+                        t.TargetTurretRotation = Mathf.Lerp(t.TargetTurretRotation, sync.GunTurretsTargetRotation[gunTurretsCounter], 0.5f);
+                        t.GunsElevation = Mathf.Lerp(t.GunsElevation, sync.GunTurretsElevation[gunTurretsCounter], 0.5f);
+                        t.TargetGunsElevation = Mathf.Lerp(t.TargetGunsElevation, sync.GunTurretsTargetElevation[gunTurretsCounter], 0.5f);
+                        t.StabilizationAngle = Mathf.Lerp(t.StabilizationAngle, sync.GunTurretsStabilizationAngle[gunTurretsCounter++], 0.5f);
+                    }
+                    for (byte damageZoneIndex = 0; damageZoneIndex < sync.ShipNumDamageZones[i]; damageZoneIndex++) {
+                        DamageZone dz = s.DamageZones.Find(sdz => sdz.ID == sync.ShipDamageZoneIDs[damageZoneCounter]);
+                        for (byte damageIndex = 0; damageIndex < sync.DamageZoneNumDamages[damageZoneCounter]; damageIndex++) {
+                            DamageType dt = sync.DamageZoneDamages[damageZoneDamagesCounter++];
+                            if (!dz.Damages.Contains(dt)) dz.Damages.Add(dt);
+                        }
+                        damageZoneCounter++;
+                    }
+                    counterUpdated = true;
+                }
+            } else Debug.LogWarning("Sync ship: could not find id " + sync.ShipIDs[i]);
+
+            // Update counter in case they did not get updated inside the ifs
+            if (!counterUpdated) {
+                waterIngressSectionsCounter += sync.ShipsNumWaterIngressSections[i];
+                gunTurretsCounter += sync.ShipsNumGunTurrets[i];
+                for (int k = 0; k < sync.ShipNumDamageZones[i]; k++) {
+                    damageZoneDamagesCounter += sync.DamageZoneNumDamages[damageZoneCounter];
+                    damageZoneCounter++;
+                }
+            }
+        }
     }
 }

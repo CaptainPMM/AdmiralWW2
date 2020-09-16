@@ -64,7 +64,7 @@ namespace Net {
                 case MessageType.SyncGame:
                     MTSyncGame sync = new MTSyncGame();
                     sync.Read(reader);
-                    Run(() => print("TODO"));
+                    Run(() => GameManager.Inst.SyncGames(sync));
                     break;
                 default:
                     Run(() => Debug.LogWarning("Could not handle net message of type " + messageType));

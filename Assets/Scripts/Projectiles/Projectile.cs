@@ -20,7 +20,7 @@ namespace Projectiles {
         [Header("Setup")]
         [SerializeField] private Rigidbody rb = null;
 
-        public Vector3 Velocity => rb.velocity;
+        public Vector3 Velocity { get => rb.velocity; set => rb.velocity = value; }
         public float Mass => rb.mass;
 
         [Header("Runtime settings (must set after instantiation)")]

@@ -75,7 +75,7 @@ namespace Ships {
         /// <summary>
         /// Remaining hitpoints. Durability of the ship (hull), each projectile that hits reduces this number by the projectiles caliber
         /// </summary>
-        public float HullHitpoints => hullHitpoints;
+        public float HullHitpoints { get => hullHitpoints; set => hullHitpoints = value; }
         public void DamageHull(float damage) {
             float newHullHP = hullHitpoints - damage;
             if (newHullHP <= 0f) {
@@ -89,7 +89,7 @@ namespace Ships {
 
         public GameObject GameObject => gameObject;
         public Vector3 WorldPos => transform.position;
-        public Vector3 Velocity => rb.velocity;
+        public Vector3 Velocity { get => rb.velocity; set => rb.velocity = value; }
 
         private void Awake() {
             if (rb == null) Debug.LogWarning("Ship script needs an assigned rigidbody");

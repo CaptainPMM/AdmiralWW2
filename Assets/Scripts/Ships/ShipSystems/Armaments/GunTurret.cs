@@ -179,12 +179,12 @@ namespace Ships.ShipSystems.Armaments {
         /// Guns are aimed
         /// </summary>
         public bool AimReady => turretRotation == targetTurretRotation && gunsElevation == targetGunsElevation;
-        public float ReloadProgress => reloadProgress;
-        public float TurretRotation => turretRotation;
+        public float ReloadProgress { get => reloadProgress; set => reloadProgress = value; }
+        public float TurretRotation { get => turretRotation; set => turretRotation = value; }
         public float TargetTurretRotation { get => targetTurretRotation; set => targetTurretRotation = Mathf.Clamp(value, -turretMaxRotationAngle, turretMaxRotationAngle); }
-        public float GunsElevation => gunsElevation;
+        public float GunsElevation { get => gunsElevation; set => gunsElevation = value; }
         public float TargetGunsElevation { get => targetGunsElevation; set => targetGunsElevation = Mathf.Clamp(value, gunsMinElevationAngle, gunsMaxElevationAngle); }
-        public float StabilizationAngle => stabilizationAngle;
+        public float StabilizationAngle { get => stabilizationAngle; set => stabilizationAngle = value; }
         public uint NumShotsFired => numShotsFired;
 
         private bool tempAimReady = false;

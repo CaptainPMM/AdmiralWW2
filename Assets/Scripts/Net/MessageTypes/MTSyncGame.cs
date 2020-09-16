@@ -99,7 +99,7 @@ namespace Net.MessageTypes {
             uint waterIngressSectionsCounter = 0;
             uint gunTurretsCounter = 0;
             uint damageZoneCounter = 0;
-            uint damageZoneNumDamages = 0;
+            uint damageZoneDamagesCounter = 0;
 
             for (int i = 0; i < NumShips; i++) {
                 s = ships[i];
@@ -141,7 +141,7 @@ namespace Net.MessageTypes {
                 for (byte damageZoneIndex = 0; damageZoneIndex < ShipNumDamageZones[i]; damageZoneIndex++) {
                     ShipDamageZoneIDs[damageZoneCounter] = s.DamageZones[damageZoneIndex].ID;
                     DamageZoneNumDamages[damageZoneCounter++] = (byte)s.DamageZones[damageZoneIndex].Damages.Count;
-                    s.DamageZones[damageZoneIndex].Damages.ForEach(d => DamageZoneDamages[damageZoneNumDamages++] = d);
+                    s.DamageZones[damageZoneIndex].Damages.ForEach(d => DamageZoneDamages[damageZoneDamagesCounter++] = d);
                 }
             }
         }
@@ -166,7 +166,7 @@ namespace Net.MessageTypes {
             uint waterIngressSectionsCounter = 0;
             uint gunTurretsCounter = 0;
             uint damageZoneCounter = 0;
-            uint damageZoneNumDamages = 0;
+            uint damageZoneDamagesCounter = 0;
 
             for (int shipIndex = 0; shipIndex < NumShips; shipIndex++) {
                 writer.Write(ShipIDs[shipIndex].ToString());
@@ -206,7 +206,7 @@ namespace Net.MessageTypes {
                     writer.Write(ShipDamageZoneIDs[damageZoneCounter].ToString());
                     writer.Write(DamageZoneNumDamages[damageZoneCounter]);
                     for (byte damageIndex = 0; damageIndex < DamageZoneNumDamages[damageZoneCounter]; damageIndex++) {
-                        writer.WriteEnum<DamageType>(DamageZoneDamages[damageZoneNumDamages++]);
+                        writer.WriteEnum<DamageType>(DamageZoneDamages[damageZoneDamagesCounter++]);
                     }
                     damageZoneCounter++;
                 }
