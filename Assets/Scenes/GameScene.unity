@@ -416,15 +416,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9121195042845819025, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
       propertyPath: id.id
-      value: 19204839
+      value: 111
+      objectReference: {fileID: 0}
+    - target: {fileID: 9121195042845819025, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: shipName
+      value: Admiral Hipper I
       objectReference: {fileID: 0}
     - target: {fileID: 9121195042845819036, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
       propertyPath: m_Name
-      value: AdmiralHipper
+      value: AdmiralHipperIPlayer0
       objectReference: {fileID: 0}
     - target: {fileID: 9121195042845819037, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -5000
       objectReference: {fileID: 0}
     - target: {fileID: 9121195042845819037, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
       propertyPath: m_LocalPosition.y
@@ -432,7 +436,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9121195042845819037, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 9121195042845819037, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
       propertyPath: m_LocalRotation.x
@@ -440,7 +444,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9121195042845819037, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 0.2588191
       objectReference: {fileID: 0}
     - target: {fileID: 9121195042845819037, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
       propertyPath: m_LocalRotation.z
@@ -448,7 +452,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9121195042845819037, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.9659258
       objectReference: {fileID: 0}
     - target: {fileID: 9121195042845819037, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
       propertyPath: m_RootOrder
@@ -460,7 +464,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9121195042845819037, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 9121195042845819037, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -1234,6 +1238,122 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 530505672}
   m_CullTransparentMesh: 0
+--- !u!1001 &538556822
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1767655252600435095, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2889992234253726534, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3297022152665733737, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3896252927243145169, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3896252927243145169, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4006710157945465727, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5636686892506230517, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5636686892506230517, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5901490229615945642, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9121195042845819025, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: playerTag
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9121195042845819025, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: id.id
+      value: 444
+      objectReference: {fileID: 0}
+    - target: {fileID: 9121195042845819025, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: shipName
+      value: Admiral Hipper IV
+      objectReference: {fileID: 0}
+    - target: {fileID: 9121195042845819036, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: m_Name
+      value: AdmiralHipperIVPlayer1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9121195042845819037, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 860
+      objectReference: {fileID: 0}
+    - target: {fileID: 9121195042845819037, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9121195042845819037, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 450
+      objectReference: {fileID: 0}
+    - target: {fileID: 9121195042845819037, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9121195042845819037, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.17364825
+      objectReference: {fileID: 0}
+    - target: {fileID: 9121195042845819037, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9121195042845819037, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9848078
+      objectReference: {fileID: 0}
+    - target: {fileID: 9121195042845819037, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: m_RootOrder
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 9121195042845819037, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9121195042845819037, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -20
+      objectReference: {fileID: 0}
+    - target: {fileID: 9121195042845819037, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+--- !u!114 &538556823 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9121195042845819025, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+  m_PrefabInstance: {fileID: 538556822}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dceef2d8eb9954df89b872fb34d92bcd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &549973793
 GameObject:
   m_ObjectHideFlags: 0
@@ -2514,11 +2634,13 @@ MonoBehaviour:
     name: Fleet of Player 0
     ships:
     - {fileID: 239590708}
+    - {fileID: 1805847670}
     sunkShips: []
   - playerTag: 1
     name: Fleet of Player 1
     ships:
     - {fileID: 1412742415}
+    - {fileID: 538556823}
     sunkShips: []
   thisPlayerTag: 0
   camController: {fileID: 672450411}
@@ -2526,6 +2648,9 @@ MonoBehaviour:
     tag: 0
     name: Player 0
     color: {r: 0, g: 0, b: 1, a: 1}
+  stopGameSync: 0
+  syncGames: 1
+  syncGamesInterval: 30
 --- !u!1 &1079240107
 GameObject:
   m_ObjectHideFlags: 0
@@ -3006,15 +3131,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9121195042845819025, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
       propertyPath: id.id
-      value: 77738392
+      value: 333
+      objectReference: {fileID: 0}
+    - target: {fileID: 9121195042845819025, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: shipName
+      value: Admiral Hipper III
       objectReference: {fileID: 0}
     - target: {fileID: 9121195042845819036, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
       propertyPath: m_Name
-      value: AdmiralHipper2
+      value: AdmiralHipperIIIPlayer1
       objectReference: {fileID: 0}
     - target: {fileID: 9121195042845819037, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1500
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 9121195042845819037, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3022,7 +3151,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9121195042845819037, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 100
+      value: 800
       objectReference: {fileID: 0}
     - target: {fileID: 9121195042845819037, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
       propertyPath: m_LocalRotation.x
@@ -3042,7 +3171,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9121195042845819037, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
       propertyPath: m_RootOrder
-      value: 17
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 9121195042845819037, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -4118,6 +4247,118 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1803293530}
   m_CullTransparentMesh: 0
+--- !u!1001 &1805847669
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1767655252600435095, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2889992234253726534, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3297022152665733737, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3896252927243145169, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3896252927243145169, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4006710157945465727, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5636686892506230517, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5636686892506230517, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5901490229615945642, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9121195042845819025, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: id.id
+      value: 222
+      objectReference: {fileID: 0}
+    - target: {fileID: 9121195042845819025, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: shipName
+      value: Admiral Hipper II
+      objectReference: {fileID: 0}
+    - target: {fileID: 9121195042845819036, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: m_Name
+      value: AdmiralHipperIIPlayer0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9121195042845819037, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -5250
+      objectReference: {fileID: 0}
+    - target: {fileID: 9121195042845819037, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9121195042845819037, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 9121195042845819037, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9121195042845819037, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.2588191
+      objectReference: {fileID: 0}
+    - target: {fileID: 9121195042845819037, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9121195042845819037, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9659258
+      objectReference: {fileID: 0}
+    - target: {fileID: 9121195042845819037, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: m_RootOrder
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 9121195042845819037, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9121195042845819037, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 9121195042845819037, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+--- !u!114 &1805847670 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9121195042845819025, guid: 4c9d7f440db5c4fba9581355a5564246, type: 3}
+  m_PrefabInstance: {fileID: 1805847669}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dceef2d8eb9954df89b872fb34d92bcd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1842949610
 GameObject:
   m_ObjectHideFlags: 0

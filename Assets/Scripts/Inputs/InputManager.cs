@@ -95,13 +95,14 @@ namespace Inputs {
         }
 
         private void SelectShip(Ship ship) {
-            if (selectedShip != null) selectedShip.UI.SetSelected(false);
+            if (selectedShip != null) {
+                selectedShip.UI.SetSelected(false);
+                GameUI.Inst.SetShipSelectionVisible(false);
+            }
             selectedShip = ship;
             if (ship != null) {
                 selectedShip.UI.SetSelected(true);
                 GameUI.Inst.SetShipSelectionVisible(true);
-            } else {
-                GameUI.Inst.SetShipSelectionVisible(false);
             }
         }
 
